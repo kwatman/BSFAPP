@@ -48,7 +48,7 @@ api/categories | GET, POST, PUT
 api/categories/1 | GET, DEL
 api/categories/1/products | GET
 api/blogposts | GET, POST, PUT
-api/blogposts | GET, DEL
+api/blogposts/1 | GET, DEL
 
 Alle GET-methoden zijn toegankelijk voor gebruikers, alle overige methoden zijn enkel toegankelijk voor Admin.
 
