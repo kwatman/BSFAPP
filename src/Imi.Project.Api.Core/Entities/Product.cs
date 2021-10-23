@@ -12,6 +12,6 @@ namespace Imi.Project.Api.Core.Entities
         public decimal Price { get; set; }
         public Guid CategoryId { get; set; }
         public Category Category { get; set; }
-        public ICollection<DietaryRequirement> DietaryRequirements { get; set; }
+        public ICollection<ProductDietaryRequirement> ProductDietaryRequirements { get; set; }
     }
 }

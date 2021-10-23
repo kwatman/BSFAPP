@@ -8,6 +8,6 @@ namespace Imi.Project.Api.Core.Entities
     {
         public Guid DietaryRequirementId { get; set; }
         public string Name { get; set; }
-        public ICollection<Product> Products { get; set; }
+        public ICollection<ProductDietaryRequirement> ProductDietaryRequirements { get; set; }
     }
 }
