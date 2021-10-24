@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Imi.Project.Api.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Imi.Project.Api.Core.Infrastructure
 {
-    public interface IBaseRepository<T>
+    public interface IBaseRepository<T> where T: BaseEntity
     {
         IQueryable<T> GetAll();
         Task<IEnumerable<T>> ListAllAsync();
