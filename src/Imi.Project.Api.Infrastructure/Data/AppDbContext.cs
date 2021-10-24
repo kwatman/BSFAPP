@@ -24,6 +24,21 @@ namespace Imi.Project.Api.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Category>()
+                .HasMany(c => c.Products)
+                .WithOne(p => p.Category);
+
+            modelBuilder.Entity<ProductDietaryRequirement>()
+                .HasKey(pdr => new { pdr.ProductId, pdr.DietaryRequirementId });
+            modelBuilder.Entity<ProductDietaryRequirement>()
+                .HasOne(pdr => pdr.Product)
+                .WithMany(p => p.ProductDietaryRequirements)
+                .HasForeignKey(pdr => pdr.ProductId);
+            modelBuilder.Entity<ProductDietaryRequirement>()
+                .HasOne(pdr => pdr.DietaryRequirement)
+                .WithMany(dr => dr.ProductDietaryRequirements)
+                .HasForeignKey(pdr => pdr.DietaryRequirementId);
+
             modelBuilder.Entity<Category>().HasData(
                 new[]
                 {
@@ -156,6 +171,86 @@ namespace Imi.Project.Api.Infrastructure.Data
                         Price = 7.50m,
                         CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000001")
                     }
+                });
+
+            modelBuilder.Entity<ProductDietaryRequirement>().HasData(
+                new[] 
+                { 
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000002"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000003")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000001")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000002")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000003")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000004")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000005"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000002")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000005"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000004")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000006"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000003")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000006"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000004")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000008"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000003")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000009"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000002")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000009"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000003")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000009"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000004")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000010"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000001")
+                    },
+                    new ProductDietaryRequirement
+                    {
+                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000010"),
+                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000004")
+                    },
                 });
 
             modelBuilder.Entity<User>().HasData(
