@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Imi.Project.Api.Core.Entities
 {
-    public class Product
+    public class Product: BaseEntity
     {
-        public Guid ProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }

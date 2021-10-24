@@ -61,22 +61,22 @@ namespace Imi.Project.Api.Infrastructure.Data
                 {
                     new Category
                     {
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                         Name = "Taart"
                     },
                     new Category
                     {
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000002"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000002"),
                         Name = "Gebak"
                     },
                     new Category
                     {
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000003"),
                         Name = "Koekjes met glazuur"
                     },
                     new Category
                     {
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000004"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000004"),
                         Name = "Koekjes met rolfondant"
                     }
                 });
@@ -85,22 +85,22 @@ namespace Imi.Project.Api.Infrastructure.Data
                 {
                     new DietaryRequirement
                     {
-                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                         Name = "Vegan"
                     },
                     new DietaryRequirement
                     {
-                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000002"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000002"),
                         Name = "Glutenvrij"
                     },
                     new DietaryRequirement
                     {
-                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000003"),
                         Name = "Notenvrij"
                     },
                     new DietaryRequirement
                     {
-                        DietaryRequirementId = Guid.Parse("00000000-0000-0000-0000-000000000004"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000004"),
                         Name = "Lactosevrij"
                     }
                 });
@@ -110,7 +110,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                 {
                     new Product
                     {
-                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                         Name = "Clafoutis van kersen",
                         Description = "Frans nagerecht van kersen in een lekker gebakken roommengsel uit de oven.",
                         Price = 8.50m,
@@ -118,7 +118,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                     new Product
                     {
-                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000002"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000002"),
                         Name = "Marble Cake",
                         Description = "Marmercake is de ultieme combinatie van een vanillecake en een chocoladecake.",
                         Price = 6m,
@@ -126,7 +126,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                     new Product
                     {
-                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000003"),
                         Name = "6 Vegan Pumpkin Cookies",
                         Description = "Vanille vegan koekjes met pompoenglazuur",
                         Price = 5m,
@@ -134,7 +134,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                     new Product
                     {
-                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000004"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000004"),
                         Name = "6 Cannelés de Bordeaux",
                         Description = "Frans gebakje op smaak gebracht met rum, een culinaire specialiteit uit de streek rond Bordeaux",
                         Price = 4.50m,
@@ -142,7 +142,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                     new Product
                     {
-                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000005"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000005"),
                         Name = "6 Chistmas Cinnamon Cookies",
                         Description = "Vanille-kaneelkoekjes met vanille glazuur in Kertsthema.",
                         Price = 5.50m,
@@ -150,7 +150,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                     new Product
                     {
-                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000006"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000006"),
                         Name = "6 Glazed Signature Fondant Cookies",
                         Description = "Vanillekoekjes van het huis met roze rolfondant en het Glazed-logo.",
                         Price = 3.50m,
@@ -158,7 +158,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                     new Product
                     {
-                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000007"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000007"),
                         Name = "Lemon Cheescake",
                         Description = "Kaastaart met citroencoulis op een bodem van caramelcrumble.",
                         Price = 7.50m,
@@ -166,7 +166,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                     new Product
                     {
-                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000008"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000008"),
                         Name = "6 Glazed Doughnut Cookies",
                         Description = "Glazed signature vanille-donutkoekjes met roze glazuur en sprinkles.",
                         Price = 6.50m,
@@ -174,7 +174,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                     new Product
                     {
-                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000009"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000009"),
                         Name = "6 Valentine Fondant Cookies",
                         Description = "Hartvormige chocoladekoekjes met afwerking in rode rolfondant",
                         Price = 4.50m,
@@ -182,7 +182,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                     new Product
                     {
-                        ProductId = Guid.Parse("00000000-0000-0000-0000-000000000010"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000010"),
                         Name = "Vegan Apple Crumble",
                         Description = "Verse crumble met stukjes appel en kaneel, heerlijk warm met een bolltje vanille-ijs.",
                         Price = 7.50m,
@@ -275,7 +275,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                 {
                     new User
                     {
-                        UserId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                         Name = "Decru",
                         Surname = "Amaury",
                         Email = "amaury.decru@test.com",
@@ -284,7 +284,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                     new User
                     {
-                        UserId = Guid.Parse("00000000-0000-0000-0000-000000000002"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000002"),
                         Name = "Doe",
                         Surname = "John",
                         Email = "john.doe@test.com",
@@ -293,7 +293,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                     new User
                     {
-                        UserId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000003"),
                         Name = "Doe",
                         Surname = "Jane",
                         Email = "jane.doe@test.com",
@@ -307,19 +307,19 @@ namespace Imi.Project.Api.Infrastructure.Data
                 {
                     new BlogPost
                     {
-                        BlogPostId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                         Title = "Recept: Eclairs",
                         PostDate = DateTime.Parse("23/07/2021")
                     },
                     new BlogPost
                     {
-                        BlogPostId = Guid.Parse("00000000-0000-0000-0000-000000000002"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000002"),
                         Title = "Nieuw product: Vegan Apple Crumble",
                         PostDate = DateTime.Parse("18/09/2021")
                     },
                     new BlogPost
                     {
-                        BlogPostId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000003"),
                         Title = "Glazed in de Krant van West-Vlaanderen",
                         PostDate = DateTime.Parse("13/10/2021")
                     }

@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Imi.Project.Api.Core.Entities
 {
-    public class User
+    public class User: BaseEntity
     {
-        public Guid UserId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }

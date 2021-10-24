@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Imi.Project.Api.Core.Entities
 {
-    public class BlogPost: BaseEntity
+    public abstract class BaseEntity
     {
-        public string Title { get; set; }
-        public DateTime PostDate { get; set; }
+        public Guid Id { get; set; }
     }
 }
