@@ -26,7 +26,8 @@ namespace Imi.Project.Api.Infrastructure.Data
 
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.Products)
-                .WithOne(p => p.Category);
+                .WithOne(p => p.Category)
+                .IsRequired();
 
             modelBuilder.Entity<ProductDietaryRequirement>()
                 .HasKey(pdr => new { pdr.ProductId, pdr.DietaryRequirementId });
@@ -38,6 +39,22 @@ namespace Imi.Project.Api.Infrastructure.Data
                 .HasOne(pdr => pdr.DietaryRequirement)
                 .WithMany(dr => dr.ProductDietaryRequirements)
                 .HasForeignKey(pdr => pdr.DietaryRequirementId);
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Name)
+                .IsRequired()
+                .HasMaxLength(80);
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Price)
+                .HasColumnType("decimal(18,4)");
+            modelBuilder.Entity<Category>()
+                .Property(c => c.Name)
+                .IsRequired()
+                .HasMaxLength(80);
+            modelBuilder.Entity<DietaryRequirement>()
+                .Property(dr => dr.Name)
+                .IsRequired()
+                .HasMaxLength(80);
 
             modelBuilder.Entity<Category>().HasData(
                 new[]
