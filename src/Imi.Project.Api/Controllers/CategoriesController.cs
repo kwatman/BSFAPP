@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Imi.Project.Api.Core.Infrastructure;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,11 @@ namespace Imi.Project.Api.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
+        protected readonly ICategoryRepository _categoryRepository;
+
+        public CategoriesController(ICategoryRepository categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
+        }
     }
 }
