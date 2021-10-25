@@ -1,4 +1,5 @@
 ﻿using Imi.Project.Api.Core.DTO_S.Categories;
+using Imi.Project.Api.Core.Entities;
 using Imi.Project.Api.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -50,6 +51,24 @@ namespace Imi.Project.Api.Controllers
 
                 return Ok(categoryDTO);
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(CategoryRequestDTO categoryDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values);
+            }
+
+            var newCategory = new Category
+            {
+                Name = categoryDTO.Name
+            };
+
+            await _categoryRepository.AddAsync(newCategory);
+
+            return Ok();
         }
     }
 }

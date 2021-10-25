@@ -1,6 +1,7 @@
 ﻿using Imi.Project.Api.Core.DTO_S.Categories;
 using Imi.Project.Api.Core.DTO_S.DietaryRequirements;
 using Imi.Project.Api.Core.DTO_S.Products;
+using Imi.Project.Api.Core.Entities;
 using Imi.Project.Api.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,7 @@ namespace Imi.Project.Api.Controllers
             _categoryRepository = categoryRepository;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
             var products = await _productRepository.ListAllAsync();
@@ -44,6 +46,7 @@ namespace Imi.Project.Api.Controllers
             return Ok(productsDTO);
         }
 
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             var product = await _productRepository.GetByIdAsync(id);
@@ -68,6 +71,7 @@ namespace Imi.Project.Api.Controllers
             }
         }
 
+        [HttpGet("{id}/products")]
         public async Task<IActionResult> GetProductsByCategory(Guid id)
         {
             var products = await _productRepository.GetByCategoryIdAsync(id);
@@ -84,6 +88,34 @@ namespace Imi.Project.Api.Controllers
             });
 
             return Ok(productsDTO);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(ProductRequestDTO productDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values);
+            }
+
+            var category = await _categoryRepository.GetByIdAsync(productDTO.CategoryId);
+
+            if(category == null)
+            {
+                return BadRequest($"Categorie met id {productDTO.CategoryId} bestaat niet");
+            }
+            else
+            {
+                var newProduct = new Product
+                {
+                    CategoryId = productDTO.CategoryId,
+                    Name = productDTO.Name
+                };
+
+                await _productRepository.AddAsync(newProduct);
+
+                return Ok();
+            }
         }
     }
 }

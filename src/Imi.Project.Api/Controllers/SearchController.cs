@@ -27,6 +27,7 @@ namespace Imi.Project.Api.Controllers
             _dietaryRequirementRepository = dietaryRequirementRepository;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Search([FromQuery] string searchString)
         {
             var results = await _productRepository.SearchAsync(searchString);
