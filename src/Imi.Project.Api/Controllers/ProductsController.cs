@@ -108,13 +108,51 @@ namespace Imi.Project.Api.Controllers
             {
                 var newProduct = new Product
                 {
-                    CategoryId = productDTO.CategoryId,
-                    Name = productDTO.Name
+                    Name = productDTO.Name,
+                    Description = productDTO.Description,
+                    Price = productDTO.Price,
+                    CategoryId = productDTO.CategoryId
                 };
 
                 await _productRepository.AddAsync(newProduct);
 
                 return Ok();
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(ProductRequestDTO productDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values);
+            }
+
+            var category = await _categoryRepository.GetByIdAsync(productDTO.CategoryId);
+
+            if (category == null)
+            {
+                return BadRequest($"Aanpassen niet mogelijk omdat categorie met id {productDTO.CategoryId} niet bestaat");
+            }
+            else
+            {
+                var newProduct = await _productRepository.GetByIdAsync(productDTO.Id);
+
+                if(newProduct == null)
+                {
+                    return NotFound($"Geen product met Id {productDTO.Id} gevonden");
+                }
+                else
+                {
+                    newProduct.Name = productDTO.Name;
+                    newProduct.Description = productDTO.Description;
+                    newProduct.Price = productDTO.Price;
+                    newProduct.CategoryId = productDTO.CategoryId;
+
+                    await _productRepository.UpdateAsync(newProduct);
+
+                    return Ok();
+                }
             }
         }
     }
