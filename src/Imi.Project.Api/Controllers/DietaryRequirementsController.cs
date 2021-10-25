@@ -1,4 +1,5 @@
 ﻿using Imi.Project.Api.Core.DTO_S.DietaryRequirements;
+using Imi.Project.Api.Core.Entities;
 using Imi.Project.Api.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ namespace Imi.Project.Api.Controllers
             _dietaryRequirementRepository = dietaryRequirementRepository;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
             var dietaryRequirements = await _dietaryRequirementRepository.ListAllAsync();
@@ -32,6 +34,7 @@ namespace Imi.Project.Api.Controllers
             return Ok(dietaryRequirementsDTO);
         }
 
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             var dietaryRequirement = await _dietaryRequirementRepository.GetByIdAsync(id);
@@ -49,6 +52,24 @@ namespace Imi.Project.Api.Controllers
 
                 return Ok(dietaryRequirementDTO);
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(DietaryRequirementRequestDTO dietaryRequirementDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values);
+            }
+
+            var newDietaryRequirement = new DietaryRequirement
+            {
+                Name = dietaryRequirementDTO.Name
+            };
+
+            await _dietaryRequirementRepository.AddAsync(newDietaryRequirement);
+
+            return Ok();
         }
     }
 }
