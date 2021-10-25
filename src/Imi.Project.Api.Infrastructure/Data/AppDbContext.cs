@@ -80,6 +80,7 @@ namespace Imi.Project.Api.Infrastructure.Data
                         Name = "Koekjes met rolfondant"
                     }
                 });
+
             modelBuilder.Entity<DietaryRequirement>().HasData(
                 new[]
                 {
