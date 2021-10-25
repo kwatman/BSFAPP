@@ -155,5 +155,22 @@ namespace Imi.Project.Api.Controllers
                 }
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var productToDelete = await _productRepository.GetByIdAsync(id);
+
+            if (productToDelete == null)
+            {
+                return NotFound($"Geen product met Id {id} gevonden");
+            }
+            else
+            {
+                await _productRepository.DeleteAsync(productToDelete);
+
+                return Ok();
+            }
+        }
     }
 }

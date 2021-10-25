@@ -96,7 +96,7 @@ namespace Imi.Project.Api.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var dietaryRequirementToDelete = await _dietaryRequirementRepository.GetByIdAsync(id);
