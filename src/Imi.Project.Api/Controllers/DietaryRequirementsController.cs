@@ -1,4 +1,5 @@
-﻿using Imi.Project.Api.Core.Infrastructure;
+﻿using Imi.Project.Api.Core.DTO_S.DietaryRequirements;
+using Imi.Project.Api.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,6 +18,18 @@ namespace Imi.Project.Api.Controllers
         public DietaryRequirementsController(IDietaryRequirementRepository dietaryRequirementRepository)
         {
             _dietaryRequirementRepository = dietaryRequirementRepository;
+        }
+
+        public async Task<IActionResult> Get()
+        {
+            var dietaryRequirements = await _dietaryRequirementRepository.ListAllAsync();
+            var dietaryRequirementsDTO = dietaryRequirements.Select(dr => new DietaryRequirementResponseDTO
+            {
+                Id = dr.Id,
+                Name = dr.Name
+            });
+
+            return Ok(dietaryRequirementsDTO);
         }
     }
 }
