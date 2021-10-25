@@ -1,4 +1,7 @@
-﻿using Imi.Project.Api.Core.Infrastructure;
+﻿using Imi.Project.Api.Core.DTO_S.Categories;
+using Imi.Project.Api.Core.DTO_S.DietaryRequirements;
+using Imi.Project.Api.Core.DTO_S.Products;
+using Imi.Project.Api.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,6 +20,49 @@ namespace Imi.Project.Api.Controllers
         public ProductsController(IProductRepository productRepository)
         {
             _productRepository = productRepository;
+        }
+
+        public async Task<IActionResult> Get()
+        {
+            var products = await _productRepository.ListAllAsync();
+            var productsDTO = products.Select(p => new ProductResponseDTO
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price,
+                Category = new CategoryResponseDTO
+                {
+                    Id = p.Category.Id,
+                    Name = p.Category.Name
+                }
+            });
+
+            return Ok(productsDTO);
+        }
+
+        public async Task<IActionResult> Get(Guid id)
+        {
+            var product = await _productRepository.GetByIdAsync(id);
+            if (product == null)
+            {
+                return NotFound($"Geen product met id {id} gevonden");
+            }
+            else
+            {
+                var productDTO = new ProductResponseDTO
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Category = new CategoryResponseDTO
+                    {
+                        Id = product.Category.Id,
+                        Name = product.Category.Name
+                    }
+                };
+
+                return Ok(productDTO);
+            }
         }
     }
 }

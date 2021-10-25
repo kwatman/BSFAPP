@@ -39,13 +39,16 @@ namespace Imi.Project.Api.Controllers
             {
                 return NotFound($"Geen Dieetvereiste met id {id} gevonden");
             }
-            var dietaryRequirementDTO = new DietaryRequirementResponseDTO
+            else
             {
-                Id = dietaryRequirement.Id,
-                Name = dietaryRequirement.Name
-            };
+                var dietaryRequirementDTO = new DietaryRequirementResponseDTO
+                {
+                    Id = dietaryRequirement.Id,
+                    Name = dietaryRequirement.Name
+                };
 
-            return Ok(dietaryRequirementDTO);
+                return Ok(dietaryRequirementDTO);
+            }
         }
     }
 }
