@@ -16,10 +16,13 @@ namespace Imi.Project.Api.Controllers
     public class ProductsController : ControllerBase
     {
         protected readonly IProductRepository _productRepository;
+        protected readonly ICategoryRepository _categoryRepository;
 
-        public ProductsController(IProductRepository productRepository)
+        public ProductsController(IProductRepository productRepository, 
+            ICategoryRepository categoryRepository)
         {
             _productRepository = productRepository;
+            _categoryRepository = categoryRepository;
         }
 
         public async Task<IActionResult> Get()
@@ -63,6 +66,24 @@ namespace Imi.Project.Api.Controllers
 
                 return Ok(productDTO);
             }
+        }
+
+        public async Task<IActionResult> GetProductsByCategory(Guid id)
+        {
+            var products = await _productRepository.GetByCategoryIdAsync(id);
+
+            var productsDTO = products.Select(p => new ProductResponseDTO
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Category = new CategoryResponseDTO
+                {
+                    Id = p.Category.Id,
+                    Name = p.Category.Name
+                }
+            });
+
+            return Ok(productsDTO);
         }
     }
 }
