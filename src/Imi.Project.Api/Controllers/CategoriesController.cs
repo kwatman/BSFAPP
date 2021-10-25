@@ -94,5 +94,22 @@ namespace Imi.Project.Api.Controllers
                 return Ok();
             }
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var categoryToDelete = await _categoryRepository.GetByIdAsync(id);
+
+            if(categoryToDelete == null)
+            {
+                return NotFound($"Geen categorie met Id {id} gevonden");
+            }
+            else
+            {
+                await _categoryRepository.DeleteAsync(categoryToDelete);
+
+                return Ok();
+            }
+        }
     }
 }
