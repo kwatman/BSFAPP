@@ -70,5 +70,29 @@ namespace Imi.Project.Api.Controllers
 
             return Ok();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(CategoryRequestDTO categoryDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values);
+            }
+
+            var newCategory = await _categoryRepository.GetByIdAsync(categoryDTO.Id);
+
+            if(newCategory == null)
+            {
+                return NotFound($"Geen categorie met Id {categoryDTO.Id} gevonden");
+            }
+            else
+            {
+                newCategory.Name = categoryDTO.Name;
+
+                await _categoryRepository.UpdateAsync(newCategory);
+
+                return Ok();
+            }
+        }
     }
 }

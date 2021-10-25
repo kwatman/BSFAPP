@@ -71,5 +71,29 @@ namespace Imi.Project.Api.Controllers
 
             return Ok();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(DietaryRequirementRequestDTO dietaryRequirementDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values);
+            }
+
+            var newDietaryRequirement = await _dietaryRequirementRepository.GetByIdAsync(dietaryRequirementDTO.Id);
+
+            if (newDietaryRequirement == null)
+            {
+                return NotFound($"Geen dieetvereiste met Id {dietaryRequirementDTO.Id} gevonden");
+            }
+            else
+            {
+                newDietaryRequirement.Name = dietaryRequirementDTO.Name;
+
+                await _dietaryRequirementRepository.UpdateAsync(newDietaryRequirement);
+
+                return Ok();
+            }
+        }
     }
 }
