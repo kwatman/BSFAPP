@@ -31,5 +31,25 @@ namespace Imi.Project.Api.Controllers
             });
             return Ok(categoriesDTO);
         }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            var category = await _categoryRepository.GetByIdAsync(id);
+            if (category == null)
+            {
+                return NotFound($"Geen categorie met id {id} gevonden");
+            }
+            else
+            {
+                var categoryDTO = new CategoryResponseDTO
+                {
+                    Id = category.Id,
+                    Name = category.Name
+                };
+
+                return Ok(categoryDTO);
+            }
+        }
     }
 }
