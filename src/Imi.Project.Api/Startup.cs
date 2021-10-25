@@ -1,4 +1,6 @@
+using Imi.Project.Api.Core.Infrastructure;
 using Imi.Project.Api.Infrastructure.Data;
+using Imi.Project.Api.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +31,10 @@ namespace Imi.Project.Api
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultDatabase")));
             services.AddControllers();
+
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IDietaryRequirementRepository, DietaryRequirementRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

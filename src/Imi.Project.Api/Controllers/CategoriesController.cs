@@ -1,4 +1,5 @@
-﻿using Imi.Project.Api.Core.Infrastructure;
+﻿using Imi.Project.Api.Core.DTO_S.Categories;
+using Imi.Project.Api.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,6 +18,18 @@ namespace Imi.Project.Api.Controllers
         public CategoriesController(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var categories = await _categoryRepository.ListAllAsync();
+            var categoriesDTO = categories.Select(c => new CategoryResponseDTO
+            {
+                Id = c.Id,
+                Name = c.Name
+            });
+            return Ok(categoriesDTO);
         }
     }
 }
