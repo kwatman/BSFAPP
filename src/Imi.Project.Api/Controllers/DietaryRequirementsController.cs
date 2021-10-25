@@ -31,5 +31,21 @@ namespace Imi.Project.Api.Controllers
 
             return Ok(dietaryRequirementsDTO);
         }
+
+        public async Task<IActionResult> Get(Guid id)
+        {
+            var dietaryRequirement = await _dietaryRequirementRepository.GetByIdAsync(id);
+            if (dietaryRequirement == null)
+            {
+                return NotFound($"Geen Dieetvereiste met id {id} gevonden");
+            }
+            var dietaryRequirementDTO = new DietaryRequirementResponseDTO
+            {
+                Id = dietaryRequirement.Id,
+                Name = dietaryRequirement.Name
+            };
+
+            return Ok(dietaryRequirementDTO);
+        }
     }
 }

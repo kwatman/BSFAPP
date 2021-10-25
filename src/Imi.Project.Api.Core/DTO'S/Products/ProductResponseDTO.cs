@@ -10,6 +10,8 @@ namespace Imi.Project.Api.Core.DTO_S.Products
     public class ProductResponseDTO : BaseDTO
     {
         public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
         public CategoryResponseDTO Category { get; set; }
         public DietaryRequirementResponseDTO DietaryRequirement{ get; set; }
     }
