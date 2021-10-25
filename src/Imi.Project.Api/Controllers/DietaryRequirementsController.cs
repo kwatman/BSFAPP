@@ -95,5 +95,22 @@ namespace Imi.Project.Api.Controllers
                 return Ok();
             }
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var dietaryRequirementToDelete = await _dietaryRequirementRepository.GetByIdAsync(id);
+
+            if(dietaryRequirementToDelete == null)
+            {
+                return NotFound($"Geen dieetvereiste met Id {id} gevonden");
+            }
+            else
+            {
+                await _dietaryRequirementRepository.DeleteAsync(dietaryRequirementToDelete);
+
+                return Ok();
+            }
+        }
     }
 }
