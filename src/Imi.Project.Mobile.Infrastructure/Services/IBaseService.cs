@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Imi.Project.Mobile.Infrastructure.Services
 {
-    interface IBaseService<T> where T : Base
+    public interface IBaseService<T> where T : Base
     {
         IQueryable<T> GetAll();
         Task<IEnumerable<T>> ListAllAsync();
