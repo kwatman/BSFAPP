@@ -9,11 +9,10 @@ namespace Imi.Project.Mobile.Infrastructure.Services
 {
     public interface IBaseService<T> where T : Base
     {
-        IQueryable<T> GetAll();
-        Task<IEnumerable<T>> ListAllAsync();
-        Task<T> GetByIdAsync(Guid id);
-        Task<T> UpdateAsync(T model);
-        Task<T> AddAsync(T model);
-        Task<T> DeleteAsync(T model);
+        IQueryable<T> GetAll(List<T> context);
+        Task<T> GetById(List<T> context, Guid id);
+        Task<T> Update(List<T> context, T model);
+        Task<T> Add(List<T> context, T model);
+        Task<T> Delete(List<T> context, Guid id);
     }
 }
