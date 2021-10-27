@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace Imi.Project.Mobile
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace Imi.Project.Mobile.Views
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AdminBlogPostPage : ContentPage
     {
-        public MainPage()
+        public AdminBlogPostPage()
         {
             InitializeComponent();
         }

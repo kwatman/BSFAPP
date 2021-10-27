@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Imi.Project.Mobile.Infrastructure.Services.Mocking
+namespace Imi.Project.Mobile.Infrastructure.Services.MockServices
 {
     public class CategoryMockService: BaseMockService<Category>, ICategoryService
     {

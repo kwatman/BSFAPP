@@ -130,7 +130,20 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="baseline_category_white_24dp.png" />
+    <Content Include="baseline_post_add_white_24dp.png" />
+    <Content Include="baseline_sell_white_24dp.png" />
+    <Content Include="Favicon Square Rose-Gold.png" />
+    <Content Include="Horizontal Logo on Rose-Gold.png" />
+    <Content Include="Leaves on Rose-Gold.png" />
+    <Content Include="Logomark on Rose-Gold.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Showcase 1.png" />
+    <Content Include="Title Black.png" />
+    <Content Include="Title White.png" />
+    <Content Include="Title.png" />
+    <Content Include="Vertical Logo on Rose-Gold.png" />
+    <Content Include="Vertical Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

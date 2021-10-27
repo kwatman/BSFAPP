@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Imi.Project.Mobile.Infrastructure.Services.Mocking
+namespace Imi.Project.Mobile.Infrastructure.Services.MockServices
 {
     public class ProductMockService: BaseMockService<Product>, IProductService
     {

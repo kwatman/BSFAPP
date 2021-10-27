@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Imi.Project.Mobile.Infrastructure.Services.Mocking
+namespace Imi.Project.Mobile.Infrastructure.Services.MockServices
 {
     public class BaseMockService<T>: IBaseService<T> where T : Base
     {

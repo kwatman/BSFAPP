@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Imi.Project.Mobile.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace Imi.Project.Mobile
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new AdminPage();
         }
 
         protected override void OnStart()
