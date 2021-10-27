@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Imi.Project.Mobile.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Imi.Project.Mobile.Infrastructure.Services
 {
-    interface ICategoryService
+    public interface ICategoryService: IBaseService<Category>
     {
+
     }
 }
