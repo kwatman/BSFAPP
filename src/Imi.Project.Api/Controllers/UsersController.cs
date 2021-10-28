@@ -84,5 +84,35 @@ namespace Imi.Project.Api.Controllers
                 return Ok();
             }
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UserRequestDTO userDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values);
+            }
+            else
+            {
+                var userToUpdate = await _userRepository.GetByIdAsync(userDTO.Id);
+
+                if (userToUpdate == null)
+                {
+                    return NotFound($"Geen gebruiker met id {userDTO.Id} gevonden");
+                }
+                else
+                {
+                    userToUpdate.Name = userDTO.Name;
+                    userToUpdate.Surname = userDTO.Surname;
+                    userToUpdate.Email = userDTO.Email;
+                    userToUpdate.PhoneNumber = userDTO.PhoneNumber;
+                    userToUpdate.Password = userDTO.Password;
+
+                    await _userRepository.UpdateAsync(userToUpdate);
+
+                    return Ok();
+                }
+            }
+        }
     }
 }

@@ -77,5 +77,31 @@ namespace Imi.Project.Api.Controllers
                 return Ok();
             }
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(BlogPostRequestDTO blogPostDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values);
+            }
+            else
+            {
+                var blogPostToUpdate = await _blogPostRepository.GetByIdAsync(blogPostDTO.Id);
+
+                if (blogPostToUpdate == null)
+                {
+                    return NotFound($"Geen blogpost met id {blogPostDTO.Id} gevonden");
+                }
+                else
+                {
+                    blogPostToUpdate.Title = blogPostDTO.Title;
+
+                    await _blogPostRepository.UpdateAsync(blogPostToUpdate);
+
+                    return Ok();
+                }
+            }
+        }
     }
 }
