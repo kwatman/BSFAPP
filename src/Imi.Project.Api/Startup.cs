@@ -35,6 +35,8 @@ namespace Imi.Project.Api
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IDietaryRequirementRepository, DietaryRequirementRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IBlogPostRepository, BlogPostRepository>();
 
             services.AddSwaggerGen(c =>
             {
