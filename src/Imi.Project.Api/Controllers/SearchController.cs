@@ -17,14 +17,20 @@ namespace Imi.Project.Api.Controllers
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IDietaryRequirementRepository _dietaryRequirementRepository;
+        private readonly IBlogPostRepository _blogPostRepository;
+        private readonly IUserRepository _userRepository;
 
         public SearchController(IProductRepository productRepository, 
             ICategoryRepository categoryRepository,
-            IDietaryRequirementRepository dietaryRequirementRepository)
+            IDietaryRequirementRepository dietaryRequirementRepository,
+            IBlogPostRepository blogPostRepository,
+            IUserRepository userRepository)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
             _dietaryRequirementRepository = dietaryRequirementRepository;
+            _blogPostRepository = blogPostRepository;
+            _userRepository = userRepository;
         }
 
         [HttpGet]

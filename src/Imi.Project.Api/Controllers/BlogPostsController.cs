@@ -1,4 +1,5 @@
-﻿using Imi.Project.Api.Core.Infrastructure;
+﻿using Imi.Project.Api.Core.DTO_S.BlogPosts;
+using Imi.Project.Api.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,6 +18,20 @@ namespace Imi.Project.Api.Controllers
         public BlogPostsController(IBlogPostRepository blogPostRepository)
         {
             _blogPostRepository = blogPostRepository;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var blogPosts = await _blogPostRepository.ListAllAsync();
+            var blogPostDTO = blogPosts.Select(bp => new BlogPostResponseDTO
+            {
+                Id = bp.Id,
+                Title = bp.Title,
+                PostDate = bp.PostDate
+            });
+
+            return Ok(blogPostDTO);
         }
     }
 }
