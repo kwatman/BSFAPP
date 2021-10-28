@@ -35,5 +35,29 @@ namespace Imi.Project.Api.Controllers
 
             return Ok(usersDTO);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            var user = await _userRepository.GetByIdAsync(id);
+
+            if(user == null)
+            {
+                return NotFound($"Geen gebruiker met id {id} gevonden");
+            }
+            else
+            {
+                var userDTO = new UserResponseDTO
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Surname = user.Surname,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber
+                };
+
+                return Ok(userDTO);
+            }
+        }
     }
 }

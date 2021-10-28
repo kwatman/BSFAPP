@@ -33,5 +33,27 @@ namespace Imi.Project.Api.Controllers
 
             return Ok(blogPostDTO);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            var blogPost = await _blogPostRepository.GetByIdAsync(id);
+
+            if (blogPost == null)
+            {
+                return NotFound($"Geen blogpost met id {id} gevonden");
+            }
+            else
+            {
+                var blogPostDTO = new BlogPostResponseDTO
+                {
+                    Id = blogPost.Id,
+                    Title = blogPost.Title,
+                    PostDate = blogPost.PostDate
+                };
+
+                return Ok(blogPostDTO);
+            }
+        }
     }
 }
