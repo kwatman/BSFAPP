@@ -114,5 +114,22 @@ namespace Imi.Project.Api.Controllers
                 }
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var userToDelete = await _userRepository.GetByIdAsync(id);
+
+            if (userToDelete == null)
+            {
+                return NotFound($"Geen gebruiker met id {id} gevonden");
+            }
+            else
+            {
+                await _userRepository.DeleteAsync(userToDelete);
+
+                return Ok();
+            }
+        }
     }
 }

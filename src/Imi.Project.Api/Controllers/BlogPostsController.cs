@@ -103,5 +103,22 @@ namespace Imi.Project.Api.Controllers
                 }
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var blogPostToDelete = await _blogPostRepository.GetByIdAsync(id);
+
+            if (blogPostToDelete == null)
+            {
+                return NotFound($"Geen blogpost met id {id} gevonden");
+            }
+            else
+            {
+                await _blogPostRepository.DeleteAsync(blogPostToDelete);
+
+                return Ok();
+            }
+        }
     }
 }
