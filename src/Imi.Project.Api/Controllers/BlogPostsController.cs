@@ -1,4 +1,5 @@
 ﻿using Imi.Project.Api.Core.DTO_S.BlogPosts;
+using Imi.Project.Api.Core.Entities;
 using Imi.Project.Api.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -53,6 +54,27 @@ namespace Imi.Project.Api.Controllers
                 };
 
                 return Ok(blogPostDTO);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(BlogPostRequestDTO blogPostDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values);
+            }
+            else
+            {
+                var blogPostToAdd = new BlogPost
+                {
+                    Title = blogPostDTO.Title,
+                    PostDate = DateTime.Now
+                };
+
+                await _blogPostRepository.AddAsync(blogPostToAdd);
+
+                return Ok();
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Imi.Project.Api.Core.DTO_S.Users;
+using Imi.Project.Api.Core.Entities;
 using Imi.Project.Api.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -57,6 +58,30 @@ namespace Imi.Project.Api.Controllers
                 };
 
                 return Ok(userDTO);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(UserRequestDTO userDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values);
+            }
+            else
+            {
+                var userToAdd = new User
+                {
+                    Name = userDTO.Name,
+                    Surname = userDTO.Surname,
+                    Email = userDTO.Email,
+                    PhoneNumber = userDTO.PhoneNumber,
+                    Password = userDTO.Password
+                };
+
+                await _userRepository.AddAsync(userToAdd);
+
+                return Ok();
             }
         }
     }
