@@ -40,7 +40,12 @@ namespace Imi.Project.Api.Controllers
                 {
                     Id = p.Category.Id,
                     Name = p.Category.Name
-                }
+                },
+                DietaryRequirements = p.ProductDietaryRequirements.Select(pdr => new DietaryRequirementResponseDTO
+                {
+                    Id = pdr.DietaryRequirementId,
+                    Name = pdr.DietaryRequirement.Name
+                }).ToList()
             });
 
             return Ok(productsDTO);
@@ -60,34 +65,22 @@ namespace Imi.Project.Api.Controllers
                 {
                     Id = product.Id,
                     Name = product.Name,
+                    Description = product.Description,
+                    Price = product.Price,
                     Category = new CategoryResponseDTO
                     {
                         Id = product.Category.Id,
                         Name = product.Category.Name
-                    }
+                    },
+                    DietaryRequirements = product.ProductDietaryRequirements.Select(pdr => new DietaryRequirementResponseDTO
+                    {
+                        Id = pdr.DietaryRequirementId,
+                        Name = pdr.DietaryRequirement.Name
+                    }).ToList()
                 };
 
                 return Ok(productDTO);
             }
-        }
-
-        [HttpGet("{id}/products")]
-        public async Task<IActionResult> GetProductsByCategory(Guid id)
-        {
-            var products = await _productRepository.GetByCategoryIdAsync(id);
-
-            var productsDTO = products.Select(p => new ProductResponseDTO
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Category = new CategoryResponseDTO
-                {
-                    Id = p.Category.Id,
-                    Name = p.Category.Name
-                }
-            });
-
-            return Ok(productsDTO);
         }
 
         [HttpPost]
