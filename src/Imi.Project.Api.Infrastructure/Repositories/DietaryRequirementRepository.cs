@@ -24,8 +24,8 @@ namespace Imi.Project.Api.Infrastructure.Repositories
 
         public async override Task<IEnumerable<DietaryRequirement>> ListAllAsync()
         {
-            var products = await GetAll().ToListAsync();
-            return products;
+            var dietaryRequirements = await GetAll().ToListAsync();
+            return dietaryRequirements;
         }
     }
 }

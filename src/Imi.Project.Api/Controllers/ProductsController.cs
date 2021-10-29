@@ -18,12 +18,15 @@ namespace Imi.Project.Api.Controllers
     {
         protected readonly IProductRepository _productRepository;
         protected readonly ICategoryRepository _categoryRepository;
+        protected readonly IDietaryRequirementRepository _dietaryRequirementRepository;
 
         public ProductsController(IProductRepository productRepository, 
-            ICategoryRepository categoryRepository)
+            ICategoryRepository categoryRepository,
+            IDietaryRequirementRepository dietaryRequirementRepository)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
+            _dietaryRequirementRepository = dietaryRequirementRepository;
         }
 
         [HttpGet]
@@ -97,6 +100,7 @@ namespace Imi.Project.Api.Controllers
             {
                 return BadRequest($"Categorie met id {productDTO.CategoryId} bestaat niet");
             }
+
             else
             {
                 var newProduct = new Product
@@ -104,7 +108,7 @@ namespace Imi.Project.Api.Controllers
                     Name = productDTO.Name,
                     Description = productDTO.Description,
                     Price = productDTO.Price,
-                    CategoryId = productDTO.CategoryId
+                    CategoryId = productDTO.CategoryId,
                 };
 
                 await _productRepository.AddAsync(newProduct);

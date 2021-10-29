@@ -1,4 +1,5 @@
 ﻿using Imi.Project.Api.Core.DTO_S.Base;
+using Imi.Project.Api.Core.DTO_S.DietaryRequirements;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,7 +20,5 @@ namespace Imi.Project.Api.Core.DTO_S.Products
 
         [Required(ErrorMessage ="Categorie is verplicht")]
         public Guid CategoryId { get; set; }
-
-        public Guid DietaryRequirementId { get; set; }
     }
 }
