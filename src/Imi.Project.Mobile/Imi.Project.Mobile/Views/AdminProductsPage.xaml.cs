@@ -1,4 +1,5 @@
-﻿using Imi.Project.Mobile.Infrastructure.Services;
+﻿using Imi.Project.Mobile.Core.Models;
+using Imi.Project.Mobile.Infrastructure.Services;
 using Imi.Project.Mobile.Infrastructure.Services.MockData;
 using Imi.Project.Mobile.Infrastructure.Services.Mocking;
 using Imi.Project.Mobile.Infrastructure.Services.MockServices;
@@ -34,6 +35,26 @@ namespace Imi.Project.Mobile.Views
         {
             ShowProducts();
             base.OnAppearing();
+        }
+
+        private void lvProducts_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+
+        }
+
+        private async void ProductUpdate_Clicked(object sender, EventArgs e)
+        {
+            var selectedProduct = ((MenuItem)sender).CommandParameter as Product;
+            await DisplayAlert("Edit", $"Editing {selectedProduct.Name}", "OK");
+            await Navigation.PushAsync(new AdminProductsUpdatePage());
+
+        }
+
+        private async void ProductDelete_Clicked(object sender, EventArgs e)
+        {
+            var selectedProduct = ((MenuItem)sender).CommandParameter as Product;
+            await productService.Delete(ProductMockData.productData, selectedProduct.Id);
+            ShowProducts();
         }
     }
 }

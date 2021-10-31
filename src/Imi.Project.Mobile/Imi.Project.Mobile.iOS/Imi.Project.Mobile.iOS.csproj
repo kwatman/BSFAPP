@@ -103,10 +103,16 @@
     <ImageAsset Include="Assets.xcassets\baseline_post_add_white_24dp.png.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\product-placeholder.jpg.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Leaves on Rose-Gold.png.imageset\Leaves on Rose-Gold.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Logomark on Rose-Gold.png.imageset\Logomark on Rose-Gold.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\product-placeholder.jpg.imageset\product-placeholder.jpg">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Showcase 1.png.imageset\Showcase 1.png">
