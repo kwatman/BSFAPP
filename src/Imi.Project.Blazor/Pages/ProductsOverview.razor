@@ -1,7 +1,30 @@
 ﻿@page "/productsoverview"
 
-<h3>ProductsOverview</h3>
+<h1 class="page-title">All products</h1>
 
-@code {
-
+@if (Products == null)
+{
+    <p><em>Loading ...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td>@product.Price euro</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }

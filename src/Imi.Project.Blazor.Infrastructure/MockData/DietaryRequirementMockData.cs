@@ -1,9 +1,9 @@
-﻿using Imi.Project.Mobile.Core.Models;
+﻿using Imi.Project.Blazor.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Imi.Project.Mobile.Infrastructure.Services.MockData
+namespace Imi.Project.Blazor.Infrastructure.MockData
 {
     public class DietaryRequirementMockData
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Imi.Project.Mobile.Core.Models
+namespace Imi.Project.Blazor.Core.Models
 {
     public class DietaryRequirement : Base
     {
