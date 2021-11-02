@@ -35,9 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Common", "Imi.P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Vue", "Imi.Project.Vue\Imi.Project.Vue.csproj", "{44AF898A-23F0-4435-A3D6-DCE16BF97922}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imi.Project.Blazor.Core", "Imi.Project.Blazor.Core\Imi.Project.Blazor.Core.csproj", "{4F1E3223-98AC-41AC-B4ED-4C415ACDDAAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Blazor.Core", "Imi.Project.Blazor.Core\Imi.Project.Blazor.Core.csproj", "{4F1E3223-98AC-41AC-B4ED-4C415ACDDAAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imi.Project.Blazor.Infrastructure", "Imi.Project.Blazor.Infrastructure\Imi.Project.Blazor.Infrastructure.csproj", "{8E515C70-B13B-4CEF-A543-297405F29B1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Blazor.Infrastructure", "Imi.Project.Blazor.Infrastructure\Imi.Project.Blazor.Infrastructure.csproj", "{8E515C70-B13B-4CEF-A543-297405F29B1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

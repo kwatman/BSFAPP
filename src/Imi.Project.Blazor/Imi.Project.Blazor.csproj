@@ -8,4 +8,8 @@
     <ProjectReference Include="..\Imi.Project.Blazor.Infrastructure\Imi.Project.Blazor.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Assets\" />
+  </ItemGroup>
+
 </Project>
