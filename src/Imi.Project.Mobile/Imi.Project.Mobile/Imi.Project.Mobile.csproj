@@ -23,16 +23,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\AdminBlogPostCUPage.xaml.cs">
+      <DependentUpon>AdminBlogPostCUPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AdminCategoryCUPage.xaml.cs">
+      <DependentUpon>AdminCategoryCUPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Views\AdminBlogPostPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminBlogPostUpdatePage.xaml">
+    <EmbeddedResource Update="Views\AdminBlogPostCUPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AdminCategoriesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCategoriesUpdatePage.xaml">
+    <EmbeddedResource Update="Views\AdminCategoryCUPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AdminPage.xaml">

@@ -38,7 +38,7 @@ namespace Imi.Project.Mobile.Views
         {
             var selectedBlogPost = ((MenuItem)sender).CommandParameter as BlogPost;
             await DisplayAlert("Edit", $"Editing {selectedBlogPost.Title}", "OK");
-            await Navigation.PushAsync(new AdminBlogPostUpdatePage());
+            await Navigation.PushAsync(new AdminBlogPostCUPage(selectedBlogPost));
         }
 
         private async void BlogPostDelete_Clicked(object sender, EventArgs e)
@@ -46,6 +46,11 @@ namespace Imi.Project.Mobile.Views
             var selectedBlogPost = ((MenuItem)sender).CommandParameter as BlogPost;
             await blogPostService.Delete(BlogPostMockData.blogPostData, selectedBlogPost.Id);
             ShowBlogPosts();
+        }
+
+        private async void btnBlogPostCreate_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AdminBlogPostCUPage(null));
         }
     }
 }
