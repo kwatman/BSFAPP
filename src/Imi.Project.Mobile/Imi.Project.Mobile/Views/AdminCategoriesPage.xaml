@@ -30,7 +30,7 @@
             </ListView.ItemTemplate>
             <ListView.Footer>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button Text="Add Category"/>
+                    <Button Text="Add Category" Clicked="btnAddCategory_Clicked"/>
                 </StackLayout>
             </ListView.Footer>
         </ListView>

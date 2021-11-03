@@ -4,9 +4,9 @@
              x:Class="Imi.Project.Mobile.Views.AdminCategoryCUPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Naam"/>
+            <Entry x:Name="txtName" Placeholder="Vul hier de naam van de categorie in"/>
+            <Button Text="Opslaan" Clicked="btnSave_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

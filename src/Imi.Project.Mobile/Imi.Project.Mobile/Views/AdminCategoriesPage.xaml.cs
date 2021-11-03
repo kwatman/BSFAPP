@@ -38,7 +38,7 @@ namespace Imi.Project.Mobile.Views
         {
             var selectedCategory = ((MenuItem)sender).CommandParameter as Category;
             await DisplayAlert("Edit", $"Editing {selectedCategory.Name}", "OK");
-            await Navigation.PushAsync(new AdminCategoriesUpdatePage());
+            await Navigation.PushAsync(new AdminCategoryCUPage(selectedCategory));
 
         }
 
@@ -47,6 +47,11 @@ namespace Imi.Project.Mobile.Views
             var selectedCategory = ((MenuItem)sender).CommandParameter as Category;
             await categoryService.Delete(CategoryMockData.categoryData, selectedCategory.Id);
             ShowCategories();
+        }
+
+        private async void btnAddCategory_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AdminCategoryCUPage(null));
         }
     }
 }
