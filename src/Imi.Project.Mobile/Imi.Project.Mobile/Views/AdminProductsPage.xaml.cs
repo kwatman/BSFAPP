@@ -37,11 +37,6 @@ namespace Imi.Project.Mobile.Views
             base.OnAppearing();
         }
 
-        private void lvProducts_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
-        {
-
-        }
-
         private async void ProductUpdate_Clicked(object sender, EventArgs e)
         {
             var selectedProduct = ((MenuItem)sender).CommandParameter as Product;
