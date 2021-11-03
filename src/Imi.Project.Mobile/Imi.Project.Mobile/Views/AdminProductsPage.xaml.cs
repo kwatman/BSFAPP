@@ -41,7 +41,7 @@ namespace Imi.Project.Mobile.Views
         {
             var selectedProduct = ((MenuItem)sender).CommandParameter as Product;
             await DisplayAlert("Edit", $"Editing {selectedProduct.Name}", "OK");
-            await Navigation.PushAsync(new AdminProductsUpdatePage());
+            await Navigation.PushAsync(new AdminProductCUPage(selectedProduct));
 
         }
 
@@ -50,6 +50,11 @@ namespace Imi.Project.Mobile.Views
             var selectedProduct = ((MenuItem)sender).CommandParameter as Product;
             await productService.Delete(ProductMockData.productData, selectedProduct.Id);
             ShowProducts();
+        }
+
+        private async void btnAddProduct_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AdminProductCUPage(null));
         }
     }
 }

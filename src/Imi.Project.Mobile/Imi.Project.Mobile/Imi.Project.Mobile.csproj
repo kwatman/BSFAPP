@@ -29,6 +29,9 @@
     <Compile Update="Views\AdminCategoryCUPage.xaml.cs">
       <DependentUpon>AdminCategoryCUPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\AdminProductCUPage.xaml.cs">
+      <DependentUpon>AdminProductCUPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -50,7 +53,7 @@
     <EmbeddedResource Update="Views\AdminProductsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminProductsUpdatePage.xaml">
+    <EmbeddedResource Update="Views\AdminProductCUPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

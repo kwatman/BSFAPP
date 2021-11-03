@@ -37,7 +37,7 @@
             </ListView.ItemTemplate>
             <ListView.Footer>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button Text="Product Toevoegen"/>
+                    <Button Text="Product Toevoegen" Clicked="btnAddProduct_Clicked"/>
                 </StackLayout>
             </ListView.Footer>
         </ListView>
