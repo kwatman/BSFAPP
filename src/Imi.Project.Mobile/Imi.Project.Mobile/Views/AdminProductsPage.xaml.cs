@@ -21,7 +21,6 @@ namespace Imi.Project.Mobile.Views
         public AdminProductsPage()
         {
             InitializeComponent();
-
             productService = new ProductMockService();
         }
 

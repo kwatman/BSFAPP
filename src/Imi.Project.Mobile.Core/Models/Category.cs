@@ -8,5 +8,10 @@ namespace Imi.Project.Mobile.Core.Models
     {
         public string Name { get; set; }
         public ICollection<Product> Products { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
     }
 }

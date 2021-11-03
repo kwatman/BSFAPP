@@ -5,7 +5,19 @@
              x:Class="Imi.Project.Mobile.Views.AdminPage"
             BackgroundColor="{StaticResource MainPink}"
             Style="{StaticResource MainLayout}">
-    <local:AdminProductsPage></local:AdminProductsPage>
-    <local:AdminCategoriesPage></local:AdminCategoriesPage>
-    <local:AdminBlogPostPage></local:AdminBlogPostPage>
+    <NavigationPage Title="Products" IconImageSource="baseline_sell_white_24dp.png">
+        <x:Arguments>
+            <local:AdminProductsPage></local:AdminProductsPage>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Categories" IconImageSource="baseline_category_white_24dp.png">
+        <x:Arguments>
+            <local:AdminCategoriesPage></local:AdminCategoriesPage>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Blog Posts" IconImageSource="baseline_post_add_white_24dp.png">
+        <x:Arguments>
+            <local:AdminBlogPostPage></local:AdminBlogPostPage>
+        </x:Arguments>
+    </NavigationPage>
 </TabbedPage>
