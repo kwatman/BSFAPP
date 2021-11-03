@@ -2,11 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Imi.Project.Mobile.Views.AdminCategoriesPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Categrories" 
              IconImageSource="baseline_category_white_24dp.png">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Categories and Diet Requirements"></Label>
-        </StackLayout>
+        <ListView x:Name="lvCategories" BackgroundColor="Transparent" HasUnevenRows="False" RowHeight="100" SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="CategoryUpdate_Clicked" CommandParameter="{Binding .}" Text="Aanpassen"/>
+                            <MenuItem Clicked="CategoryDelete_Clicked" CommandParameter="{Binding .}" Text="Verwijderen" IsDestructive="True"/>
+                        </ViewCell.ContextActions>
+                        <Grid Padding="10">
+                            <Frame CornerRadius="20"
+                                   HasShadow="True">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="product_placeholder.jpg"/>
+                                    <Label Text="{Binding Name}" 
+                                   VerticalOptions="Center" 
+                                   FontSize="24"/>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Add Category"/>
+                </StackLayout>
+            </ListView.Footer>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

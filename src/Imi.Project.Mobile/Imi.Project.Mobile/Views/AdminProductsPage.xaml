@@ -1,38 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              x:Class="Imi.Project.Mobile.Views.AdminProductsPage"
              Title="Products" 
-             IconImageSource="baseline_sell_white_24dp.png">
+             IconImageSource="baseline_category_white_24dp.png">
     <ContentPage.Content>
-        <StackLayout>
-            <syncfusion:SfListView x:Name="lvProducts"
-                                   ItemSize="100">
-                <syncfusion:SfListView.LayoutManager>
-                    <syncfusion:LinearLayout/>
-                </syncfusion:SfListView.LayoutManager>
-                <syncfusion:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.ContextActions>
-                                <MenuItem Clicked="ProductUpdate_Clicked" CommandParameter="{Binding .}" Text="Aanpassen"/>
-                                <MenuItem Clicked="ProductDelete_Clicked" CommandParameter="{Binding .}" Text="Verwijderen" IsDestructive="True"/>
-                            </ViewCell.ContextActions>
+        <ListView x:Name="lvProducts" BackgroundColor="Transparent" HasUnevenRows="False" RowHeight="200" SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="ProductUpdate_Clicked" CommandParameter="{Binding .}" Text="Aanpassen"/>
+                            <MenuItem Clicked="ProductDelete_Clicked" CommandParameter="{Binding .}" Text="Verwijderen" IsDestructive="True"/>
+                        </ViewCell.ContextActions>
                         <Grid Padding="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="0.4*" />
-                                <RowDefinition Height="0.6*" />
-                            </Grid.RowDefinitions>
-                            <Image Source="product_placeholder.jpg"></Image>
-                            <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Black" FontSize="21" />
-                            <Label Grid.Row="1" Text="{Binding Description}" TextColor="Black" FontSize="15"/>
+                            <Frame CornerRadius="20"
+                                   HasShadow="True">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="product_placeholder.jpg"/>
+                                    <StackLayout Padding="10" VerticalOptions="Start">
+                                        <Label Text="{Binding Name}" 
+                                               VerticalOptions="Center" 
+                                               FontSize="20"/>
+                                        <Label Text="{Binding Description}"
+                                               VerticalOptions="Center"
+                                               FontSize="12"/>
+                                        <Label Text="{Binding Price}"
+                                               VerticalOptions="Start"
+                                               FontSize="18"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
                         </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </syncfusion:SfListView.ItemTemplate>
-
-            </syncfusion:SfListView>
-        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Product Toevoegen"/>
+                </StackLayout>
+            </ListView.Footer>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
