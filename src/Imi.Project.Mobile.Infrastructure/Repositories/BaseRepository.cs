@@ -1,6 +1,9 @@
-﻿using Imi.Project.Mobile.Core.Interfaces;
+﻿using Imi.Project.Mobile.Core.Exceptions;
+using Imi.Project.Mobile.Core.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -15,6 +18,34 @@ namespace Imi.Project.Mobile.Infrastructure.Repositories
             try
             {
                 HttpClient httpClient = CreateHttpClient(uri);
+                HttpResponseMessage responseMessage = await httpClient.GetAsync(uri);
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    string message = await responseMessage.Content.ReadAsStringAsync();
+
+                    var result = JsonConvert.DeserializeObject<T>(message);
+                    return result;
+                }
+                else
+                {
+                    var content = await responseMessage.Content.ReadAsStringAsync();
+
+                    if (responseMessage.StatusCode == HttpStatusCode.Forbidden
+                        || responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        throw new ServiceAuthenticationException(content);
+                    }
+                    else
+                    {
+                        throw new CustomHttpRequestException(responseMessage.StatusCode, content);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
             }
         }
 
@@ -30,6 +61,7 @@ namespace Imi.Project.Mobile.Infrastructure.Repositories
                 httpClient.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue("Bearer", authToken);
             }
+
             return httpClient;
         }
     }
