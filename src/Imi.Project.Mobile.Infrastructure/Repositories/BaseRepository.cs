@@ -150,6 +150,12 @@ namespace Imi.Project.Mobile.Infrastructure.Repositories
             }
         }
 
+        public async Task DeleteAsync(string uri, string authToken = "")
+        {
+            HttpClient httpClient = CreateHttpClient(authToken);
+            await httpClient.DeleteAsync(uri);
+        }
+
         private HttpClient CreateHttpClient(string authToken)
         {
             var httpClient = new HttpClient();
