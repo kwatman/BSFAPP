@@ -1,7 +1,9 @@
 ﻿using Akavache;
 using System;
 using System.Collections.Generic;
+using System.Reactive.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Imi.Project.Mobile.Core.Services
 {
@@ -9,9 +11,22 @@ namespace Imi.Project.Mobile.Core.Services
     {
         protected IBlobCache _cache;
 
-        public BaseService(IBlobCache cache)
+        public CacheService(IBlobCache cache)
         {
             _cache = cache ?? BlobCache.LocalMachine;
+        }
+
+        public async Task<T> ReadFromCache<T>(string cacheIdentifier)
+        {
+            try
+            {
+                T type = await _cache.GetObject<T>(cacheIdentifier);
+                return type;
+            }
+            catch (KeyNotFoundException)
+            {
+                return default(T);
+            }
         }
     }
 }
