@@ -21,6 +21,7 @@ namespace Imi.Project.Mobile.Infrastructure.Repositories
             try
             {
                 HttpClient httpClient = CreateHttpClient(uri);
+                string result = string.Empty;
 
                 HttpResponseMessage responseMessage = await Policy.Handle<WebException>(exception =>
                 {
@@ -32,23 +33,68 @@ namespace Imi.Project.Mobile.Infrastructure.Repositories
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
-                    string message = await responseMessage.Content.ReadAsStringAsync();
+                    result = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                    var result = JsonConvert.DeserializeObject<T>(message);
-                    return result;
+                    var jsonResult = JsonConvert.DeserializeObject<T>(result);
+                    return jsonResult ;
                 }
                 else
                 {
-                    var content = await responseMessage.Content.ReadAsStringAsync();
 
                     if (responseMessage.StatusCode == HttpStatusCode.Forbidden
                         || responseMessage.StatusCode == HttpStatusCode.Unauthorized)
                     {
-                        throw new ServiceAuthenticationException(content);
+                        throw new ServiceAuthenticationException(result);
                     }
                     else
                     {
-                        throw new CustomHttpRequestException(responseMessage.StatusCode, content);
+                        throw new CustomHttpRequestException(responseMessage.StatusCode, result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
+
+        public async Task<T> Add<T>(string uri, T data, string authToken = "")
+        {
+            try
+            {
+                HttpClient httpClient = CreateHttpClient(uri);
+
+                var content = new StringContent(JsonConvert.SerializeObject(data));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                string result = string.Empty;
+
+                var responseMessage = await Policy.Handle<WebException>(exception =>
+                {
+                    Debug.WriteLine($"{exception.GetType().Name + " : " + exception.Message}");
+                    return true;
+                })
+                .WaitAndRetryAsync(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)))
+                .ExecuteAsync(async () => await httpClient.PostAsync(uri, content));
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    result = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                    var jsonResult = JsonConvert.DeserializeObject<T>(result);
+                    return jsonResult;
+                }
+                else
+                {
+                    if (responseMessage.StatusCode == HttpStatusCode.Forbidden
+                        || responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        throw new ServiceAuthenticationException(result);
+                    }
+                    else
+                    {
+                        throw new CustomHttpRequestException(responseMessage.StatusCode, result);
                     }
                 }
             }
