@@ -1,8 +1,11 @@
 ﻿using Imi.Project.Mobile.Core.Exceptions;
 using Imi.Project.Mobile.Core.Interfaces;
+using Imi.Project.Mobile.Core.Interfaces.IRepositories;
 using Newtonsoft.Json;
+using Polly;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -18,7 +21,14 @@ namespace Imi.Project.Mobile.Infrastructure.Repositories
             try
             {
                 HttpClient httpClient = CreateHttpClient(uri);
-                HttpResponseMessage responseMessage = await httpClient.GetAsync(uri);
+
+                HttpResponseMessage responseMessage = await Policy.Handle<WebException>(exception =>
+                {
+                    Debug.WriteLine($"{exception.GetType().Name + " : " + exception.Message}");
+                    return true;
+                })
+                .WaitAndRetryAsync(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)))
+                .ExecuteAsync(async () => await httpClient.GetAsync(uri));
 
                 if (responseMessage.IsSuccessStatusCode)
                 {

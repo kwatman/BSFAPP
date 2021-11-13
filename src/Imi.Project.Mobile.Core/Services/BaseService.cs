@@ -37,7 +37,7 @@ namespace Imi.Project.Mobile.Core.Services
                 Path = $"api/{nameof(T)}s/{id}"
             };
 
-            var data = await _baseRepository.GetById<T>(uriBuilder.ToString());
+            var data = await _baseRepository.GetAll<T>(uriBuilder.ToString());
 
             return data;
         }
