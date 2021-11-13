@@ -59,7 +59,7 @@ namespace Imi.Project.Mobile.Infrastructure.Repositories
             }
         }
 
-        public async Task<T> Add<T>(string uri, T data, string authToken = "")
+        public async Task<T> AddAsync<T>(string uri, T data, string authToken = "")
         {
             try
             {
@@ -101,6 +101,51 @@ namespace Imi.Project.Mobile.Infrastructure.Repositories
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
+
+        public async Task<T> UpdateAsync<T>(string uri, T data, string authToken = "")
+        {
+            try
+            {
+                HttpClient httpClient = CreateHttpClient(uri);
+
+                var content = new StringContent(JsonConvert.SerializeObject(data));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                string result = string.Empty;
+
+                var response = await Policy.Handle<WebException>(exception =>
+                {
+                    Debug.WriteLine($"{exception.GetType().Name + " : " + exception.Message}");
+                    return true;
+                })
+                .WaitAndRetryAsync(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)))
+                .ExecuteAsync(async () => await httpClient.PutAsync(uri, content));
+
+                if (response.IsSuccessStatusCode)
+                {
+                    result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var jsonResult = JsonConvert.DeserializeObject<T>(result);
+                    return jsonResult;
+                }
+                else
+                {
+                    if (response.StatusCode == HttpStatusCode.Forbidden
+                        || response.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        throw new ServiceAuthenticationException(result);
+                    }
+                    else
+                    {
+                        throw new CustomHttpRequestException(response.StatusCode, result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
                 throw;
             }
         }

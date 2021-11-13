@@ -7,10 +7,9 @@ namespace Imi.Project.Mobile.Core.Interfaces.IRepositories
 {
     public interface IBaseRepository
     {
-        Task<T> GetAll<T>(string uri, string authToken = "");
-        Task<T> GetById<T>(string uri, string authToken = "");
-        Task<T> Update<T>(string uri, T model, string authToken = "");
-        Task<T> Add<T>(string uri, T model, string authToken = "");
-        Task<T> Delete<T>(string uri, string authToken = "");
+        Task<T> GetAllAsync<T>(string uri, string authToken = "");
+        Task<T> UpdateAsync<T>(string uri, T model, string authToken = "");
+        Task<T> AddAsync<T>(string uri, T model, string authToken = "");
+        Task<T> DeleteAsync<T>(string uri, string authToken = "");
     }
 }
