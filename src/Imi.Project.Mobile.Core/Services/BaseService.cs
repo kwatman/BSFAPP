@@ -37,7 +37,7 @@ namespace Imi.Project.Mobile.Core.Services
                     Path = $"api/{nameof(T)}s"
                 };
 
-                var data = await _baseRepository.GetAll<List<T>>(uriBuilder.ToString());
+                var data = await _baseRepository.GetAllAsync<List<T>>(uriBuilder.ToString());
 
                 await _cache.InsertObject(cacheIdentifier, data, DateTimeOffset.Now.AddSeconds(20));
 
@@ -52,14 +52,21 @@ namespace Imi.Project.Mobile.Core.Services
                 Path = $"api/{nameof(T)}s/{id}"
             };
 
-            var data = await _baseRepository.GetAll<T>(uriBuilder.ToString());
+            var data = await _baseRepository.GetAllAsync<T>(uriBuilder.ToString());
 
             return data;
         }
 
-        public Task<T> Add()
+        public async Task<T> Add(T data)
         {
-            throw new NotImplementedException();
+            UriBuilder uriBuilder = new UriBuilder(Constants.ApiBase)
+            {
+                Path = $"api/{nameof(T)}s"
+            };
+
+            var request = await _baseRepository.AddAsync<T>(uriBuilder.ToString(), data);
+
+            return request;
         }
         public Task<T> Update()
         {

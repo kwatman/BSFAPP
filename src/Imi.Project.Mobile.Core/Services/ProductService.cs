@@ -15,7 +15,5 @@ namespace Imi.Project.Mobile.Core.Services
         {
             _baseRepository = baseRepository;
         }
-
-
     }
 }

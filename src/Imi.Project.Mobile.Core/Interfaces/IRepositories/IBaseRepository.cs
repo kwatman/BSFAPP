@@ -10,6 +10,6 @@ namespace Imi.Project.Mobile.Core.Interfaces.IRepositories
         Task<T> GetAllAsync<T>(string uri, string authToken = "");
         Task<T> UpdateAsync<T>(string uri, T model, string authToken = "");
         Task<T> AddAsync<T>(string uri, T model, string authToken = "");
-        Task<T> DeleteAsync<T>(string uri, string authToken = "");
+        Task DeleteAsync(string uri, string authToken = "");
     }
 }
