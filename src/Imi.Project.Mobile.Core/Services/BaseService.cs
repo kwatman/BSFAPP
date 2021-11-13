@@ -1,33 +1,48 @@
-﻿using Imi.Project.Common;
+﻿using Akavache;
+using Imi.Project.Common;
 using Imi.Project.Mobile.Core.Interfaces.IRepositories;
 using Imi.Project.Mobile.Core.Interfaces.IServices;
 using Imi.Project.Mobile.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Imi.Project.Mobile.Core.Services
 {
-    public class BaseService<T> : IBaseService<T> where T : Base
+    public class BaseService<T> : CacheService, IBaseService<T> where T : Base
     {
         private readonly IBaseRepository _baseRepository;
 
-        public BaseService(IBaseRepository baseRepository)
+        public BaseService(IBaseRepository baseRepository, IBlobCache cache = null) : base(cache)
         {
             _baseRepository = baseRepository;
         }
 
         public async Task<IList<T>> GetAll()
         {
-            UriBuilder uriBuilder = new UriBuilder(Constants.ApiBase)
+            string cacheIdentifier = $"All{nameof(T)}s";
+
+            List<T> dataFromCache = await ReadFromCache<List<T>>(cacheIdentifier);
+
+            if (dataFromCache != null)
             {
-                Path = $"api/{nameof(T)}s"
-            };
+                return dataFromCache;
+            }
+            else
+            {
+                UriBuilder uriBuilder = new UriBuilder(Constants.ApiBase)
+                {
+                    Path = $"api/{nameof(T)}s"
+                };
 
-            var data = await _baseRepository.GetAll<List<T>>(uriBuilder.ToString());
+                var data = await _baseRepository.GetAll<List<T>>(uriBuilder.ToString());
 
-            return data;
+                await _cache.InsertObject(cacheIdentifier, data, DateTimeOffset.Now.AddSeconds(20));
+
+                return data;
+            }
         }
 
         public async Task<T> GetById(Guid id)

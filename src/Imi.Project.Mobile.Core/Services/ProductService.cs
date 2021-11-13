@@ -1,4 +1,4 @@
-﻿using Imi.Project.Mobile.Core.Interfaces;
+﻿using Imi.Project.Mobile.Core.Interfaces.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
