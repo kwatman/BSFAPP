@@ -29,10 +29,19 @@ namespace Imi.Project.Mobile.Core.Services
 
             return data;
         }
-        public Task<T> GetById()
+
+        public async Task<T> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            UriBuilder uriBuilder = new UriBuilder(Constants.ApiBase)
+            {
+                Path = $"api/{nameof(T)}s/{id}"
+            };
+
+            var data = await _baseRepository.GetById<T>(uriBuilder.ToString());
+
+            return data;
         }
+
         public Task<T> Add()
         {
             throw new NotImplementedException();

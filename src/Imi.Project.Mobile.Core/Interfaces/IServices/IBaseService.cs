@@ -9,7 +9,7 @@ namespace Imi.Project.Mobile.Core.Interfaces.IServices
     public interface IBaseService<T> where T: Base
     {
         Task<IList<T>> GetAll();
-        Task<T> GetById();
+        Task<T> GetById(Guid id);
         Task<T> Update();
         Task<T> Add();
         Task<T> Delete();
