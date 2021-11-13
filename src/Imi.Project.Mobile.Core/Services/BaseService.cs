@@ -68,13 +68,29 @@ namespace Imi.Project.Mobile.Core.Services
 
             return request;
         }
-        public Task<T> Update()
+
+        public async Task<T> Update(T data)
         {
-            throw new NotImplementedException();
+            UriBuilder uriBuilder = new UriBuilder(Constants.ApiBase)
+            {
+                Path = $"api/{nameof(T)}s"
+            };
+
+            var request = await _baseRepository.UpdateAsync(uriBuilder.ToString(), data);
+
+            return request;
         }
-        public Task<T> Delete()
+
+        public async Task<T> Delete(Guid id)
         {
-            throw new NotImplementedException();
+            UriBuilder uriBuilder = new UriBuilder(Constants.ApiBase)
+            {
+                Path = $"api/{nameof(T)}s/{id}"
+            };
+
+            await _baseRepository.DeleteAsync(uriBuilder.ToString());
+
+            return default(T);
         }
     }
 }
