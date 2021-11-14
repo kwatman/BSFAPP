@@ -20,7 +20,7 @@ namespace Imi.Project.Mobile.Core.Services
             _baseRepository = baseRepository;
         }
 
-        public async Task<IList<T>> GetAll()
+        public virtual async Task<IList<T>> GetAll()
         {
             string cacheIdentifier = $"All{nameof(T)}s";
 
@@ -45,7 +45,7 @@ namespace Imi.Project.Mobile.Core.Services
             }
         }
 
-        public async Task<T> GetById(Guid id)
+        public virtual async Task<T> GetById(Guid id)
         {
             UriBuilder uriBuilder = new UriBuilder(Constants.ApiBase)
             {
@@ -57,7 +57,7 @@ namespace Imi.Project.Mobile.Core.Services
             return data;
         }
 
-        public async Task<T> Add(T data)
+        public virtual async Task<T> Add(T data)
         {
             UriBuilder uriBuilder = new UriBuilder(Constants.ApiBase)
             {
@@ -69,7 +69,7 @@ namespace Imi.Project.Mobile.Core.Services
             return request;
         }
 
-        public async Task<T> Update(T data)
+        public virtual async Task<T> Update(T data)
         {
             UriBuilder uriBuilder = new UriBuilder(Constants.ApiBase)
             {
@@ -81,7 +81,7 @@ namespace Imi.Project.Mobile.Core.Services
             return request;
         }
 
-        public async Task<T> Delete(Guid id)
+        public virtual async Task<T> Delete(Guid id)
         {
             UriBuilder uriBuilder = new UriBuilder(Constants.ApiBase)
             {
