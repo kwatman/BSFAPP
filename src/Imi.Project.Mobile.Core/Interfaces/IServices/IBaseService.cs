@@ -10,8 +10,8 @@ namespace Imi.Project.Mobile.Core.Interfaces.IServices
     {
         Task<IList<T>> GetAll();
         Task<T> GetById(Guid id);
-        Task<T> Update();
-        Task<T> Add();
-        Task<T> Delete();
+        Task<T> Update(T data);
+        Task<T> Add(T data);
+        Task<T> Delete(Guid id);
     }
 }
