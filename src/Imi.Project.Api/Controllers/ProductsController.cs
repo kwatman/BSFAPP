@@ -1,5 +1,6 @@
 ﻿using Imi.Project.Api.Core.DTO_S.Categories;
 using Imi.Project.Api.Core.DTO_S.DietaryRequirements;
+using Imi.Project.Api.Core.DTO_S.ProductDietaryRequirements;
 using Imi.Project.Api.Core.DTO_S.Products;
 using Imi.Project.Api.Core.Entities;
 using Imi.Project.Api.Core.Infrastructure;
@@ -19,14 +20,17 @@ namespace Imi.Project.Api.Controllers
         protected readonly IProductRepository _productRepository;
         protected readonly ICategoryRepository _categoryRepository;
         protected readonly IDietaryRequirementRepository _dietaryRequirementRepository;
+        protected readonly IProductDietaryRequirementRepository _productDietaryRequirementRepository;
 
         public ProductsController(IProductRepository productRepository, 
             ICategoryRepository categoryRepository,
-            IDietaryRequirementRepository dietaryRequirementRepository)
+            IDietaryRequirementRepository dietaryRequirementRepository,
+            IProductDietaryRequirementRepository productDietaryRequirementRepository)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
             _dietaryRequirementRepository = dietaryRequirementRepository;
+            _productDietaryRequirementRepository = productDietaryRequirementRepository;
         }
 
         [HttpGet]
@@ -110,6 +114,19 @@ namespace Imi.Project.Api.Controllers
                     Price = productDTO.Price,
                     CategoryId = productDTO.CategoryId,
                 };
+
+                List<ProductDietaryRequirement> productDietaryRequirements = new List<ProductDietaryRequirement>();
+
+                foreach(Guid dietaryRequirementId in productDTO.DietaryRequirementIds)
+                {
+                    productDietaryRequirements.Add(await _productDietaryRequirementRepository.AddProductDietaryRequirement( new ProductDietaryRequirementRequestDTO
+                    {
+                        ProductId = newProduct.Id,
+                        DietaryRequirementId = dietaryRequirementId
+                    }));
+
+                    newProduct.ProductDietaryRequirements = productDietaryRequirements;
+                }
 
                 await _productRepository.AddAsync(newProduct);
 
