@@ -1,5 +1,5 @@
 ﻿using Imi.Project.Api.Core.Entities;
-using Imi.Project.Api.Core.Infrastructure;
+using Imi.Project.Api.Core.Interfaces;
 using Imi.Project.Api.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;

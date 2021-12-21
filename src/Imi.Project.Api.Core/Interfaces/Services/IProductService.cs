@@ -6,5 +6,6 @@ namespace Imi.Project.Api.Core.Interfaces.Services
 {
     public interface IProductService
     {
+
     }
 }
