@@ -19,20 +19,20 @@ namespace Imi.Project.Api.Infrastructure.Repositories
             _appDbContext = appDbContext;
         }
 
-        public virtual IQueryable<T> GetAll()
+        public IQueryable<T> GetAll()
         {
-            return _appDbContext.Set<T>().AsQueryable();
+            return _appDbContext.Set<T>().AsNoTracking();
         }
 
         public virtual async Task<IEnumerable<T>> ListAllAsync()
         {
-            return await _appDbContext.Set<T>().ToListAsync();
+            return await GetAll().ToListAsync();
         }
 
         public virtual async Task<T> GetByIdAsync(Guid id)
         {
             return await _appDbContext.Set<T>().SingleOrDefaultAsync(t => t.Id.Equals(id));
-        }
+        } 
 
         public async Task<T> UpdateAsync(T entity)
         {
@@ -43,7 +43,7 @@ namespace Imi.Project.Api.Infrastructure.Repositories
 
         public async Task<T> AddAsync(T entity)
         {
-            _appDbContext.Set<T>().Add(entity);
+            await _appDbContext.Set<T>().AddAsync(entity);
             await _appDbContext.SaveChangesAsync();
             return entity;
         }
