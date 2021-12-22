@@ -19,10 +19,18 @@ namespace Imi.Project.Api.Controllers
     public class ProductsController : ControllerBase
     {
         protected readonly IProductService _productService;
-
-        public ProductsController(IProductService productService)
+        protected readonly ICategoryService _categoryService;
+        protected readonly IDietaryRequirementService _dietaryRequirementService;
+        protected readonly IProductDietaryRequirementService _productDietaryRequirementService;
+        public ProductsController(IProductService productService,
+                                  ICategoryService categoryService,
+                                  IDietaryRequirementService dietaryRequirementService
+,                                 IProductDietaryRequirementService productDietaryRequirementService)
         {
             _productService = productService;
+            _categoryService = categoryService;
+            _dietaryRequirementService = dietaryRequirementService;
+            _productDietaryRequirementService = productDietaryRequirementService;
         }
 
         [HttpGet]
@@ -90,7 +98,7 @@ namespace Imi.Project.Api.Controllers
                 return BadRequest(ModelState.Values);
             }
 
-            var category = await _categoryRepository.GetByIdAsync(productDTO.CategoryId);
+            var category = await _categoryService.GetByIdAsync(productDTO.CategoryId);
 
             if(category == null)
             {
@@ -111,7 +119,7 @@ namespace Imi.Project.Api.Controllers
 
                 foreach(Guid dietaryRequirementId in productDTO.DietaryRequirementIds)
                 {
-                    productDietaryRequirements.Add(await _productDietaryRequirementRepository.AddProductDietaryRequirement( new ProductDietaryRequirementRequestDTO
+                    productDietaryRequirements.Add(await _productDietaryRequirementService.AddProductDietaryRequirement(new ProductDietaryRequirement
                     {
                         ProductId = newProduct.Id,
                         DietaryRequirementId = dietaryRequirementId
@@ -120,7 +128,7 @@ namespace Imi.Project.Api.Controllers
                     newProduct.ProductDietaryRequirements = productDietaryRequirements;
                 }
 
-                await _productRepository.AddAsync(newProduct);
+                await _productService.AddAsync(newProduct);
 
                 return Ok();
             }
@@ -134,7 +142,7 @@ namespace Imi.Project.Api.Controllers
                 return BadRequest(ModelState.Values);
             }
 
-            var category = await _categoryRepository.GetByIdAsync(productDTO.CategoryId);
+            var category = await _categoryService.GetByIdAsync(productDTO.CategoryId);
 
             if (category == null)
             {
@@ -142,7 +150,7 @@ namespace Imi.Project.Api.Controllers
             }
             else
             {
-                var newProduct = await _productRepository.GetByIdAsync(productDTO.Id);
+                var newProduct = await _productService.GetByIdAsync(productDTO.Id);
 
                 if(newProduct == null)
                 {
@@ -155,7 +163,7 @@ namespace Imi.Project.Api.Controllers
                     newProduct.Price = productDTO.Price;
                     newProduct.CategoryId = productDTO.CategoryId;
 
-                    await _productRepository.UpdateAsync(newProduct);
+                    await _productService.UpdateAsync(newProduct);
 
                     return Ok();
                 }
@@ -165,7 +173,7 @@ namespace Imi.Project.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var productToDelete = await _productRepository.GetByIdAsync(id);
+            var productToDelete = await _productService.GetByIdAsync(id);
 
             if (productToDelete == null)
             {
@@ -173,7 +181,7 @@ namespace Imi.Project.Api.Controllers
             }
             else
             {
-                await _productRepository.DeleteAsync(productToDelete);
+                await _productService.DeleteAsync(productToDelete);
 
                 return Ok();
             }

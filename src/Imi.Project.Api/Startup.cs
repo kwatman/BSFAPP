@@ -38,6 +38,7 @@ namespace Imi.Project.Api
             services.AddScoped<IBaseRepository<Product>, BaseRepository<Product>>();
             services.AddScoped<IBaseRepository<Category>, BaseRepository<Category>>();
             services.AddScoped<IBaseRepository<DietaryRequirement>, BaseRepository<DietaryRequirement>>();
+            services.AddScoped<IBaseRepository<ProductDietaryRequirement>, BaseRepository<ProductDietaryRequirement>>();
             services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
             services.AddScoped<IBaseRepository<BlogPost>, BaseRepository<BlogPost>>();
 
