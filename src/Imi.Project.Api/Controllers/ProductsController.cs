@@ -3,7 +3,8 @@ using Imi.Project.Api.Core.DTO_S.DietaryRequirements;
 using Imi.Project.Api.Core.DTO_S.ProductDietaryRequirements;
 using Imi.Project.Api.Core.DTO_S.Products;
 using Imi.Project.Api.Core.Entities;
-using Imi.Project.Api.Core.Infrastructure;
+using Imi.Project.Api.Core.Interfaces.Services;
+using Imi.Project.Api.Core.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,26 +18,17 @@ namespace Imi.Project.Api.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        protected readonly IProductRepository _productRepository;
-        protected readonly ICategoryRepository _categoryRepository;
-        protected readonly IDietaryRequirementRepository _dietaryRequirementRepository;
-        protected readonly IProductDietaryRequirementRepository _productDietaryRequirementRepository;
+        protected readonly IProductService _productService;
 
-        public ProductsController(IProductRepository productRepository, 
-            ICategoryRepository categoryRepository,
-            IDietaryRequirementRepository dietaryRequirementRepository,
-            IProductDietaryRequirementRepository productDietaryRequirementRepository)
+        public ProductsController(IProductService productService)
         {
-            _productRepository = productRepository;
-            _categoryRepository = categoryRepository;
-            _dietaryRequirementRepository = dietaryRequirementRepository;
-            _productDietaryRequirementRepository = productDietaryRequirementRepository;
+            _productService = productService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var products = await _productRepository.ListAllAsync();
+            var products = await _productService.ListAllAsync();
             var productsDTO = products.Select(p => new ProductResponseDTO
             {
                 Id = p.Id,
@@ -61,7 +53,7 @@ namespace Imi.Project.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            var product = await _productRepository.GetByIdAsync(id);
+            var product = await _productService.GetByIdAsync(id);
             if (product == null)
             {
                 return NotFound($"Geen product met id {id} gevonden");

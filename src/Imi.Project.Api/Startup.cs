@@ -1,5 +1,7 @@
 using Imi.Project.Api.Core.Entities;
 using Imi.Project.Api.Core.Interfaces;
+using Imi.Project.Api.Core.Interfaces.Services;
+using Imi.Project.Api.Core.Services;
 using Imi.Project.Api.Infrastructure.Data;
 using Imi.Project.Api.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -38,6 +40,12 @@ namespace Imi.Project.Api
             services.AddScoped<IBaseRepository<DietaryRequirement>, BaseRepository<DietaryRequirement>>();
             services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
             services.AddScoped<IBaseRepository<BlogPost>, BaseRepository<BlogPost>>();
+
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IDietaryRequirementService, DietaryRequirementService>();
+            services.AddScoped<IBlogPostService, BlogPostService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddSwaggerGen(c =>
             {
