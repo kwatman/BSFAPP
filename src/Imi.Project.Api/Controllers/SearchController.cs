@@ -1,6 +1,6 @@
 ﻿using Imi.Project.Api.Core.DTO_S.Categories;
 using Imi.Project.Api.Core.DTO_S.Products;
-using Imi.Project.Api.Core.Infrastructure;
+using Imi.Project.Api.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,29 +14,29 @@ namespace Imi.Project.Api.Controllers
     [ApiController]
     public class SearchController : ControllerBase
     {
-        private readonly IProductRepository _productRepository;
-        private readonly ICategoryRepository _categoryRepository;
-        private readonly IDietaryRequirementRepository _dietaryRequirementRepository;
-        private readonly IBlogPostRepository _blogPostRepository;
-        private readonly IUserRepository _userRepository;
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
+        private readonly IDietaryRequirementService _dietaryRequirementService;
+        private readonly IBlogPostService _blogPostService;
+        private readonly IUserService _userService;
 
-        public SearchController(IProductRepository productRepository, 
-            ICategoryRepository categoryRepository,
-            IDietaryRequirementRepository dietaryRequirementRepository,
-            IBlogPostRepository blogPostRepository,
-            IUserRepository userRepository)
+        public SearchController(IProductService productService, 
+            ICategoryService categoryService,
+            IDietaryRequirementService dietaryRequirementService,
+            IBlogPostService blogPostService,
+            IUserService userService)
         {
-            _productRepository = productRepository;
-            _categoryRepository = categoryRepository;
-            _dietaryRequirementRepository = dietaryRequirementRepository;
-            _blogPostRepository = blogPostRepository;
-            _userRepository = userRepository;
+            _productService = productService;
+            _categoryService = categoryService;
+            _dietaryRequirementService = dietaryRequirementService;
+            _blogPostService = blogPostService;
+            _userService = userService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Search([FromQuery] string searchString)
         {
-            var results = await _productRepository.SearchAsync(searchString);
+            var results = await _productService.SearchAsync(searchString);
 
             var searchResultsDTO = results.Select(s => new ProductResponseDTO
             {

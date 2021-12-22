@@ -24,5 +24,7 @@ namespace Imi.Project.Api.Core.Interfaces.Services
         Task<Product> AddAsync(Product product);
 
         Task<Product> DeleteAsync(Product product);
+
+        Task<IEnumerable<Product>> SearchAsync(string searchString);
     }
 }

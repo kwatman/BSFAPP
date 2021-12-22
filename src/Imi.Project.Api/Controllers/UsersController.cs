@@ -1,6 +1,6 @@
 ﻿using Imi.Project.Api.Core.DTO_S.Users;
 using Imi.Project.Api.Core.Entities;
-using Imi.Project.Api.Core.Infrastructure;
+using Imi.Project.Api.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,17 +14,17 @@ namespace Imi.Project.Api.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        protected readonly IUserRepository _userRepository;
+        protected readonly IUserService _userService;
 
-        public UsersController(IUserRepository userRepository)
+        public UsersController(IUserService userService)
         {
-            _userRepository = userRepository;
+            _userService = userService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var users = await _userRepository.ListAllAsync();
+            var users = await _userService.ListAllAsync();
             var usersDTO = users.Select(u => new UserResponseDTO
             {
                 Id = u.Id,
@@ -40,7 +40,7 @@ namespace Imi.Project.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            var user = await _userRepository.GetByIdAsync(id);
+            var user = await _userService.GetByIdAsync(id);
 
             if(user == null)
             {
@@ -79,7 +79,7 @@ namespace Imi.Project.Api.Controllers
                     Password = userDTO.Password
                 };
 
-                await _userRepository.AddAsync(userToAdd);
+                await _userService.AddAsync(userToAdd);
 
                 return Ok();
             }
@@ -94,7 +94,7 @@ namespace Imi.Project.Api.Controllers
             }
             else
             {
-                var userToUpdate = await _userRepository.GetByIdAsync(userDTO.Id);
+                var userToUpdate = await _userService.GetByIdAsync(userDTO.Id);
 
                 if (userToUpdate == null)
                 {
@@ -108,7 +108,7 @@ namespace Imi.Project.Api.Controllers
                     userToUpdate.PhoneNumber = userDTO.PhoneNumber;
                     userToUpdate.Password = userDTO.Password;
 
-                    await _userRepository.UpdateAsync(userToUpdate);
+                    await _userService.UpdateAsync(userToUpdate);
 
                     return Ok();
                 }
@@ -118,7 +118,7 @@ namespace Imi.Project.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var userToDelete = await _userRepository.GetByIdAsync(id);
+            var userToDelete = await _userService.GetByIdAsync(id);
 
             if (userToDelete == null)
             {
@@ -126,7 +126,7 @@ namespace Imi.Project.Api.Controllers
             }
             else
             {
-                await _userRepository.DeleteAsync(userToDelete);
+                await _userService.DeleteAsync(userToDelete);
 
                 return Ok();
             }

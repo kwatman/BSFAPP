@@ -2,7 +2,7 @@
 using Imi.Project.Api.Core.DTO_S.DietaryRequirements;
 using Imi.Project.Api.Core.DTO_S.Products;
 using Imi.Project.Api.Core.Entities;
-using Imi.Project.Api.Core.Infrastructure;
+using Imi.Project.Api.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,20 +16,20 @@ namespace Imi.Project.Api.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        protected readonly ICategoryRepository _categoryRepository;
-        protected readonly IProductRepository _productRepository;
+        protected readonly ICategoryService _categoryService;
+        protected readonly IProductService _productService;
 
-        public CategoriesController(ICategoryRepository categoryRepository,
-            IProductRepository productRepository)
+        public CategoriesController(ICategoryService categoryService,
+            IProductService productService)
         {
-            _categoryRepository = categoryRepository;
-            _productRepository = productRepository;
+            _categoryService = categoryService;
+            _productService = productService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var categories = await _categoryRepository.ListAllAsync();
+            var categories = await _categoryService.ListAllAsync();
             var categoriesDTO = categories.Select(c => new CategoryResponseDTO
             {
                 Id = c.Id,
@@ -41,7 +41,7 @@ namespace Imi.Project.Api.Controllers
         [HttpGet("id")]
         public async Task<IActionResult> Get(Guid id)
         {
-            var category = await _categoryRepository.GetByIdAsync(id);
+            var category = await _categoryService.GetByIdAsync(id);
             if (category == null)
             {
                 return NotFound($"Geen categorie met id {id} gevonden");
@@ -61,7 +61,7 @@ namespace Imi.Project.Api.Controllers
         [HttpGet("{id}/products")]
         public async Task<IActionResult> GetProductsByCategory(Guid id)
         {
-            var products = await _productRepository.GetByCategoryIdAsync(id);
+            var products = await _productService.GetByCategoryIdAsync(id);
 
             var productsDTO = products.Select(p => new ProductResponseDTO
             {
@@ -97,7 +97,7 @@ namespace Imi.Project.Api.Controllers
                 Name = categoryDTO.Name
             };
 
-            await _categoryRepository.AddAsync(newCategory);
+            await _categoryService.AddAsync(newCategory);
 
             return Ok();
         }
@@ -110,7 +110,7 @@ namespace Imi.Project.Api.Controllers
                 return BadRequest(ModelState.Values);
             }
 
-            var newCategory = await _categoryRepository.GetByIdAsync(categoryDTO.Id);
+            var newCategory = await _categoryService.GetByIdAsync(categoryDTO.Id);
 
             if(newCategory == null)
             {
@@ -120,7 +120,7 @@ namespace Imi.Project.Api.Controllers
             {
                 newCategory.Name = categoryDTO.Name;
 
-                await _categoryRepository.UpdateAsync(newCategory);
+                await _categoryService.UpdateAsync(newCategory);
 
                 return Ok();
             }
@@ -129,7 +129,7 @@ namespace Imi.Project.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var categoryToDelete = await _categoryRepository.GetByIdAsync(id);
+            var categoryToDelete = await _categoryService.GetByIdAsync(id);
 
             if(categoryToDelete == null)
             {
@@ -137,7 +137,7 @@ namespace Imi.Project.Api.Controllers
             }
             else
             {
-                await _categoryRepository.DeleteAsync(categoryToDelete);
+                await _categoryService.DeleteAsync(categoryToDelete);
 
                 return Ok();
             }

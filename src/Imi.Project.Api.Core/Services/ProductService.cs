@@ -59,5 +59,15 @@ namespace Imi.Project.Api.Core.Services
         {
             return await _productRepository.DeleteAsync(product);
         }
+
+        public async Task<IEnumerable<Product>> SearchAsync(string searchString)
+        {
+            var products = await GetAll().Where(p => p.Name.Contains(searchString.Trim().ToUpper())
+            || p.Name.Contains(searchString.Trim().ToUpper())
+            || p.ProductDietaryRequirements.Any(dr => dr.DietaryRequirement.Name.Contains(searchString.Trim().ToUpper())))
+                .ToListAsync();
+
+            return products;
+        }
     }
 }

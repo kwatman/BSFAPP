@@ -1,6 +1,6 @@
 ﻿using Imi.Project.Api.Core.DTO_S.BlogPosts;
 using Imi.Project.Api.Core.Entities;
-using Imi.Project.Api.Core.Infrastructure;
+using Imi.Project.Api.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,17 +14,17 @@ namespace Imi.Project.Api.Controllers
     [ApiController]
     public class BlogPostsController : ControllerBase
     {
-        protected readonly IBlogPostRepository _blogPostRepository;
+        protected readonly IBlogPostService _blogPostService;
 
-        public BlogPostsController(IBlogPostRepository blogPostRepository)
+        public BlogPostsController(IBlogPostService blogPostService)
         {
-            _blogPostRepository = blogPostRepository;
+            _blogPostService = blogPostService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var blogPosts = await _blogPostRepository.ListAllAsync();
+            var blogPosts = await _blogPostService.ListAllAsync();
             var blogPostDTO = blogPosts.Select(bp => new BlogPostResponseDTO
             {
                 Id = bp.Id,
@@ -38,7 +38,7 @@ namespace Imi.Project.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            var blogPost = await _blogPostRepository.GetByIdAsync(id);
+            var blogPost = await _blogPostService.GetByIdAsync(id);
 
             if (blogPost == null)
             {
@@ -72,7 +72,7 @@ namespace Imi.Project.Api.Controllers
                     PostDate = DateTime.Now
                 };
 
-                await _blogPostRepository.AddAsync(blogPostToAdd);
+                await _blogPostService.AddAsync(blogPostToAdd);
 
                 return Ok();
             }
@@ -87,7 +87,7 @@ namespace Imi.Project.Api.Controllers
             }
             else
             {
-                var blogPostToUpdate = await _blogPostRepository.GetByIdAsync(blogPostDTO.Id);
+                var blogPostToUpdate = await _blogPostService.GetByIdAsync(blogPostDTO.Id);
 
                 if (blogPostToUpdate == null)
                 {
@@ -97,7 +97,7 @@ namespace Imi.Project.Api.Controllers
                 {
                     blogPostToUpdate.Title = blogPostDTO.Title;
 
-                    await _blogPostRepository.UpdateAsync(blogPostToUpdate);
+                    await _blogPostService.UpdateAsync(blogPostToUpdate);
 
                     return Ok();
                 }
@@ -107,7 +107,7 @@ namespace Imi.Project.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var blogPostToDelete = await _blogPostRepository.GetByIdAsync(id);
+            var blogPostToDelete = await _blogPostService.GetByIdAsync(id);
 
             if (blogPostToDelete == null)
             {
@@ -115,7 +115,7 @@ namespace Imi.Project.Api.Controllers
             }
             else
             {
-                await _blogPostRepository.DeleteAsync(blogPostToDelete);
+                await _blogPostService.DeleteAsync(blogPostToDelete);
 
                 return Ok();
             }

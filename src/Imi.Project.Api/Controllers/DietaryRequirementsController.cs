@@ -2,7 +2,7 @@
 using Imi.Project.Api.Core.DTO_S.DietaryRequirements;
 using Imi.Project.Api.Core.DTO_S.Products;
 using Imi.Project.Api.Core.Entities;
-using Imi.Project.Api.Core.Infrastructure;
+using Imi.Project.Api.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,20 +16,20 @@ namespace Imi.Project.Api.Controllers
     [ApiController]
     public class DietaryRequirementsController : ControllerBase
     {
-        protected readonly IDietaryRequirementRepository _dietaryRequirementRepository;
-        protected readonly IProductRepository _productRepository;
+        protected readonly IDietaryRequirementService _dietaryRequirementService;
+        protected readonly IProductService _productService;
 
-        public DietaryRequirementsController(IDietaryRequirementRepository dietaryRequirementRepository,
-            IProductRepository productRepository)
+        public DietaryRequirementsController(IDietaryRequirementService dietaryRequirementService,
+            IProductService productService)
         {
-            _dietaryRequirementRepository = dietaryRequirementRepository;
-            _productRepository = productRepository;
+            _dietaryRequirementService = dietaryRequirementService;
+            _productService = productService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var dietaryRequirements = await _dietaryRequirementRepository.ListAllAsync();
+            var dietaryRequirements = await _dietaryRequirementService.ListAllAsync();
             var dietaryRequirementsDTO = dietaryRequirements.Select(dr => new DietaryRequirementResponseDTO
             {
                 Id = dr.Id,
@@ -42,7 +42,7 @@ namespace Imi.Project.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            var dietaryRequirement = await _dietaryRequirementRepository.GetByIdAsync(id);
+            var dietaryRequirement = await _dietaryRequirementService.GetByIdAsync(id);
             if (dietaryRequirement == null)
             {
                 return NotFound($"Geen Dieetvereiste met id {id} gevonden");
@@ -62,7 +62,7 @@ namespace Imi.Project.Api.Controllers
         [HttpGet("{id}/products")]
         public async Task<IActionResult> GetProductsByDietaryRequirement(Guid id)
         {
-            var products = await _productRepository.GetByDietaryRequirementIdAsync(id);
+            var products = await _productService.GetByDietaryRequirementIdAsync(id);
 
             var productsDTO = products.Select(p => new ProductResponseDTO
             {
@@ -98,7 +98,7 @@ namespace Imi.Project.Api.Controllers
                 Name = dietaryRequirementDTO.Name
             };
 
-            await _dietaryRequirementRepository.AddAsync(newDietaryRequirement);
+            await _dietaryRequirementService.AddAsync(newDietaryRequirement);
 
             return Ok();
         }
@@ -111,7 +111,7 @@ namespace Imi.Project.Api.Controllers
                 return BadRequest(ModelState.Values);
             }
 
-            var newDietaryRequirement = await _dietaryRequirementRepository.GetByIdAsync(dietaryRequirementDTO.Id);
+            var newDietaryRequirement = await _dietaryRequirementService.GetByIdAsync(dietaryRequirementDTO.Id);
 
             if (newDietaryRequirement == null)
             {
@@ -121,7 +121,7 @@ namespace Imi.Project.Api.Controllers
             {
                 newDietaryRequirement.Name = dietaryRequirementDTO.Name;
 
-                await _dietaryRequirementRepository.UpdateAsync(newDietaryRequirement);
+                await _dietaryRequirementService.UpdateAsync(newDietaryRequirement);
 
                 return Ok();
             }
@@ -130,7 +130,7 @@ namespace Imi.Project.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var dietaryRequirementToDelete = await _dietaryRequirementRepository.GetByIdAsync(id);
+            var dietaryRequirementToDelete = await _dietaryRequirementService.GetByIdAsync(id);
 
             if(dietaryRequirementToDelete == null)
             {
@@ -138,7 +138,7 @@ namespace Imi.Project.Api.Controllers
             }
             else
             {
-                await _dietaryRequirementRepository.DeleteAsync(dietaryRequirementToDelete);
+                await _dietaryRequirementService.DeleteAsync(dietaryRequirementToDelete);
 
                 return Ok();
             }
