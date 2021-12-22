@@ -1,5 +1,6 @@
 ﻿using Imi.Project.Api.Core.Entities;
 using Imi.Project.Api.Core.Interfaces;
+using Imi.Project.Api.Core.Interfaces.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Imi.Project.Api.Core.Services
 {
-    public class BlogPostService
+    public class BlogPostService: IBlogPostService
     {
         protected readonly IBaseRepository<BlogPost> _blogPostRepository;
 
