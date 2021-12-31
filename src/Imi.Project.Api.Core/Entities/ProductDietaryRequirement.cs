@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Imi.Project.Api.Core.Entities
 {
-    public class ProductDietaryRequirement: BaseEntity
+    public class ProductDietaryRequirement
     {
         public Guid ProductId { get; set; }
         public Product Product { get; set; }

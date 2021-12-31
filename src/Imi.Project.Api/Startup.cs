@@ -1,5 +1,6 @@
 using Imi.Project.Api.Core.Entities;
 using Imi.Project.Api.Core.Interfaces;
+using Imi.Project.Api.Core.Interfaces.Repositories;
 using Imi.Project.Api.Core.Interfaces.Services;
 using Imi.Project.Api.Core.Services;
 using Imi.Project.Api.Infrastructure.Data;
@@ -38,13 +39,14 @@ namespace Imi.Project.Api
             services.AddScoped<IBaseRepository<Product>, BaseRepository<Product>>();
             services.AddScoped<IBaseRepository<Category>, BaseRepository<Category>>();
             services.AddScoped<IBaseRepository<DietaryRequirement>, BaseRepository<DietaryRequirement>>();
-            services.AddScoped<IBaseRepository<ProductDietaryRequirement>, BaseRepository<ProductDietaryRequirement>>();
             services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
             services.AddScoped<IBaseRepository<BlogPost>, BaseRepository<BlogPost>>();
+            services.AddScoped<IProductDietaryRequirementRepository, ProductDietaryRequirementRepository>();
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IDietaryRequirementService, DietaryRequirementService>();
+            services.AddScoped<IProductDietaryRequirementService, ProductDietaryRequirementService>();
             services.AddScoped<IBlogPostService, BlogPostService>();
             services.AddScoped<IUserService, UserService>();
 

@@ -24,12 +24,14 @@ namespace Imi.Project.Api.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
+
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.Products)
                 .WithOne(p => p.Category)
                 .IsRequired();
 
             modelBuilder.Entity<ProductDietaryRequirement>()
+                .ToTable("ProductDietaryRequirement")
                 .HasKey(pdr => new { pdr.ProductId, pdr.DietaryRequirementId });
             modelBuilder.Entity<ProductDietaryRequirement>()
                 .HasOne(pdr => pdr.Product)

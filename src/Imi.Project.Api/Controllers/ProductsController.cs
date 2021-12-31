@@ -115,6 +115,8 @@ namespace Imi.Project.Api.Controllers
                     CategoryId = productDTO.CategoryId,
                 };
 
+                await _productService.AddAsync(newProduct);
+
                 List<ProductDietaryRequirement> productDietaryRequirements = new List<ProductDietaryRequirement>();
 
                 foreach(Guid dietaryRequirementId in productDTO.DietaryRequirementIds)
@@ -124,11 +126,11 @@ namespace Imi.Project.Api.Controllers
                         ProductId = newProduct.Id,
                         DietaryRequirementId = dietaryRequirementId
                     }));
-
-                    newProduct.ProductDietaryRequirements = productDietaryRequirements;
                 }
 
-                await _productService.AddAsync(newProduct);
+                newProduct.ProductDietaryRequirements = productDietaryRequirements;
+
+                await _productService.UpdateAsync(newProduct);
 
                 return Ok();
             }
