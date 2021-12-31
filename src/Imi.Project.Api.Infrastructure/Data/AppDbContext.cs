@@ -13,7 +13,7 @@ namespace Imi.Project.Api.Infrastructure.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<DietaryRequirement> DietaryRequirements { get; set; }
         public DbSet<ProductDietaryRequirement> ProductsDietaryRequirements { get; set; }
-        public DbSet<User> Users { get; set; }
+        //public DbSet<User> Users { get; set; }
         public DbSet<BlogPost> BlogPosts { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -274,37 +274,37 @@ namespace Imi.Project.Api.Infrastructure.Data
                     },
                 });
 
-            modelBuilder.Entity<User>().HasData(
-                new[]
-                {
-                    new User
-                    {
-                        Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
-                        Name = "Decru",
-                        Surname = "Amaury",
-                        Email = "amaury.decru@test.com",
-                        PhoneNumber = "+32 111 111 111",
-                        Password = "Test123"
-                    },
-                    new User
-                    {
-                        Id = Guid.Parse("00000000-0000-0000-0000-000000000002"),
-                        Name = "Doe",
-                        Surname = "John",
-                        Email = "john.doe@test.com",
-                        PhoneNumber = "+32 222 222 222",
-                        Password = "Test123"
-                    },
-                    new User
-                    {
-                        Id = Guid.Parse("00000000-0000-0000-0000-000000000003"),
-                        Name = "Doe",
-                        Surname = "Jane",
-                        Email = "jane.doe@test.com",
-                        PhoneNumber = "+32 333 333 333",
-                        Password = "Test123"
-                    }
-                });
+            //modelBuilder.Entity<User>().HasData(
+            //    new[]
+            //    {
+            //        new User
+            //        {
+            //            Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+            //            Name = "Decru",
+            //            Surname = "Amaury",
+            //            Email = "amaury.decru@test.com",
+            //            PhoneNumber = "+32 111 111 111",
+            //            Password = "Test123"
+            //        },
+            //        new User
+            //        {
+            //            Id = Guid.Parse("00000000-0000-0000-0000-000000000002"),
+            //            Name = "Doe",
+            //            Surname = "John",
+            //            Email = "john.doe@test.com",
+            //            PhoneNumber = "+32 222 222 222",
+            //            Password = "Test123"
+            //        },
+            //        new User
+            //        {
+            //            Id = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+            //            Name = "Doe",
+            //            Surname = "Jane",
+            //            Email = "jane.doe@test.com",
+            //            PhoneNumber = "+32 333 333 333",
+            //            Password = "Test123"
+            //        }
+            //    });
 
             modelBuilder.Entity<BlogPost>().HasData(
                 new[]
