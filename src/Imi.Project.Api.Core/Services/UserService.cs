@@ -1,6 +1,8 @@
-﻿using Imi.Project.Api.Core.Entities;
+﻿using Imi.Project.Api.Core.DTO_S.Users;
+using Imi.Project.Api.Core.Entities;
 using Imi.Project.Api.Core.Interfaces;
 using Imi.Project.Api.Core.Interfaces.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,41 +14,59 @@ namespace Imi.Project.Api.Core.Services
 {
     public class UserService: IUserService
     {
-        protected readonly IBaseRepository<User> _userRepository;
+        private UserManager<IdentityUser> _userManager;
 
-        public UserService(IBaseRepository<User> userService)
+        public UserService(UserManager<IdentityUser> userManager)
         {
-            _userRepository = userService;
+            _userManager = userManager;
         }
 
-        public IQueryable<User> GetAll()
+        public async Task<UserResponseDTO> RegisterAsync(UserRequestDTO request)
         {
-            return _userRepository.GetAll();
-        }
+            if (request == null)
+            {
+                throw new NullReferenceException("Register request bestaat niet");
+            }
+            else
+            {
+                if (request.Password != request.ConfirmPassword)
+                {
+                    return new UserResponseDTO
+                    {
+                        Message = "Wachtwoorden zijn niet gelijk!",
+                        IsSuccess = false,
+                    };
+                }
+                else
+                {
+                    var identityUser = new IdentityUser
+                    {
+                        UserName = request.Surname + ' ' + request.Name,
+                        Email = request.Email,
+                        PhoneNumber = request.PhoneNumber,
+                    };
 
-        public async Task<IEnumerable<User>> ListAllAsync()
-        {
-            return await _userRepository.GetAll().ToListAsync();
-        }
+                    var result = await _userManager.CreateAsync(identityUser, request.Password);
 
-        public async Task<User> GetByIdAsync(Guid id)
-        {
-            return await _userRepository.GetByIdAsync(id);
-        }
-
-        public async Task<User> UpdateAsync(User user)
-        {
-            return await _userRepository.UpdateAsync(user);
-        }
-
-        public async Task<User> AddAsync(User user)
-        {
-            return await _userRepository.AddAsync(user);
-        }
-
-        public async Task<User> DeleteAsync(User user)
-        {
-            return await _userRepository.DeleteAsync(user);
+                    if (result.Succeeded)
+                    {
+                        return new UserResponseDTO
+                        {
+                            Message = "Gebruiker geregistreerd!",
+                            IsSuccess = true,
+                        };
+                    }
+                    else
+                    {
+                        return new UserResponseDTO
+                        {
+                            Message = "Registratie mislukt!",
+                            IsSuccess = false,
+                            Errors = result.Errors.Select(e => e.Description)
+                        };
+                    }
+                }
+            }
         }
     }
 }
