@@ -41,7 +41,7 @@ namespace Imi.Project.Api.Core.Services
                 {
                     var identityUser = new IdentityUser
                     {
-                        UserName = request.Surname + ' ' + request.Name,
+                        UserName = request.Surname + request.Name,
                         Email = request.Email,
                         PhoneNumber = request.PhoneNumber,
                     };
