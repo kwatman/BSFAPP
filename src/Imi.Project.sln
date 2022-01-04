@@ -39,7 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Blazor.Core", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Blazor.Infrastructure", "Imi.Project.Blazor.Infrastructure\Imi.Project.Blazor.Infrastructure.csproj", "{8E515C70-B13B-4CEF-A543-297405F29B1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imi.Project.Api.Client.Wpf", "Imi.Project.Api.Client.Wpf\Imi.Project.Api.Client.Wpf.csproj", "{75976D23-7C94-496E-A590-07173CAE3D85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Api.Client.Wpf", "Imi.Project.Api.Client.Wpf\Imi.Project.Api.Client.Wpf.csproj", "{75976D23-7C94-496E-A590-07173CAE3D85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

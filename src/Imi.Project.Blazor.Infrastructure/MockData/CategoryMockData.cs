@@ -1,7 +1,9 @@
 ﻿using Imi.Project.Blazor.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Imi.Project.Blazor.Infrastructure.MockData
 {
@@ -30,5 +32,12 @@ namespace Imi.Project.Blazor.Infrastructure.MockData
                 Name = "Koekjes met rolfondant"
             }
         };
+
+        public Category GetCategoryById(Guid id)
+        {
+            var category = categoryData.FirstOrDefault(c => c.Id == id);
+
+            return category;
+        }
     }
 }
