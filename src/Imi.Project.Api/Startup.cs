@@ -58,9 +58,13 @@ namespace Imi.Project.Api
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
                     RequireExpirationTime = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("GlazedKey")),
-                    ValidateIssuerSigningKey = true
+                    ValidIssuer = Configuration["AuthConfig:Issuer"],
+                    ValidAudience = Configuration["AuthConfig:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["AuthConfig:Key"])),
+                    
                 };
             });
 
@@ -104,6 +108,7 @@ namespace Imi.Project.Api
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

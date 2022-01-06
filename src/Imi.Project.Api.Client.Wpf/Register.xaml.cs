@@ -33,7 +33,7 @@ namespace Imi.Project.Api.Client.Wpf
         {
             HttpClient client = new HttpClient();
 
-            var request = new UserRequestDTO
+            var request = new UserRegisterRequestDTO
             {
                 Name = txtName.Text,
                 Surname = txtSurname.Text,

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Imi.Project.Api.Core.DTO_S.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +25,37 @@ namespace Imi.Project.Api.Client.Wpf
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            HttpClient client = new HttpClient();
+
+            var request = new UserLoginRequestDTO
+            {
+                Email = txtEmail.Text,
+                Password = txtPassword.Password,
+            };
+
+            var jsonData = JsonConvert.SerializeObject(request);
+
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync("https://localhost:5001/api/users/register", content);
+
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            var responseObject = JsonConvert.DeserializeObject<UserResponseDTO>(responseBody);
+
+            if (responseObject.IsSuccess)
+            {
+                NavigationService.Navigate(loginPage);
+                loginPage.lblMessage.Content = "Gebruiker geregistreerd! Gelieve in te loggen!";
+            }
+            else
+            {
+                lblMessage.Content = responseObject.Message.ToString();
+            }
         }
     }
 }

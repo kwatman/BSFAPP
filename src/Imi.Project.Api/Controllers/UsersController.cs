@@ -22,7 +22,7 @@ namespace Imi.Project.Api.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> RegisterAsync([FromBody]UserRequestDTO request)
+        public async Task<IActionResult> RegisterAsync([FromBody]UserRegisterRequestDTO request)
         {
             if (!ModelState.IsValid)
             {
@@ -31,6 +31,28 @@ namespace Imi.Project.Api.Controllers
             else
             {
                 var result = await _userService.RegisterAsync(request);
+
+                if (result.IsSuccess)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return BadRequest(result);
+                }
+            }
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> LoginAsync([FromBody]UserLoginRequestDTO request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Inloggen Mislukt!");
+            }
+            else
+            {
+                var result = await _userService.LoginAsync(request);
 
                 if (result.IsSuccess)
                 {

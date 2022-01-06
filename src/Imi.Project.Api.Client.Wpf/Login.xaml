@@ -28,7 +28,7 @@
             <Label Content="Wachtwoord" FontSize="20" HorizontalAlignment="Left" Margin="3"/>
             <PasswordBox x:Name="txtPassword" Width="300" HorizontalAlignment="Right"/>
         </Grid>
-        <Button x:Name="btnLogin" Content="Inloggen" Margin="2" Width="80"/>
+        <Button x:Name="btnLogin" Content="Inloggen" Margin="2" Width="80" Click="btnLogin_Click"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Imi.Project.Api.Core.DTO_S.Users
 {
-    public class UserRequestDTO : BaseDTO
+    public class UserRegisterRequestDTO : BaseDTO
     {
         [Required(ErrorMessage = "Naam is verplicht")]
         public string Name { get; set; }

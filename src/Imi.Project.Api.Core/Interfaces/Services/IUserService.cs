@@ -10,6 +10,8 @@ namespace Imi.Project.Api.Core.Interfaces.Services
 {
     public interface IUserService
     {
-        Task<UserResponseDTO> RegisterAsync(UserRequestDTO request);
+        Task<UserResponseDTO> RegisterAsync(UserRegisterRequestDTO request);
+
+        Task<UserResponseDTO> LoginAsync(UserLoginRequestDTO request);
     }
 }
