@@ -1,4 +1,5 @@
 ﻿using Imi.Project.Api.Core.DTO_S.Users;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Imi.Project.Api.Client.Wpf
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             HttpClient client = new HttpClient();
 
@@ -41,7 +42,7 @@ namespace Imi.Project.Api.Client.Wpf
 
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync("https://localhost:5001/api/users/register", content);
+            var response = await client.PostAsync("https://localhost:5001/api/users/login", content);
 
             var responseBody = await response.Content.ReadAsStringAsync();
 
@@ -49,8 +50,7 @@ namespace Imi.Project.Api.Client.Wpf
 
             if (responseObject.IsSuccess)
             {
-                NavigationService.Navigate(loginPage);
-                loginPage.lblMessage.Content = "Gebruiker geregistreerd! Gelieve in te loggen!";
+                NavigationService.Navigate(typeof(ProductsOverview), responseObject.Message);
             }
             else
             {
