@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Imi.Project.Mobile.ViewModels
+namespace Imi.Project.Mobile.PageModels
 {
-    public class ProductDetailViewModel: FreshBasePageModel
+    public class ProductDetailPageModel: FreshBasePageModel
     {
         private Product selectedProduct;
 
-        public ProductDetailViewModel()
+        public ProductDetailPageModel()
         {
 
         }

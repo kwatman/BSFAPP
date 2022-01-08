@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Imi.Project.Mobile.Views
+namespace Imi.Project.Mobile.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdminCategoriesPage : ContentPage

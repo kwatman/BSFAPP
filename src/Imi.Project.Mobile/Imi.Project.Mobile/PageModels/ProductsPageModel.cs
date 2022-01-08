@@ -8,15 +8,15 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Imi.Project.Mobile.ViewModels
+namespace Imi.Project.Mobile.PageModels
 {
-    public class ProductsViewModel: FreshBasePageModel
+    public class ProductsPageModel: FreshBasePageModel
     {
         private IProductService _productService;
 
         private ObservableCollection<Product> products;
 
-        public ProductsViewModel(IProductService productService)
+        public ProductsPageModel(IProductService productService)
         {
             _productService = productService;
         }
@@ -33,7 +33,7 @@ namespace Imi.Project.Mobile.ViewModels
 
         private void OnProductTapped(Product selectedProduct)
         {
-            CoreMethods.PushPageModel<ProductDetailViewModel>(selectedProduct, false, true);
+            CoreMethods.PushPageModel<ProductDetailPageModel>(selectedProduct, false, true);
         }
 
         public override async void Init(object data)
