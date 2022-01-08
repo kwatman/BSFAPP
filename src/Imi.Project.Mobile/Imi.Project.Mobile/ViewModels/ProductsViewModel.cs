@@ -14,7 +14,7 @@ namespace Imi.Project.Mobile.ViewModels
     {
         private IProductService _productService;
 
-        private ObservableCollection<Product> _products;
+        private ObservableCollection<Product> products;
 
         public ProductsViewModel(IProductService productService)
         {
@@ -23,10 +23,10 @@ namespace Imi.Project.Mobile.ViewModels
 
         public ObservableCollection<Product> Products
         {
-            get => _products;
+            get => products;
             set
             {
-                _products = value;
+                products = value;
                 RaisePropertyChanged();
             }
         }
