@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Imi.Project.Mobile.Pages.ProductsPage"
+             Title="Alle Producten">
+    <Grid>
+        <ListView VerticalOptions="FillAndExpand" Header="{Binding .}" Footer="{Binding .}"
+                  ItemsSource="{Binding Products}" SeparatorVisibility="Default">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="8*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image HeightRequest="200" Grid.Row="0" Source="Horizontal Logo on Rose-Gold.png" Aspect="AspectFill"></Image>
+                        <StackLayout Grid.Row="1">
+                            <Label Text="ONZE PRODUCTEN" HorizontalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            
+        </ListView>
+    </Grid>
+</ContentPage>
