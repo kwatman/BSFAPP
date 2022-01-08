@@ -21,6 +21,10 @@ namespace Imi.Project.Api.Infrastructure.Repositories
 
         public IQueryable<T> GetAll()
         {
+            if (typeof(T) == typeof(Product))
+            {
+                return (IQueryable<T>)_appDbContext.Set<Product>().Include(p => p.Category).Include(p => p.ProductDietaryRequirements).ThenInclude(p => p.DietaryRequirement); ;
+            }
             return _appDbContext.Set<T>().AsNoTracking();
         }
 
