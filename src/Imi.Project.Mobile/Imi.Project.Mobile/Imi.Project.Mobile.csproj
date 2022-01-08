@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FreshMvvm" Version="4.0.1" />
     <PackageReference Include="Syncfusion.Licensing" Version="19.3.0.47" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.3.0.47" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.3.0.47" />
