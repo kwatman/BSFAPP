@@ -13,7 +13,7 @@ namespace Imi.Project.Mobile
 
             InitializeComponent();
 
-            MainPage = new ProductsPage();
+            MainPage = new AdminPage();
         }
 
         protected override void OnStart()

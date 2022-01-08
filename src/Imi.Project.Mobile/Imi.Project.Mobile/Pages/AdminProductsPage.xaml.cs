@@ -1,5 +1,5 @@
 ﻿using Imi.Project.Mobile.Core.Models;
-using Imi.Project.Mobile.Infrastructure.Services;
+using Imi.Project.Mobile.Core.Interfaces.IServices;
 using Imi.Project.Mobile.Infrastructure.Services.MockData;
 using Imi.Project.Mobile.Infrastructure.Services.Mocking;
 using Imi.Project.Mobile.Infrastructure.Services.MockServices;
@@ -17,17 +17,21 @@ namespace Imi.Project.Mobile.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdminProductsPage : ContentPage
     {
-        private readonly IProductService productService;
+        private readonly IProductService _productService;
         public AdminProductsPage()
         {
             InitializeComponent();
-            productService = new ProductMockService();
+        }
+
+        public AdminProductsPage(IProductService productService)
+        {
+            _productService = productService;
         }
 
         private void ShowProducts()
         {
-            var products = productService.GetAll(context: ProductMockData.productData);
-            lvProducts.ItemsSource = products;
+            var products = _productService.GetAll();
+            lvProducts.ItemsSource = (System.Collections.IEnumerable)products;
         }
 
         protected override void OnAppearing()
@@ -47,7 +51,7 @@ namespace Imi.Project.Mobile.Pages
         private async void ProductDelete_Clicked(object sender, EventArgs e)
         {
             var selectedProduct = ((MenuItem)sender).CommandParameter as Product;
-            await productService.Delete(ProductMockData.productData, selectedProduct.Id);
+            await _productService.Delete(selectedProduct.Id);
             ShowProducts();
         }
 
