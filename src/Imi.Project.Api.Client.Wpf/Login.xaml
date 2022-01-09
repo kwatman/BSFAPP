@@ -9,26 +9,27 @@
       Title="Login"
       Background="White">
     <Grid>
-        <Label x:Name="lblMessage" HorizontalAlignment="Center"></Label>
+        <Label x:Name="lblMessage" HorizontalAlignment="Center"/>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="450">
-        <TextBlock Text="Log in" FontSize="35" HorizontalAlignment="Center" Margin="3"/>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Label Content="Email" FontSize="20" HorizontalAlignment="Left" Margin="3"/>
-            <TextBox x:Name="txtEmail" Width="300" HorizontalAlignment="Right"/>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Label Content="Wachtwoord" FontSize="20" HorizontalAlignment="Left" Margin="3"/>
-            <PasswordBox x:Name="txtPassword" Width="300" HorizontalAlignment="Right"/>
-        </Grid>
-        <Button x:Name="btnLogin" Content="Inloggen" Margin="2" Width="80" Click="btnLogin_Click"/>
+            <TextBlock Text="Log in" FontSize="35" HorizontalAlignment="Center" Margin="3"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Content="Email" FontSize="20" HorizontalAlignment="Left" Margin="3"/>
+                <TextBox x:Name="txtEmail" Width="300" HorizontalAlignment="Right"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Content="Wachtwoord" FontSize="20" HorizontalAlignment="Left" Margin="3"/>
+                <PasswordBox x:Name="txtPassword" Width="300" HorizontalAlignment="Right"/>
+            </Grid>
+            <Button x:Name="btnLogin" Content="Inloggen" Margin="2" Width="80" Click="btnLogin_Click"/>
         </StackPanel>
+        <Button x:Name="btn_Register" Content="Registreer" Margin="360,356,360,73" Width="80" Height="21"/>
     </Grid>
 </Page>

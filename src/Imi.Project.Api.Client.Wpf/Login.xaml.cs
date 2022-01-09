@@ -23,6 +23,7 @@ namespace Imi.Project.Api.Client.Wpf
     /// </summary>
     public partial class Login : Page
     {
+        private readonly ProductsOverview productsOverviewPage = new ProductsOverview();
         public Login()
         {
             InitializeComponent();
@@ -50,7 +51,7 @@ namespace Imi.Project.Api.Client.Wpf
 
             if (responseObject.IsSuccess)
             {
-                NavigationService.Navigate(typeof(ProductsOverview), responseObject.Message);
+                NavigationService.Navigate(productsOverviewPage, responseObject.Message);
             }
             else
             {

@@ -10,6 +10,14 @@
       Background="White">
 
     <Grid>
-        
+        <ListView Width="200" x:Name="lstProducts" HorizontalAlignment="Left">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" Margin="2"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
