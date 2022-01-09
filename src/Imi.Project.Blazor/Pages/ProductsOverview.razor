@@ -14,7 +14,7 @@ else
             @foreach (var product in Products)
             {
                 <div class="col-3">
-                <ProductCard Name="@product.Name" Description="@product.Description" imageUrl="@GetRandomImageUrl()"></ProductCard>
+                <ProductCard ProductId="@product.Id" Name="@product.Name" Description="@product.Description" imageUrl="@GetRandomImageUrl()"></ProductCard>
                 </div>
             }
         </div>
