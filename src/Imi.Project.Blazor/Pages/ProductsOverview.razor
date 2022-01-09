@@ -1,4 +1,5 @@
 ﻿@page "/productsoverview"
+@using Imi.Project.Blazor.Components
 
 <h1 class="page-title">All products</h1>
 
@@ -8,23 +9,14 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="container">
+        <div class="row">
             @foreach (var product in Products)
             {
-                <tr>
-                    <td>@product.Name</td>
-                    <td>@product.Description</td>
-                    <td>@product.Price euro</td>
-                </tr>
+                <div class="col-3">
+                <ProductCard Name="@product.Name" Description="@product.Description" imageUrl="@GetRandomImageUrl()"></ProductCard>
+                </div>
             }
-        </tbody>
-    </table>
+        </div>
+    </div>
 }

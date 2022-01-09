@@ -8,63 +8,53 @@ namespace Imi.Project.Blazor.Core.Models.Memory
     {
         public int Id { get; set; }
 
-        private string coverUri;
-
-        public string CoverUri
-        {
-            get { return coverUri; }
-            set 
-            {
-                value = "tile.png";
-                coverUri = value; 
-            }
-        }
-
-        private string flippedUri;
-
-        public string FlippedUri
-        {
-            get { return flippedUri; }
-            set 
-            {
-                switch (Id)
-                {
-                    case 0:
-                        value = "cake.png";
-                        break;
-                    case 1:
-                        value = "cookie.png";
-                        break;
-                    case 2:
-                        value = "cupcake.png";
-                        break;
-                    case 3:
-                        value = "donut.png";
-                        break;
-                    case 4:
-                        value = "macaron.png";
-                        break;
-                    case 5:
-                        value = "pie.png";
-                        break;
-                    case 6:
-                        value = "puff_pastry.png";
-                        break;
-                    case 7:
-                        value = "roll.png";
-                        break;
-                }
-
-                flippedUri = value; 
-            }
-        }
-
+        public string CoverUri { get; set; }
+        public string FlippedUri { get; set; }
         public bool IsFlipped { get; set; }
+        public bool IsFound { get; set; }
 
         public Tile(int id)
         {
             Id = id;
+            CoverUri = "tile.png";
+            FlippedUri = DetermineImage(id);
             IsFlipped = false;
+            IsFound = false;
+        }
+
+        public string DetermineImage(int id)
+        {
+            string value = "";
+
+            switch (id)
+            {
+                case 1:
+                    value = "cake.png";
+                    break;
+                case 2:
+                    value = "cookie.png";
+                    break;
+                case 3:
+                    value = "cupcake.png";
+                    break;
+                case 4:
+                    value = "donut.png";
+                    break;
+                case 5:
+                    value = "macaron.png";
+                    break;
+                case 6:
+                    value = "pie.png";
+                    break;
+                case 7:
+                    value = "puff_pastry.png";
+                    break;
+                case 8:
+                    value = "roll.png";
+                    break;
+            }
+
+            return value;
         }
     }
 }
