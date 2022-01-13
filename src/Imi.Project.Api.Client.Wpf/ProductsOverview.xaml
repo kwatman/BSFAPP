@@ -19,5 +19,15 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button x:Name="btnDelete" Content="Product Verwijderen" HorizontalAlignment="Left" Margin="436,402,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnAdd"  Content="Product Toevoegen" HorizontalAlignment="Left" Margin="251,402,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tblName" HorizontalAlignment="Left" Margin="375,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="23" Width="172"/>
+        <Label Content="Naam" HorizontalAlignment="Left" Margin="285,88,0,0" VerticalAlignment="Top"/>
+        <Label Content="Beschrijving" HorizontalAlignment="Left" Margin="285,140,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxDescription" HorizontalAlignment="Left" Margin="375,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="270" Height="52"/>
+        <Label Content="Prijs" HorizontalAlignment="Left" Margin="285,207,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="375,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Label Content="Categorie" HorizontalAlignment="Left" Margin="287,260,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="413,262,0,0" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Page>
