@@ -1,32 +1,24 @@
 <template>
-  <header>
-    <nav>
-    </nav>
-  </header>
-  <main>
+  <HeaderComponent/>
+  <main class="bg-glazed-pink">
     <HomePage/>
   </main>
 </template>
 
 <script>
 import HomePage from './components/HomePage.vue';
+import HeaderComponent from './components/HeaderComponent.vue';
 
 export default {
   name: 'App',
   components: {
     HomePage,
+    HeaderComponent,
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-}
-main{
-  margin: 0 auto;
-  padding: 30px;
-  background-color: white;
-  width: 1024px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Trocchi&display=swap');
 </style>
