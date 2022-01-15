@@ -13,8 +13,11 @@ namespace Imi.Project.Api.Core.DTO_S.Products
         [Required(ErrorMessage ="Naam is verplicht")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage ="Beschrijving is verplicht")]
-        public string Description { get; set; }
+        [Required(ErrorMessage ="Korte beschrijving is verplicht")]
+        public string ShortDescription { get; set; }
+
+        [Required(ErrorMessage ="Lange beschrijving is verplicht")]
+        public string LongDescription { get; set; }
 
         [Required(ErrorMessage ="Prijs is verplicht")]
         public decimal Price { get; set; }

@@ -10,6 +10,8 @@ namespace Imi.Project.Api.Core.DTO_S.BlogPosts
     {
         [Required(ErrorMessage = "Titel is verplicht")]
         public string Title { get; set; }
+        [Required(ErrorMessage = "Post is verplicht")]
+        public string Content { get; set; }
         public DateTime PostDate { get; set; }
     }
 }

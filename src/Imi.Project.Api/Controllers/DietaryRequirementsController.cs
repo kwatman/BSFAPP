@@ -68,8 +68,10 @@ namespace Imi.Project.Api.Controllers
             {
                 Id = p.Id,
                 Name = p.Name,
-                Description = p.Description,
+                ShortDescription = p.ShortDescription,
+                LongDescription = p.LongDescription,
                 Price = p.Price,
+                ImageURI = p.ImageURI,
                 Category = new CategoryResponseDTO
                 {
                     Id = p.Category.Id,

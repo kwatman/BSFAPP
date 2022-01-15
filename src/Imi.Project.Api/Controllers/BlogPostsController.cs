@@ -29,6 +29,7 @@ namespace Imi.Project.Api.Controllers
             {
                 Id = bp.Id,
                 Title = bp.Title,
+                Content = bp.Content,
                 PostDate = bp.PostDate
             });
 
@@ -50,6 +51,7 @@ namespace Imi.Project.Api.Controllers
                 {
                     Id = blogPost.Id,
                     Title = blogPost.Title,
+                    Content = blogPost.Content,
                     PostDate = blogPost.PostDate
                 };
 
@@ -69,6 +71,7 @@ namespace Imi.Project.Api.Controllers
                 var blogPostToAdd = new BlogPost
                 {
                     Title = blogPostDTO.Title,
+                    Content = blogPostDTO.Content,
                     PostDate = DateTime.Now
                 };
 

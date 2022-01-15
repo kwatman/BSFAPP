@@ -41,8 +41,10 @@ namespace Imi.Project.Api.Controllers
             {
                 Id = p.Id,
                 Name = p.Name,
-                Description = p.Description,
+                ShortDescription = p.ShortDescription,
+                LongDescription = p.LongDescription,
                 Price = p.Price,
+                ImageURI = p.ImageURI,
                 Category = new CategoryResponseDTO
                 {
                     Id = p.Category.Id,
@@ -72,8 +74,10 @@ namespace Imi.Project.Api.Controllers
                 {
                     Id = product.Id,
                     Name = product.Name,
-                    Description = product.Description,
+                    ShortDescription = product.ShortDescription,
+                    LongDescription = product.LongDescription,
                     Price = product.Price,
+                    ImageURI= product.ImageURI,
                     Category = new CategoryResponseDTO
                     {
                         Id = product.Category.Id,
@@ -110,9 +114,11 @@ namespace Imi.Project.Api.Controllers
                 var newProduct = new Product
                 {
                     Name = productDTO.Name,
-                    Description = productDTO.Description,
+                    ShortDescription = productDTO.ShortDescription,
+                    LongDescription = productDTO.LongDescription,
                     Price = productDTO.Price,
                     CategoryId = productDTO.CategoryId,
+                    ImageURI = "product_placeholder.jpg"
                 };
 
                 await _productService.AddAsync(newProduct);
@@ -161,8 +167,10 @@ namespace Imi.Project.Api.Controllers
                 else
                 {
                     newProduct.Name = productDTO.Name;
-                    newProduct.Description = productDTO.Description;
+                    newProduct.ShortDescription = productDTO.ShortDescription;
+                    newProduct.LongDescription = productDTO.LongDescription;
                     newProduct.Price = productDTO.Price;
+                    newProduct.ImageURI = "product_placeholder.jpg";
                     newProduct.CategoryId = productDTO.CategoryId;
 
                     await _productService.UpdateAsync(newProduct);

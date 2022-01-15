@@ -116,81 +116,171 @@ namespace Imi.Project.Api.Infrastructure.Data
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                         Name = "Clafoutis van kersen",
-                        Description = "Frans nagerecht van kersen in een lekker gebakken roommengsel uit de oven.",
+                        ShortDescription = "Frans nagerecht van kersen in een lekker gebakken roommengsel uit de oven.",
+                        LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis.",
                         Price = 8.50m,
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000001")
+                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                        ImageURI = "kersenclafoutis.jpg"
                     },
                     new Product
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000002"),
                         Name = "Marble Cake",
-                        Description = "Marmercake is de ultieme combinatie van een vanillecake en een chocoladecake.",
+                        ShortDescription = "Marmercake is de ultieme combinatie van een vanillecake en een chocoladecake.",
+                        LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis.",
                         Price = 6m,
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000002")
+                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000002"),
+                        ImageURI = "marblecake.jpg"
                     },
                     new Product
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000003"),
                         Name = "6 Vegan Pumpkin Cookies",
-                        Description = "Vanille vegan koekjes met pompoenglazuur",
+                        ShortDescription = "Vanille vegan koekjes met pompoenglazuur",
+                        LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis.",
                         Price = 5m,
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000003")
+                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        ImageURI = "pumpkincookie.jpg"
                     },
                     new Product
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000004"),
                         Name = "6 Cannelés de Bordeaux",
-                        Description = "Frans gebakje op smaak gebracht met rum, een culinaire specialiteit uit de streek rond Bordeaux",
+                        ShortDescription = "Frans gebakje op smaak gebracht met rum, een culinaire specialiteit uit de streek rond Bordeaux",
+                        LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis.",
                         Price = 4.50m,
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000002")
+                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000002"),
+                        ImageURI = "canneles.jpg"
                     },
                     new Product
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000005"),
                         Name = "6 Chistmas Cinnamon Cookies",
-                        Description = "Vanille-kaneelkoekjes met vanille glazuur in Kertsthema.",
+                        ShortDescription = "Chocolade-kaneelkoekjes met vanille glazuur in Kertsthema.",
+                        LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis.",
                         Price = 5.50m,
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000003")
+                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        ImageURI = "peppermintcookie.jpg"
                     },
                     new Product
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000006"),
                         Name = "6 Glazed Signature Fondant Cookies",
-                        Description = "Vanillekoekjes van het huis met roze rolfondant en het Glazed-logo.",
+                        ShortDescription = "Vanillekoekjes van het huis met roze rolfondant en het Glazed-logo.",
+                        LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis.",
                         Price = 3.50m,
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000004")
+                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000004"),
+                        ImageURI = "fondantcookie.jpeg"
                     },
                     new Product
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000007"),
                         Name = "Lemon Cheescake",
-                        Description = "Kaastaart met citroencoulis op een bodem van caramelcrumble.",
+                        ShortDescription = "Kaastaart met citroencoulis op een bodem van caramelcrumble.",
+                        LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis.",
                         Price = 7.50m,
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000001")
+                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                        ImageURI = "lemoncheesecake.jpg"
                     },
                     new Product
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000008"),
                         Name = "6 Glazed Doughnut Cookies",
-                        Description = "Glazed signature vanille-donutkoekjes met roze glazuur en sprinkles.",
+                        ShortDescription = "Glazed signature vanille-donutkoekjes met roze glazuur en sprinkles.",
+                        LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis.",
                         Price = 6.50m,
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000003")
+                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
+                        ImageURI = "doughnutcookie.jpg"
                     },
                     new Product
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000009"),
                         Name = "6 Valentine Fondant Cookies",
-                        Description = "Hartvormige chocoladekoekjes met afwerking in rode rolfondant",
+                        ShortDescription = "Hartvormige chocoladekoekjes met afwerking in rode rolfondant",
+                        LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis.",
                         Price = 4.50m,
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000004")
+                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000004"),
+                        ImageURI = "marblecookie.jpg"
                     },
                     new Product
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000010"),
                         Name = "Vegan Apple Crumble",
-                        Description = "Verse crumble met stukjes appel en kaneel, heerlijk warm met een bolltje vanille-ijs.",
+                        ShortDescription = "Verse crumble met stukjes appel en kaneel, heerlijk warm met een bolltje vanille-ijs.",
+                        LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis.",
                         Price = 7.50m,
-                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000001")
+                        CategoryId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                        ImageURI = "applecrumble.jpg"
                     }
                 });
 
@@ -313,18 +403,75 @@ namespace Imi.Project.Api.Infrastructure.Data
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                         Title = "Recept: Eclairs",
+                        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis." +
+                        "Suspendisse potenti. Nullam ut lorem auctor, lacinia mauris at, viverra est. " +
+                        "Donec finibus odio eu leo efficitur, eget dapibus elit hendrerit. Aliquam eu rutrum justo. " +
+                        "Pellentesque sagittis efficitur molestie. Fusce ut neque sit amet felis bibendum rutrum. " +
+                        "Sed sit amet massa a urna volutpat sodales. Mauris elit nibh, ornare quis commodo a, pellentesque nec turpis. " +
+                        "Nam ullamcorper nibh viverra turpis lobortis, laoreet eleifend erat lobortis. " +
+                        "Integer sollicitudin metus tellus, et pretium nibh imperdiet ut." +
+                        "Aliquam cursus ligula sed erat volutpat accumsan. Fusce ut risus sollicitudin, tincidunt elit commodo, varius nunc. " +
+                        "Vivamus fermentum eros at egestas tristique. Duis metus purus, auctor et congue vitae, finibus rhoncus arcu. " +
+                        "Aenean lobortis, sem a rutrum commodo, urna velit posuere lacus, aliquam rutrum sapien lacus ac sem. " +
+                        "Proin auctor, augue et tempor imperdiet, ante urna blandit tortor, vitae condimentum massa velit nec arcu. " +
+                        "Mauris euismod magna id velit consectetur lacinia. Nam id sapien et justo tempor consectetur ac vitae massa.",
                         PostDate = DateTime.Parse("23/07/2021")
                     },
                     new BlogPost
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000002"),
                         Title = "Nieuw product: Vegan Apple Crumble",
+                        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis." +
+                        "Suspendisse potenti. Nullam ut lorem auctor, lacinia mauris at, viverra est. " +
+                        "Donec finibus odio eu leo efficitur, eget dapibus elit hendrerit. Aliquam eu rutrum justo. " +
+                        "Pellentesque sagittis efficitur molestie. Fusce ut neque sit amet felis bibendum rutrum. " +
+                        "Sed sit amet massa a urna volutpat sodales. Mauris elit nibh, ornare quis commodo a, pellentesque nec turpis. " +
+                        "Nam ullamcorper nibh viverra turpis lobortis, laoreet eleifend erat lobortis. " +
+                        "Integer sollicitudin metus tellus, et pretium nibh imperdiet ut." +
+                        "Aliquam cursus ligula sed erat volutpat accumsan. Fusce ut risus sollicitudin, tincidunt elit commodo, varius nunc. " +
+                        "Vivamus fermentum eros at egestas tristique. Duis metus purus, auctor et congue vitae, finibus rhoncus arcu. " +
+                        "Aenean lobortis, sem a rutrum commodo, urna velit posuere lacus, aliquam rutrum sapien lacus ac sem. " +
+                        "Proin auctor, augue et tempor imperdiet, ante urna blandit tortor, vitae condimentum massa velit nec arcu. " +
+                        "Mauris euismod magna id velit consectetur lacinia. Nam id sapien et justo tempor consectetur ac vitae massa.",
                         PostDate = DateTime.Parse("18/09/2021")
                     },
                     new BlogPost
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000003"),
                         Title = "Glazed in de Krant van West-Vlaanderen",
+                        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                        "Ut auctor orci ac luctus pulvinar. Nam finibus a ante sed varius. Donec eget erat elit. " +
+                        "Suspendisse lobortis suscipit leo. Morbi quis lorem lacus. " +
+                        "Fusce elementum, mauris nec euismod finibus, sapien enim pharetra ex, ut porttitor risus sem nec ante. " +
+                        "In dapibus libero ut mattis imperdiet. Nulla aliquam fermentum erat, non pellentesque enim vestibulum nec. " +
+                        "Phasellus sit amet dui nunc. Integer placerat maximus sodales. Ut feugiat lorem quis eros dignissim, eu varius velit consectetur. " +
+                        "Mauris pulvinar elementum orci vitae sodales. Morbi lacinia ultricies ligula id sollicitudin. " +
+                        "Suspendisse consectetur nibh ac metus luctus facilisis." +
+                        "Suspendisse potenti. Nullam ut lorem auctor, lacinia mauris at, viverra est. " +
+                        "Donec finibus odio eu leo efficitur, eget dapibus elit hendrerit. Aliquam eu rutrum justo. " +
+                        "Pellentesque sagittis efficitur molestie. Fusce ut neque sit amet felis bibendum rutrum. " +
+                        "Sed sit amet massa a urna volutpat sodales. Mauris elit nibh, ornare quis commodo a, pellentesque nec turpis. " +
+                        "Nam ullamcorper nibh viverra turpis lobortis, laoreet eleifend erat lobortis. " +
+                        "Integer sollicitudin metus tellus, et pretium nibh imperdiet ut." +
+                        "Aliquam cursus ligula sed erat volutpat accumsan. Fusce ut risus sollicitudin, tincidunt elit commodo, varius nunc. " +
+                        "Vivamus fermentum eros at egestas tristique. Duis metus purus, auctor et congue vitae, finibus rhoncus arcu. " +
+                        "Aenean lobortis, sem a rutrum commodo, urna velit posuere lacus, aliquam rutrum sapien lacus ac sem. " +
+                        "Proin auctor, augue et tempor imperdiet, ante urna blandit tortor, vitae condimentum massa velit nec arcu. " +
+                        "Mauris euismod magna id velit consectetur lacinia. Nam id sapien et justo tempor consectetur ac vitae massa.",
                         PostDate = DateTime.Parse("13/10/2021")
                     }
                 });
