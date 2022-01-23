@@ -11,8 +11,8 @@
             </div>
             <!-- PAGES -->
             <div class="flex items-center space-x-14">
-              <a href="#" class="text-stone-900 font-montserrat font-bold text-lg hover:text-glazed-pink">Home</a>
-              <a href="#" class="text-stone-900 font-montserrat font-bold text-lg hover:text-glazed-pink">Producten</a>
+              <router-link to="#" class="text-stone-900 font-montserrat font-bold text-lg hover:text-glazed-pink">Home</router-link>
+              <router-link href="#" class="text-stone-900 font-montserrat font-bold text-lg hover:text-glazed-pink">Producten</router-link>
               <a href="#" class="text-stone-900 font-montserrat font-bold text-lg hover:text-glazed-pink">Blog</a>
               <a href="#" class="text-stone-900 font-montserrat font-bold text-lg hover:text-glazed-pink">Contact</a>
             </div>
