@@ -1,18 +1,16 @@
 <template>
   <HeaderComponent/>
   <main class="bg-glazed-pink">
-    <HomePage/>
+    <router-view/>
   </main>
 </template>
 
 <script>
-import HomePage from './pages/HomePage.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    HomePage,
     HeaderComponent,
   },
 };
