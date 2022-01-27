@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Imi.Project.Mobile.Pages.AdminProductCUPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Naam"/>
+            <Entry x:Name="txtName" Placeholder="Vul hier de naam van het product in"/>
+            <Label Text="Omschrijving"/>
+            <Editor x:Name="edtDescription" Placeholder="Beschrijf hier het product"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Prijs"/>
+                <Entry x:Name="txtPrice" Placeholder="0.00"/>
+                <Label Text="euro"/>
+            </StackLayout>
+            <Label Text="Categorie"/>
+            <Picker x:Name="pckCategory"/>
+            <Button Text="Save" Clicked="btnSave_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

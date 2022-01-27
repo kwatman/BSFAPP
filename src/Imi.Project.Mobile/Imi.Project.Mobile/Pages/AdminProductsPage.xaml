@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Imi.Project.Mobile.Pages.AdminProductsPage"
+             Title="Products" 
+             IconImageSource="baseline_sell_white_24dp.png">
+    <ContentPage.Content>
+        <ListView x:Name="lvProducts" BackgroundColor="Transparent" HasUnevenRows="False" RowHeight="200" SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="ProductUpdate_Clicked" CommandParameter="{Binding .}" Text="Aanpassen"/>
+                            <MenuItem Clicked="ProductDelete_Clicked" CommandParameter="{Binding .}" Text="Verwijderen" IsDestructive="True"/>
+                        </ViewCell.ContextActions>
+                        <Grid Padding="10">
+                            <Frame CornerRadius="20"
+                                   HasShadow="True">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="product_placeholder.jpg"/>
+                                    <StackLayout Padding="10" VerticalOptions="Start">
+                                        <Label Text="{Binding Name}" 
+                                               VerticalOptions="Center" 
+                                               FontSize="20"/>
+                                        <Label Text="{Binding Description}"
+                                               VerticalOptions="Center"
+                                               FontSize="12"/>
+                                        <Label Text="{Binding Price}"
+                                               VerticalOptions="Start"
+                                               FontSize="18"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Product Toevoegen" Clicked="btnAddProduct_Clicked"/>
+                </StackLayout>
+            </ListView.Footer>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

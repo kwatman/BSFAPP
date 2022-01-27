@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Imi.Project.Mobile.Pages.AdminBlogPostPage"
+             Title="Blog Posts" 
+             IconImageSource="baseline_post_add_white_24dp.png">
+    <ContentPage.Content>
+            <ListView x:Name="lvBlogPost" BackgroundColor="Transparent" HasUnevenRows="False" RowHeight="150" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="BlogPostUpdate_Clicked" CommandParameter="{Binding .}" Text="Aanpassen"/>
+                                <MenuItem Clicked="BlogPostDelete_Clicked" CommandParameter="{Binding .}" Text="Verwijderen" IsDestructive="True"/>
+                            </ViewCell.ContextActions>
+                            <Grid Padding="10">
+                                <Frame CornerRadius="20"
+                                   HasShadow="True">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="product_placeholder.jpg"/>
+                                    <StackLayout Padding="-2">
+                                        <Label Text="{Binding PostDate}"
+                                               FontSize="12"/>
+                                        <Label Text="{Binding Title}"
+                                               VerticalOptions="Center" 
+                                               FontSize="14"/>
+                                        <Label Text="{Binding Content}"
+                                               LineBreakMode="TailTruncation"
+                                               MaxLines="3"
+                                               FontSize="10"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button Text="Post Toevoegen" Clicked="btnBlogPostCreate_Clicked"/>
+                    </StackLayout>
+                </ListView.Footer>
+            </ListView>
+        </ContentPage.Content>
+</ContentPage>

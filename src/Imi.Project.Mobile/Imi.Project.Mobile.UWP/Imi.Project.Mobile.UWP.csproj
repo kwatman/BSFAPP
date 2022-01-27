@@ -130,7 +130,21 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="baseline_category_white_24dp.png" />
+    <Content Include="baseline_post_add_white_24dp.png" />
+    <Content Include="baseline_sell_white_24dp.png" />
+    <Content Include="Favicon Square Rose-Gold.png" />
+    <Content Include="Horizontal Logo on Rose-Gold.png" />
+    <Content Include="Leaves on Rose-Gold.png" />
+    <Content Include="Logomark on Rose-Gold.png" />
+    <Content Include="product_placeholder.jpg" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Showcase 1.png" />
+    <Content Include="Title Black.png" />
+    <Content Include="Title White.png" />
+    <Content Include="Title.png" />
+    <Content Include="Vertical Logo on Rose-Gold.png" />
+    <Content Include="Vertical Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -143,9 +157,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.12" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Imi.Project.Mobile\Imi.Project.Mobile.csproj">

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Imi.Project.Mobile.Pages.AdminBlogPostCUPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Titel"/>
+            <Entry x:Name="txtTitle" Placeholder="Voer hier een titel in"/>
+            <Label Text="Inhoud"/>
+            <Editor x:Name="edtContent" Placeholder="Schrijf hier de inhoud van de blogpost"/>
+            <Button Text="Opslaan" Clicked="btnSave_Clicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

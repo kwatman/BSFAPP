@@ -54,8 +54,8 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -86,13 +86,28 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\product_placeholder.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Imi.Project.Mobile\Imi.Project.Mobile.csproj">
       <Project>{DF2BCC13-CCEE-4582-B7DA-C6EB55D333DB}</Project>
       <Name>Imi.Project.Mobile</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\baseline_sell_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable\baseline_category_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable\baseline_post_add_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable\FaviconSquareRose_Gold.png" />
+    <AndroidResource Include="Resources\drawable\HorizontalLogoonRose_Gold.png" />
+    <AndroidResource Include="Resources\drawable\LeavesonRose_Gold.png" />
+    <AndroidResource Include="Resources\drawable\LogomarkonRose_Gold.png" />
+    <AndroidResource Include="Resources\drawable\Showcase1.png" />
+    <AndroidResource Include="Resources\drawable\TitleBlack.png" />
+    <AndroidResource Include="Resources\drawable\TitleWhite.png" />
+    <AndroidResource Include="Resources\drawable\Title.png" />
+    <AndroidResource Include="Resources\drawable\VerticalLogoonRose_Gold.png" />
+    <AndroidResource Include="Resources\drawable\VerticalLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
