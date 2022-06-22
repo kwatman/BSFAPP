@@ -12,7 +12,19 @@ namespace Imi.Project.Herexamen.Api.Core.Models
         public Guid CombatRoleId { get; set; }
         public CombatRole CombatRole  { get; set; }
         public ICollection<Participation> Participations { get; set; }
-        public int NumberOfParticipations { get; set; }
-        public ParticipationRank ParticipationRank { get; set; }
+        private int numberOfParticipations;
+        private ParticipationRank participationRank;
+
+        public int NumberOfParticipations
+        {
+            get { return Participations.Count(); }
+            private set { numberOfParticipations = value; }
+        }
+
+        public ParticipationRank ParticipationRank
+        {
+            get { return myVar; }
+            set { myVar = value; }
+        }
     }
 }
