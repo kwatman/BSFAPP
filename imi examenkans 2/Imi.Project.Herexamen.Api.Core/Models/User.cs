@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Imi.Project.Herexamen.Api.Core.Enums;
 
 namespace Imi.Project.Herexamen.Api.Core.Models
 {
@@ -12,19 +14,7 @@ namespace Imi.Project.Herexamen.Api.Core.Models
         public Guid CombatRoleId { get; set; }
         public CombatRole CombatRole  { get; set; }
         public ICollection<Participation> Participations { get; set; }
-        private int numberOfParticipations;
-        private ParticipationRank participationRank;
-
-        public int NumberOfParticipations
-        {
-            get { return Participations.Count(); }
-            private set { numberOfParticipations = value; }
-        }
-
-        public ParticipationRank ParticipationRank
-        {
-            get { return myVar; }
-            set { myVar = value; }
-        }
+        public int NumberOfParticipations { get; private set; }
+        public ParticipationRank ParticipationRank { get; private set; }
     }
 }
