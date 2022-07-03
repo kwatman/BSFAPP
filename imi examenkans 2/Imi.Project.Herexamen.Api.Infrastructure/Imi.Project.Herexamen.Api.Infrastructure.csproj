@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <RootNamespace>Imi.Project.Herexamen.Api.Infrastucture</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

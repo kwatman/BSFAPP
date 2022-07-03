@@ -2,7 +2,7 @@ using System;
 using Imi.Project.Herexamen.Api.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Imi.Project.Herexamen.Api.Infrastucture.Data
+namespace Imi.Project.Herexamen.Api.Infrastructure.Data
 {
     public class DataSeeder
     {
@@ -526,7 +526,7 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Data
                     new Participation
                     {
                         UserId = Guid.Parse("00000000-0000-0000-0000-000000000002"),
-                        OperationId = Guid.Parse("00000000-0000-0000-0000-0000000000")
+                        OperationId = Guid.Parse("00000000-0000-0000-0000-000000000001")
                     },
 
                     new Participation
@@ -1000,7 +1000,7 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Data
                     new Participation
                     {
                         UserId = Guid.Parse("00000000-0000-0000-0000-000000000009"),
-                        OperationId = Guid.Parse("00000000-0000-0000-0000-0000000000010")
+                        OperationId = Guid.Parse("00000000-0000-0000-0000-000000000010")
                     },
 
                     new Participation

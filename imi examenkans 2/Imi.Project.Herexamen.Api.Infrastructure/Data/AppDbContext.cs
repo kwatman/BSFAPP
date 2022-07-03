@@ -2,7 +2,7 @@ using System.Linq;
 using Imi.Project.Herexamen.Api.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Imi.Project.Herexamen.Api.Infrastucture.Data
+namespace Imi.Project.Herexamen.Api.Infrastructure.Data
 {
     public class AppDbContext: DbContext
     {

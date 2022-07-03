@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Herexamen.Api",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Herexamen.Api.Core", "Imi.Project.Herexamen.Api.Core\Imi.Project.Herexamen.Api.Core.csproj", "{9A568F17-BA39-446B-A9FF-104841901930}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Herexamen.Api.Infrastucture", "Imi.Project.Herexamen.Api.Infrastucture\Imi.Project.Herexamen.Api.Infrastucture.csproj", "{56A8ED97-5A02-4FD1-9282-690DA95A7B34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Herexamen.Api.Infrastructure", "Imi.Project.Herexamen.Api.Infrastructure\Imi.Project.Herexamen.Api.Infrastructure.csproj", "{56A8ED97-5A02-4FD1-9282-690DA95A7B34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imi.Project.Herexamen.Mobile.UWP", "Imi.Project.Herexamen.Mobile\Imi.Project.Herexamen.Mobile.UWP\Imi.Project.Herexamen.Mobile.UWP.csproj", "{D3690A8B-79C6-482B-9AEB-9D954DED083A}"
 EndProject
