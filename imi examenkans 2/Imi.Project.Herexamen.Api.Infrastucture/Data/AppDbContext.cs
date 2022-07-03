@@ -1,3 +1,4 @@
+using System.Linq;
 using Imi.Project.Herexamen.Api.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -48,6 +49,7 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Data
                 .HasOne(o => o.Map)
                 .WithMany(m => m.Operations);
 
+            DataSeeder.SeedData(modelBuilder);
         }
     }
 }

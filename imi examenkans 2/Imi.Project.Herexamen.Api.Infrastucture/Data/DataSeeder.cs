@@ -6,7 +6,7 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Data
 {
     public class DataSeeder
     {
-        public void SeedData(ModelBuilder modelBuilder)
+        public static void SeedData(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Map>().HasData(
                 new[]
