@@ -21,31 +21,42 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
             return _ctx.Operations.Include(o => o.Map);
         }
 
-        public override async Task<IEnumerable<Operation>> ListAllAsync()
+        public override async Task<ServiceResponse<IEnumerable<Operation>>> ListAllAsync()
         {
+            ServiceResponse<IEnumerable<Operation>> response = new ServiceResponse<IEnumerable<Operation>>();
             var operations = await GetAll().ToListAsync();
-            return operations;
+            response.Data = operations;
+
+            return response;
         }
 
-        public override async Task<Operation> GetByIdAsync(Guid id)
+        public override async Task<ServiceResponse<Operation>> GetByIdAsync(Guid id)
         {
+            ServiceResponse<Operation> response = new ServiceResponse<Operation>();
             var operation = await GetAll().SingleOrDefaultAsync(o => o.Id.Equals(id));
-            return operation;
+            response.Data = operation;
+
+            return response;
         }
 
-        public async Task<IEnumerable<Operation>> GetByMapIdAsync(Guid mapId)
+        public async Task<ServiceResponse<IEnumerable<Operation>>> GetByMapIdAsync(Guid mapId)
         {
+            ServiceResponse<IEnumerable<Operation>> response = new ServiceResponse<IEnumerable<Operation>>();
             var operations = await GetAll().Where(o => o.MapId.Equals(mapId)).ToListAsync();
-            return operations;
+            response.Data = operations;
+
+            return response;
         }
 
-        public async Task<IEnumerable<Operation>> SearchAsync(string searchString)
+        public async Task<ServiceResponse<IEnumerable<Operation>>> SearchAsync(string searchString)
         {
+            ServiceResponse<IEnumerable<Operation>> response = new ServiceResponse<IEnumerable<Operation>>();
             var operations = await GetAll()
                 .Where(o => o.CodeName.Contains(searchString.Trim().ToUpper()) ||
                             o.Map.Name.Contains(searchString.Trim().ToUpper())).ToListAsync();
+            response.Data = operations;
 
-            return operations;
+            return response;
         }
     }
 }
