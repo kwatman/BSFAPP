@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Imi.Project.Herexamen.Api.Core.Interfaces.Repositories;
 using Imi.Project.Herexamen.Api.Infrastructure.Data;
+using Imi.Project.Herexamen.Api.Infrastucture.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +33,13 @@ namespace Imi.Project.Herexamen.Api
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultDatabase")));
 
             services.AddControllers();
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddScoped<IMapRepository, MapRepository>();
+            services.AddScoped<ICombatRoleRepository, CombatRoleRepository>();
+            services.AddScoped<IOperationRepository, OperationRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
