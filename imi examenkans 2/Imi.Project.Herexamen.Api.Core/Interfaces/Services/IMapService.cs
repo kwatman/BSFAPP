@@ -11,5 +11,7 @@ namespace Imi.Project.Herexamen.Api.Core.Interfaces.Services
         Task<ServiceResponse<IEnumerable<MapResponseDTO>>> GetAllMaps();
         Task<ServiceResponse<MapResponseDTO>> GetMapById(Guid mapId);
         Task<ServiceResponse<MapResponseDTO>> CreateMap(MapRequestDTO request);
+        Task<ServiceResponse<MapResponseDTO>> UpdateMap(MapRequestDTO mapRequestDto);
+        Task<ServiceResponse<MapResponseDTO>> DeleteMap(Guid id);
     }
 }

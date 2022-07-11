@@ -11,5 +11,7 @@ namespace Imi.Project.Herexamen.Api.Core.Interfaces.Services
         Task<ServiceResponse<IEnumerable<CombatRoleResponseDTO>>> GetAllCombatRoles();
         Task<ServiceResponse<CombatRoleResponseDTO>> GetCombatRoleById(Guid combatRoleId);
         Task<ServiceResponse<CombatRoleResponseDTO>> CreateCombatRole(CombatRoleRequestDTO request);
+        Task<ServiceResponse<CombatRoleResponseDTO>> UpdateCombatRole(CombatRoleRequestDTO request);
+        Task<ServiceResponse<CombatRoleResponseDTO>> DeleteCombatRole(Guid id);
     }
 }

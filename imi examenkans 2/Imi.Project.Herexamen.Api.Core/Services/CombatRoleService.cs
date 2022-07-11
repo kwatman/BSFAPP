@@ -48,5 +48,45 @@ namespace Imi.Project.Herexamen.Api.Core.Services
 
             return response;
         }
+
+        public async Task<ServiceResponse<CombatRoleResponseDTO>> UpdateCombatRole(CombatRoleRequestDTO request)
+        {
+            ServiceResponse<CombatRoleResponseDTO> response = new ServiceResponse<CombatRoleResponseDTO>();
+
+            try
+            {
+                var combatRole = await _combatRoleRepository.GetByIdAsync(request.Id);
+                combatRole.Name = request.Name;
+                combatRole.Description = request.Description;
+                var updatedCombatRole = await _combatRoleRepository.UpdateAsync(combatRole);
+                response.Data = _mapper.Map<CombatRoleResponseDTO>(updatedCombatRole);
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+
+        public async Task<ServiceResponse<CombatRoleResponseDTO>> DeleteCombatRole(Guid id)
+        {
+            ServiceResponse<CombatRoleResponseDTO> response = new ServiceResponse<CombatRoleResponseDTO>();
+
+            try
+            {
+                var combatRole = await _combatRoleRepository.GetByIdAsync(id);
+                var deletedCombatRole = await _combatRoleRepository.DeleteAsync(combatRole);
+                response.Data = _mapper.Map<CombatRoleResponseDTO>(deletedCombatRole);
+            }
+            catch(Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
     }
 }

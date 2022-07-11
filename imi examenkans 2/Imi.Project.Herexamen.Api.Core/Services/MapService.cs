@@ -48,5 +48,44 @@ namespace Imi.Project.Herexamen.Api.Core.Services
 
             return response;
         }
+
+        public async Task<ServiceResponse<MapResponseDTO>> UpdateMap(MapRequestDTO request)
+        {
+            ServiceResponse<MapResponseDTO> response = new ServiceResponse<MapResponseDTO>();
+
+            try
+            {
+                var map = await _mapRepository.GetByIdAsync(request.Id);
+                map.Name = request.Name;
+                var updatedMap = await _mapRepository.UpdateAsync(map);
+                response.Data = _mapper.Map<MapResponseDTO>(updatedMap);
+            }
+            catch(Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+
+        public async Task<ServiceResponse<MapResponseDTO>> DeleteMap(Guid id)
+        {
+            ServiceResponse<MapResponseDTO> response = new ServiceResponse<MapResponseDTO>();
+
+            try
+            {
+                var map = await _mapRepository.GetByIdAsync(id);
+                var deletedMap = await _mapRepository.DeleteAsync(map);
+                response.Data = _mapper.Map<MapResponseDTO>(deletedMap);
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
     }
 }

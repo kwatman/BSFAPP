@@ -1,4 +1,5 @@
 using AutoMapper;
+using Imi.Project.Herexamen.Api.Core.DTO_S.CombatRole;
 using Imi.Project.Herexamen.Api.Core.DTO_S.Map;
 using Imi.Project.Herexamen.Api.Core.Models;
 
@@ -10,6 +11,8 @@ namespace Imi.Project.Herexamen.Api.Core
         {
             CreateMap<Map, MapResponseDTO>();
             CreateMap<MapRequestDTO, Map>();
+            CreateMap<CombatRole, CombatRoleResponseDTO>();
+            CreateMap<CombatRoleRequestDTO, CombatRole>();
         }
     }
 }
