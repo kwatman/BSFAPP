@@ -7,7 +7,7 @@ namespace Imi.Project.Herexamen.Api.Core.Interfaces.Repositories
 {
     public interface IUserRepository : IBaseRepository<User>
     {
-        Task<ServiceResponse<IEnumerable<User>>> GetByCombatRoleIdAsync(Guid combatRoleId);
-        Task<ServiceResponse<IEnumerable<User>>> SearchAsync(string searchString);
+        Task<IEnumerable<User>> GetByCombatRoleIdAsync(Guid combatRoleId);
+        Task<IEnumerable<User>> SearchAsync(string searchString);
     }
 }

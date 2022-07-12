@@ -21,42 +21,34 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
             return _ctx.Users.Include(u => u.CombatRole);
         }
 
-        public override async Task<ServiceResponse<IEnumerable<User>>> ListAllAsync()
+        public override async Task<IEnumerable<User>> ListAllAsync()
         {
-            ServiceResponse<IEnumerable<User>> response = new ServiceResponse<IEnumerable<User>>();
             var users = await GetAll().ToListAsync();
-            response.Data = users;
 
-            return response;
+            return users;
         }
 
-        public override async Task<ServiceResponse<User>> GetByIdAsync(Guid id)
+        public override async Task<User> GetByIdAsync(Guid id)
         {
-            ServiceResponse<User> response = new ServiceResponse<User>();
             var user = await GetAll().SingleOrDefaultAsync(u => u.Id.Equals(id));
-            response.Data = user;
 
-            return response;
+            return user;
         }
 
-        public async Task<ServiceResponse<IEnumerable<User>>> GetByCombatRoleIdAsync(Guid combatRoleId)
+        public async Task<IEnumerable<User>> GetByCombatRoleIdAsync(Guid combatRoleId)
         {
-            ServiceResponse<IEnumerable<User>> response = new ServiceResponse<IEnumerable<User>>();
             var users = await GetAll().Where(u => u.CombatRoleId.Equals(combatRoleId)).ToListAsync();
-            response.Data = users;
 
-            return response;
+            return users;
         }
 
-        public async Task<ServiceResponse<IEnumerable<User>>> SearchAsync(string searchString)
+        public async Task<IEnumerable<User>> SearchAsync(string searchString)
         {
-            ServiceResponse<IEnumerable<User>> response = new ServiceResponse<IEnumerable<User>>();
             var users = await GetAll()
                 .Where(u => u.Username.Contains(searchString.Trim().ToUpper()) ||
                             u.CombatRole.Name.Contains(searchString.Trim().ToUpper())).ToListAsync();
-            response.Data = users;
 
-            return response;
+            return users;
         }
     }
 }

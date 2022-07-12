@@ -60,7 +60,7 @@ namespace Imi.Project.Herexamen.Api.Core.Services
                 var updatedMap = await _mapRepository.UpdateAsync(map);
                 response.Data = _mapper.Map<MapResponseDTO>(updatedMap);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 response.Success = false;
                 response.Message = ex.Message;
