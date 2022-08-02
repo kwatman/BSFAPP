@@ -7,7 +7,7 @@ namespace Imi.Project.Herexamen.Api.Core.Interfaces.Repositories
 {
     public interface IOperationRepository : IBaseRepository<Operation>
     {
-        Task<ServiceResponse<IEnumerable<Operation>>> GetByMapIdAsync(Guid mapId);
-        Task<ServiceResponse<IEnumerable<Operation>>> SearchAsync(string searchString);
+        Task<IEnumerable<Operation>> GetByMapIdAsync(Guid mapId);
+        Task<IEnumerable<Operation>> SearchAsync(string searchString);
     }
 }
