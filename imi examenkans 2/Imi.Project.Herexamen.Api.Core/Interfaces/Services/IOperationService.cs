@@ -8,7 +8,7 @@ namespace Imi.Project.Herexamen.Api.Core.Interfaces.Services
 {
     public interface IOperationService
     {
-        Task<ServiceResponse<IEnumerable<OperationResponseDTO>>> GetAllUsers();
+        Task<ServiceResponse<IEnumerable<OperationResponseDTO>>> GetAllOperations();
         Task<ServiceResponse<OperationResponseDTO>> GetOperationById(Guid operationId);
         Task<ServiceResponse<IEnumerable<OperationResponseDTO>>> GetOperationByMapId(Guid combatRoleId);
         Task<ServiceResponse<IEnumerable<OperationResponseDTO>>> SearchOperation(string searchString);
