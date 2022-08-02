@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Imi.Project.Herexamen.Api.Core.DTO_S.Operation;
-using Imi.Project.Herexamen.Api.Core.DTO_S.User;
 using Imi.Project.Herexamen.Api.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
