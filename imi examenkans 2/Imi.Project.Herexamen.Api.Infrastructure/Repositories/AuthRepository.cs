@@ -1,20 +1,28 @@
 using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Imi.Project.Herexamen.Api.Core.Interfaces.Repositories;
 using Imi.Project.Herexamen.Api.Core.Models;
 using Imi.Project.Herexamen.Api.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
 {
     public class AuthRepository : IAuthRepository
     {
         private readonly AppDbContext _ctx;
+        private readonly IConfiguration _config;
 
-        public AuthRepository(AppDbContext ctx)
+        public AuthRepository(AppDbContext ctx, IConfiguration config)
         {
             _ctx = ctx;
+            _config = config;
         }
 
         // REGISTER
@@ -83,6 +91,33 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
             }
         }
 
+        private string CreateJwt(User user)
+        {
+            List<Claim> claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Username)
+            };
+
+            SymmetricSecurityKey key =
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("Appsettings:Token").Value));
+
+            SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddHours(12),
+                SigningCredentials = credentials
+            };
+
+            JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+
+            SecurityToken jwt = handler.CreateToken(tokenDescriptor);
+
+            return handler.WriteToken(jwt);
+        }
+
         public async Task<ServiceResponse<string>> Login(string username, string password)
         {
             ServiceResponse<string> response = new ServiceResponse<string>();
@@ -101,7 +136,7 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
             }
             else
             {
-                response.Data = user.Id.ToString();
+                response.Data = CreateJwt(user);
             }
 
             return response;
