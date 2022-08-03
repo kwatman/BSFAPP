@@ -100,7 +100,7 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
             };
 
             SymmetricSecurityKey key =
-                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("Appsettings:Token").Value));
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
 
             SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
