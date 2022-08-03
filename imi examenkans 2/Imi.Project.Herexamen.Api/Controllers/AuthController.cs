@@ -33,5 +33,20 @@ namespace Imi.Project.Herexamen.Api.Controllers
                 return Ok(response);
             }
         }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(UserLoginDTO request)
+        {
+            ServiceResponse<string> response = await _authRepository.Login(request.Username, request.Password);
+
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+            else
+            {
+                return Ok(response);
+            }
+        }
     }
 }

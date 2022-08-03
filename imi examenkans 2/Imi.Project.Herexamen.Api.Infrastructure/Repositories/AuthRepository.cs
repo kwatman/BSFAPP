@@ -83,7 +83,7 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
             }
         }
 
-        public async Task<ServiceResponse<string> Login(string username, string password)
+        public async Task<ServiceResponse<string>> Login(string username, string password)
         {
             ServiceResponse<string> response = new ServiceResponse<string>();
 
