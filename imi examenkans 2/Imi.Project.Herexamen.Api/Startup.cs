@@ -36,6 +36,7 @@ namespace Imi.Project.Herexamen.Api
 
             services.AddAutoMapper(typeof(Startup));
 
+            services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IMapRepository, MapRepository>();
             services.AddScoped<ICombatRoleRepository, CombatRoleRepository>();
             services.AddScoped<IOperationRepository, OperationRepository>();

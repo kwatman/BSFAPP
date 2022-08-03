@@ -17,6 +17,7 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
             _ctx = ctx;
         }
 
+        // REGISTER
         private void HashPassword(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512())
@@ -61,6 +62,49 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
                 response.Data = user.Id;
                 return response;
             }
+        }
+
+        //LOGIN
+        private bool CheckPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            using (var hmac = new HMACSHA512(passwordSalt))
+            {
+                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+
+                for (int i = 0; i < computedHash.Length; i++)
+                {
+                    if (computedHash[i] != passwordHash[i])
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+        }
+
+        public async Task<ServiceResponse<string> Login(string username, string password)
+        {
+            ServiceResponse<string> response = new ServiceResponse<string>();
+
+            User user = await _ctx.Users.FirstOrDefaultAsync(u => u.Username.ToLower().Equals(username.ToLower()));
+
+            if (user == null)
+            {
+                response.Success = false;
+                response.Message = "User not found";
+            }
+            else if (!CheckPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            {
+                response.Success = false;
+                response.Message = "Wrong password";
+            }
+            else
+            {
+                response.Data = user.Id.ToString();
+            }
+
+            return response;
         }
     }
 }
