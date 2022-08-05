@@ -2,10 +2,12 @@ using System;
 using System.Threading.Tasks;
 using Imi.Project.Herexamen.Api.Core.DTO_S.Operation;
 using Imi.Project.Herexamen.Api.Core.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Imi.Project.Herexamen.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OperationController : ControllerBase
@@ -17,6 +19,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             _operationService = operationService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -30,6 +33,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
