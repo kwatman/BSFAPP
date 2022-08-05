@@ -18,7 +18,11 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
 
         public override IQueryable<Operation> GetAll()
         {
-            return _ctx.Operations.Include(o => o.Map);
+            return _ctx.Operations
+                .Include(o => o.Map)
+                .Include(o => o.Participations)
+                .ThenInclude(p => p.User)
+                .ThenInclude(u => u.CombatRole);
         }
 
         public override async Task<IEnumerable<Operation>> ListAllAsync()

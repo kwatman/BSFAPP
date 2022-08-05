@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Imi.Project.Herexamen.Api.Core.Models
 {
-    public class Participation
+    public class Participation : Base
     {
         public Guid UserId { get; set; }
         public User User { get; set; }

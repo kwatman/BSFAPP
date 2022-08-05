@@ -9,6 +9,7 @@ using Imi.Project.Herexamen.Api.Infrastucture.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +39,8 @@ namespace Imi.Project.Herexamen.Api
             services.AddControllers();
 
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IMapRepository, MapRepository>();
