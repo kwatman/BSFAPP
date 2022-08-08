@@ -6,12 +6,15 @@ using Imi.Project.Herexamen.Api.Core.Enums;
 
 namespace Imi.Project.Herexamen.Api.Core.Models
 {
+    [Table("User")]
     public class User: Base
     {
         public string Username { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public bool SquadLeader { get; set; }
+
+        [ForeignKey("CombatRole")]
         public Guid CombatRoleId { get; set; }
         public CombatRole CombatRole  { get; set; }
         public ICollection<Participation> Participations { get; set; } // Navigation Property Participations

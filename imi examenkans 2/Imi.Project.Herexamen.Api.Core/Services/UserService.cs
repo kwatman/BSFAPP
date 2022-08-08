@@ -78,8 +78,7 @@ namespace Imi.Project.Herexamen.Api.Core.Services
                 var user = await _userRepository.GetByIdAsync(request.Id);
                 user.Username = request.UserName;
                 user.SquadLeader = request.SquadLeader;
-                // TODO: combatrole
-                // TODO: participations
+                user.CombatRoleId = request.CombatRoleId;
                 var updatedUser = await _userRepository.UpdateAsync(user);
                 response.Data = _mapper.Map<UserResponseDTO>(updatedUser);
             }

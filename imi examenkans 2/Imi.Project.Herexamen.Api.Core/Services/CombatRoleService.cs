@@ -12,9 +12,9 @@ namespace Imi.Project.Herexamen.Api.Core.Services
     public class CombatRoleService : ICombatRoleService
     {
         private readonly ICombatRoleRepository _combatRoleRepository;
-        private readonly Mapper _mapper;
+        private readonly IMapper _mapper;
 
-        public CombatRoleService(ICombatRoleRepository combatRoleRepository, Mapper mapper)
+        public CombatRoleService(ICombatRoleRepository combatRoleRepository, IMapper mapper)
         {
             _combatRoleRepository = combatRoleRepository;
             _mapper = mapper;

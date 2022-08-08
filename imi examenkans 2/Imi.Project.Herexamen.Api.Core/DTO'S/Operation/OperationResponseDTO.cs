@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Imi.Project.Herexamen.Api.Core.DTO_S.Base;
 using Imi.Project.Herexamen.Api.Core.DTO_S.Map;
+using Imi.Project.Herexamen.Api.Core.DTO_S.User;
 
 namespace Imi.Project.Herexamen.Api.Core.DTO_S.Operation
 {
@@ -10,6 +12,6 @@ namespace Imi.Project.Herexamen.Api.Core.DTO_S.Operation
         public string Sitrep { get; set; }
         public DateTime ZeroHour { get; set; }
         public MapResponseDTO Map { get; set; }
-        // Participants
+        public List<UserResponseDTO> Participants { get; set; }
     }
 }

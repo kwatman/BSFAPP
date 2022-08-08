@@ -12,6 +12,6 @@ namespace Imi.Project.Herexamen.Api.Core.DTO_S.User
         public string UserName { get; set; }
         public bool SquadLeader { get; set; }
         public CombatRoleResponseDTO CombatRole { get; set; }
-        public List<OperationResponseDTO> Operation { get; set; }
+        public List<OperationResponseDTO> Operations { get; set; }
     }
 }

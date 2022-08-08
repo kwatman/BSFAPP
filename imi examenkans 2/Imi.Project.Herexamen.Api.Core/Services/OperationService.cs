@@ -79,8 +79,9 @@ namespace Imi.Project.Herexamen.Api.Core.Services
                 operation.CodeName = request.CodeName;
                 operation.Sitrep = request.Sitrep;
                 operation.ZeroHour = request.ZeroHour;
-                // TODO: map
+                operation.MapId = request.MapId;
                 // TODO: participations
+
                 var updatedOperation = await _operationRepository.UpdateAsync(operation);
                 response.Data = _mapper.Map<OperationResponseDTO>(updatedOperation);
             }
