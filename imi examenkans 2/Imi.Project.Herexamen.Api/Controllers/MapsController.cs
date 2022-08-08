@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Imi.Project.Herexamen.Api.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MapsController : ControllerBase
@@ -19,7 +19,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             _mapService = mapService;
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -33,7 +33,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {

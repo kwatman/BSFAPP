@@ -20,9 +20,6 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
         {
             return _ctx.Users
                 .Include(u => u.CombatRole);
-            /*.Include(u => u.Participations)
-            .ThenInclude(p => p.Operation)
-            .ThenInclude(o => o.Map);*/
         }
 
         public override async Task<IEnumerable<User>> ListAllAsync()
