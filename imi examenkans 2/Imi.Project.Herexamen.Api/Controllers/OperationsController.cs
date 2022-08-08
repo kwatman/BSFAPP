@@ -10,11 +10,11 @@ namespace Imi.Project.Herexamen.Api.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class OperationController : ControllerBase
+    public class OperationsController : ControllerBase
     {
         protected readonly IOperationService _operationService;
 
-        public OperationController(IOperationService operationService)
+        public OperationsController(IOperationService operationService)
         {
             _operationService = operationService;
         }

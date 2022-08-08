@@ -11,11 +11,11 @@ namespace Imi.Project.Herexamen.Api.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class CombatRoleController : ControllerBase
+    public class CombatRolesController : ControllerBase
     {
         protected readonly ICombatRoleService _combatRoleService;
 
-        public CombatRoleController(ICombatRoleService combatRoleService)
+        public CombatRolesController(ICombatRoleService combatRoleService)
         {
             _combatRoleService = combatRoleService;
         }

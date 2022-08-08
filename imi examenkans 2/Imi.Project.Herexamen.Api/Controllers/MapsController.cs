@@ -1,27 +1,29 @@
 using System;
 using System.Threading.Tasks;
-using Imi.Project.Herexamen.Api.Core.DTO_S.User;
+using Imi.Project.Herexamen.Api.Core.DTO_S.Map;
 using Imi.Project.Herexamen.Api.Core.Interfaces.Services;
-using Imi.Project.Herexamen.Api.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Imi.Project.Herexamen.Api.Controllers
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class MapsController : ControllerBase
     {
-        protected readonly IUserService _userService;
+        protected readonly IMapService _mapService;
 
-        public UserController(IUserService userService)
+        public MapsController(IMapService mapService)
         {
-            _userService = userService;
+            _mapService = mapService;
         }
 
+        //[AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var response = await _userService.GetAllUsers();
+            var response = await _mapService.GetAllMaps();
 
             if (response.Data == null)
             {
@@ -31,10 +33,11 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
+        //[AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var response = await _userService.GetUserById(id);
+            var response = await _mapService.GetMapById(id);
 
             if (response.Data == null)
             {
@@ -45,9 +48,9 @@ namespace Imi.Project.Herexamen.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(UserRequestDTO request)
+        public async Task<IActionResult> Create(MapRequestDTO request)
         {
-            var response = await _userService.CreateUser(request);
+            var response = await _mapService.CreateMap(request);
 
             if (response.Data == null)
             {
@@ -58,9 +61,9 @@ namespace Imi.Project.Herexamen.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(UserRequestDTO request)
+        public async Task<IActionResult> Update(MapRequestDTO request)
         {
-            var response = await _userService.UpdateUser(request);
+            var response = await _mapService.UpdateMap(request);
 
             if (response.Data == null)
             {
@@ -73,7 +76,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var response = await _userService.DeleteUser(id);
+            var response = await _mapService.DeleteMap(id);
 
             if (response.Data == null)
             {

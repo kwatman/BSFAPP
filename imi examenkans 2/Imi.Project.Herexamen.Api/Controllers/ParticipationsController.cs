@@ -9,11 +9,11 @@ namespace Imi.Project.Herexamen.Api.Controllers
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class ParticipationController : ControllerBase
+    public class ParticipationsController : ControllerBase
     {
         private readonly IParticipationService _participationService;
 
-        public ParticipationController(IParticipationService participationService)
+        public ParticipationsController(IParticipationService participationService)
         {
             _participationService = participationService;
         }

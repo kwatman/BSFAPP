@@ -16,9 +16,9 @@ namespace Imi.Project.Herexamen.Api.Core
             CreateMap<MapRequestDTO, Map>();
             CreateMap<CombatRole, CombatRoleResponseDTO>();
             CreateMap<CombatRoleRequestDTO, CombatRole>();
-            CreateMap<Operation, OperationResponseDTO>();
+            CreateMap<Operation, OperationResponseDTO>().ForMember(dto => dto.Participants, o => o.MapFrom(o => o.Participations.Select(p => p.User)));
             CreateMap<OperationRequestDTO, Operation>();
-            CreateMap<User, UserResponseDTO>().ForMember(dto => dto.Operations, u => u.MapFrom(u => u.Participations.Select(p => p.Operation)));
+            CreateMap<User, UserResponseDTO>();
             CreateMap<UserRequestDTO, User>();
         }
     }
