@@ -22,7 +22,13 @@ namespace Imi.Project.Herexamen.Api.Controllers
         public async Task<IActionResult> Register(UserRegisterDTO request)
         {
             ServiceResponse<Guid> response =
-                await _authRepository.Register(new User { Username = request.Username }, request.Password);
+                await _authRepository.Register(new User
+                    {
+                        Username = request.Username,
+                        Email = request.Email,
+                        HasAcceptedTermsAndConditions = request.HasAcceptedTermsAndConditions
+
+                    }, request.Password);
 
             if (!response.Success)
             {

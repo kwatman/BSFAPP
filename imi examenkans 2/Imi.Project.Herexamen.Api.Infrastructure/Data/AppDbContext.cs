@@ -45,6 +45,8 @@ namespace Imi.Project.Herexamen.Api.Infrastructure.Data
                 .HasOne(u => u.CombatRole)
                 .WithMany(cr => cr.Users);
 
+            modelBuilder.Entity<User>().Property(u => u.Role).HasDefaultValue("User");
+
             modelBuilder.Entity<Operation>()
                 .HasOne(o => o.Map)
                 .WithMany(m => m.Operations);

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Imi.Project.Herexamen.Api.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase

@@ -1,5 +1,6 @@
 using System;
 using Imi.Project.Herexamen.Api.Core.Models;
+using Imi.Project.Herexamen.Api.Infrastucture.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Imi.Project.Herexamen.Api.Infrastructure.Data
@@ -8,6 +9,8 @@ namespace Imi.Project.Herexamen.Api.Infrastructure.Data
     {
         public static void SeedData(ModelBuilder modelBuilder)
         {
+            AuthRepository.HashPassword("Test123?", out byte[] passwordHash, out byte[] passwordSalt);
+
             modelBuilder.Entity<Map>().HasData(
                 new[]
                 {
@@ -135,6 +138,41 @@ namespace Imi.Project.Herexamen.Api.Infrastructure.Data
             modelBuilder.Entity<User>().HasData(
                 new[]
                 {
+                    new User
+                    {
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000011"),
+                        Username = "PriAdmin",
+                        Email = "admin@pri.be",
+                        PasswordHash = passwordHash,
+                        PasswordSalt = passwordSalt,
+                        Role = "Admin",
+                        CombatRoleId = Guid.Parse("00000000-0000-0000-0000-000000000001")
+                    },
+
+                    new User
+                    {
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000012"),
+                        Username = "PriUser",
+                        Email = "user@pri.be",
+                        PasswordHash = passwordHash,
+                        PasswordSalt = passwordSalt,
+                        Role = "User",
+                        HasAcceptedTermsAndConditions = true,
+                        CombatRoleId = Guid.Parse("00000000-0000-0000-0000-000000000001")
+                    },
+
+                    new User
+                    {
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000000013"),
+                        Username = "PriRefuser",
+                        Email = "Refuser@pri.be",
+                        PasswordHash = passwordHash,
+                        PasswordSalt = passwordSalt,
+                        Role = "User",
+                        HasAcceptedTermsAndConditions = false,
+                        CombatRoleId = Guid.Parse("00000000-0000-0000-0000-000000000001")
+                    },
+
                     new User
                     {
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),

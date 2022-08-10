@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Imi.Project.Herexamen.Api.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MapsController : ControllerBase
@@ -19,7 +18,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             _mapService = mapService;
         }
 
-        [AllowAnonymous]
+        [Authorize(Policy = "CanRead")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -33,7 +32,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
-        [AllowAnonymous]
+        [Authorize(Policy = "CanRead")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -47,6 +46,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
+        [Authorize(Policy = "CanCreate")]
         [HttpPost]
         public async Task<IActionResult> Create(MapRequestDTO request)
         {
@@ -60,6 +60,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
+        [Authorize(Policy = "CanEdit")]
         [HttpPut]
         public async Task<IActionResult> Update(MapRequestDTO request)
         {
@@ -73,6 +74,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
+        [Authorize(Policy = "CanDelete")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {

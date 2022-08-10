@@ -55,6 +55,38 @@ namespace Imi.Project.Herexamen.Api
                 };
             });
 
+            services.AddAuthorization(options =>
+            {
+               options.AddPolicy("CanRead", policy =>
+               {
+                   policy.RequireAssertion(context =>
+                       context.User.HasClaim("HasAcceptedTermsAndConditions", "True") ||
+                       context.User.IsInRole("Admin"));
+               });
+               options.AddPolicy("CanEdit", policy =>
+               {
+                   /*policy.RequireClaim("HasAcceptedTermsAndConditions", "True");
+                   policy.RequireRole(new string[] {"Admin", "User"});*/
+                   policy.RequireAssertion(context =>
+                       context.User.IsInRole("Admin") ||
+                       context.User.HasClaim("HasAcceptedTermsAndConditions", "True") &&
+                       context.User.IsInRole("User"));
+               });
+               options.AddPolicy("CanCreate", policy =>
+               {
+                   /*policy.RequireClaim("HasAcceptedTermsAndConditions", "True");
+                   policy.RequireRole(new string[] {"Admin", "User"});*/
+                   policy.RequireAssertion(context =>
+                       context.User.IsInRole("Admin") ||
+                       context.User.HasClaim("HasAcceptedTermsAndConditions", "True") &&
+                       context.User.IsInRole("User"));
+               });
+               options.AddPolicy("CanDelete", policy =>
+               {
+                   policy.RequireRole("Admin");
+               });
+            });
+
             services.AddCors();
 
             services.AddAutoMapper(typeof(Startup));

@@ -26,7 +26,7 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
         }
 
         // REGISTER
-        private void HashPassword(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        public static void HashPassword(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512())
             {
@@ -96,7 +96,9 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, user.Role),
+                new Claim("HasAcceptedTermsAndConditions", user.HasAcceptedTermsAndConditions.ToString())
             };
 
             SymmetricSecurityKey key =
