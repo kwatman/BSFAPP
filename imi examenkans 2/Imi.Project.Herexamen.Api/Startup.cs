@@ -65,8 +65,6 @@ namespace Imi.Project.Herexamen.Api
                });
                options.AddPolicy("CanEdit", policy =>
                {
-                   /*policy.RequireClaim("HasAcceptedTermsAndConditions", "True");
-                   policy.RequireRole(new string[] {"Admin", "User"});*/
                    policy.RequireAssertion(context =>
                        context.User.IsInRole("Admin") ||
                        context.User.HasClaim("HasAcceptedTermsAndConditions", "True") &&
@@ -74,8 +72,6 @@ namespace Imi.Project.Herexamen.Api
                });
                options.AddPolicy("CanCreate", policy =>
                {
-                   /*policy.RequireClaim("HasAcceptedTermsAndConditions", "True");
-                   policy.RequireRole(new string[] {"Admin", "User"});*/
                    policy.RequireAssertion(context =>
                        context.User.IsInRole("Admin") ||
                        context.User.HasClaim("HasAcceptedTermsAndConditions", "True") &&

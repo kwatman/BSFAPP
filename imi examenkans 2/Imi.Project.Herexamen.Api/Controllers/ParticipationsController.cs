@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Imi.Project.Herexamen.Api.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ParticipationsController : ControllerBase
@@ -18,6 +17,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             _participationService = participationService;
         }
 
+        [Authorize(Policy = "CanCreate")]
         [HttpPost]
         public async Task<IActionResult> AddParticipation(ParticipationRequestDTO request)
         {

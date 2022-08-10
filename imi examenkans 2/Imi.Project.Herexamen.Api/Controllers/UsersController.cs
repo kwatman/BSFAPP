@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Imi.Project.Herexamen.Api.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -20,7 +19,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             _userService = userService;
         }
 
-        [AllowAnonymous]
+        [Authorize(Policy = "CanRead")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -34,7 +33,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
-        [AllowAnonymous]
+        [Authorize(Policy = "CanRead")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -48,6 +47,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(UserRequestDTO request)
         {
@@ -61,6 +61,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> Update(UserRequestDTO request)
         {
@@ -74,6 +75,7 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
+        [Authorize(Policy = "CanDelete")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
