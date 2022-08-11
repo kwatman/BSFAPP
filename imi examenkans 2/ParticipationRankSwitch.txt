@@ -1,0 +1,33 @@
+switch (NumberOfParticipations)
+                {
+                    case int i when i == 0:
+                        return ParticipationRank.Inactive;
+                        break;
+                    case int i when i >= 1 && i <= 5:
+                        return ParticipationRank.Recruit;
+                        break;
+                    case int i when i >= 6 && i <= 20:
+                        return ParticipationRank.Private;
+                        break;
+                    case int i when i >= 21 && i <= 30:
+                        return ParticipationRank.Corporal;
+                        break;
+                    case int i when i >= 31 && i <= 40:
+                        return ParticipationRank.Sergeant;
+                        break;
+                    case int i when i >= 41 && i <= 50:
+                        return ParticipationRank.Lieutenant;
+                        break;
+                    case int i when i >= 51 && i <= 60:
+                        return ParticipationRank.Captain;
+                        break;
+                    case int i when i >= 61 && i <= 80:
+                        return ParticipationRank.Major;
+                        break;
+                    case int i when i >= 81 && i <= 99:
+                        return ParticipationRank.Colonel;
+                        break;
+                    case int i when i >= 100:
+                        return ParticipationRank.Elite;
+                        break;
+                }
