@@ -6,20 +6,20 @@
         Navigation
       </h2>
       <div class="-mx-4">
-        <MenuItem to="/">
-          <span class="material-icons mr-2">home</span> Home
+        <MenuItem to="/operations">
+          <span class="material-icons mr-2">calendar_month</span> Operations
         </MenuItem>
-        <MenuItem to="/mission_announcements">
-          <span class="material-icons mr-2">calendar_month</span> Mission Announcements
+        <MenuItem to="/maps">
+          <span class="material-icons mr-2">map</span> Maps
         </MenuItem>
-        <MenuItem to="/news">
-          <span class="material-icons mr-2">newspaper</span> BSF News
+        <MenuItem to="/combatroles">
+          <span class="material-icons mr-2">military_tech</span> Combat Roles
         </MenuItem>
         <MenuItem to="/members">
           <span class="material-icons mr-2">group</span> Members
         </MenuItem>
-        <MenuItem to="/mission_announcements">
-          <span class="material-icons mr-2">group_add</span> Join BSF
+        <MenuItem to="/kanyerest">
+          <span class="material-icons mr-2">format_quote</span> Kanye REST
         </MenuItem>
       </div>
     </div>
