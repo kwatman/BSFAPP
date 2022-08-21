@@ -19,12 +19,15 @@
       Milsim Community
     </h2>
   </div>
-  <div class="flex ml-auto justify-between items-center space-x-8">
+  <div v-if="!user" class="flex ml-auto justify-between items-center space-x-8">
     <div class="flex items-center space-x-3">
       <router-link to="/login" class="text-white font-Exo hover:text-gray-400">Log In</router-link>
       <p class="text-white font-Exo font-bold">|</p>
       <router-link to="/register" class="text-white font-Exo hover:text-gray-400">Register</router-link>
     </div>
+  </div>
+  <div v-if="user" class="flex ml-auto justify-between items-center space-x-8">
+    <a href="javascript:void(0)" @click="handleLogout">Log Out</a>
   </div>
 </header>
 </template>
@@ -32,8 +35,22 @@
 <script>
 import {computed} from "vue"
 import {useStore} from 'vuex'
-
+import router from "@/router";
+import {mapGetters} from 'vuex'
 export default {
+  methods: {
+    handleLogout() {
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('currentUserId')
+      this.$store.dispatch('user', null)
+      router.push('/login');
+    }
+  },
+
+  computed: {
+    ...mapGetters(['user'])
+  },
+
   setup(){
     const store = useStore()
 

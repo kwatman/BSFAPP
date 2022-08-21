@@ -139,6 +139,7 @@ namespace Imi.Project.Herexamen.Api.Infrastucture.Repositories
             else
             {
                 response.Data = CreateJwt(user);
+                response.Message = user.Id.ToString();
             }
 
             return response;

@@ -1,8 +1,26 @@
 <template>
   <div class="bg-gray-700 min-h-screen text-white">
-    <router-view/>
+    <router-view :user="user"/>
   </div>
 </template>
+
+<script>
+import {mapGetters} from "vuex";
+import axios from "axios";
+
+export default {
+
+  computed: {
+    ...mapGetters(['user'])
+  },
+
+  async created() {
+    const user = await axios.get('api/users/' + sessionStorage.getItem('currentUserId'));
+
+    this.$store.dispatch('CurrentUser', user.data.data);
+  },
+}
+</script>
 
 <style>
 #app {

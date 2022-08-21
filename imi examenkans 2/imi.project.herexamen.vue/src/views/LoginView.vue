@@ -29,6 +29,7 @@
 
 <script>
 import axios from 'axios'
+import router from "@/router";
 export default {
   name: "LoginView.vue",
   data() {
@@ -39,14 +40,21 @@ export default {
   },
   methods: {
     async handleLogin(){
-      const response = await axios.post('https://localhost:5001/Auth/Login', {
+
+      const response = await axios.post('/Auth/Login', {
         username: this.username.trim(),
         password: this.password.trim()
       });
 
-      sessionStorage.setItem('token', response.data)
+      sessionStorage.setItem('token', response.data.data)
+      sessionStorage.setItem('currentUserId', response.data.message)
 
-      console.log(response)
+      const user = await axios.get('api/users/' + response.data.message, {headers: {Authorization: 'Bearer ' + response.data.data}})
+
+      console.log(user)
+
+      await this.$store.dispatch('CurrentUser', user.data.data)
+      await router.push('/');
     }
   }
 }

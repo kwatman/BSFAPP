@@ -37,7 +37,7 @@
 
 <script>
 import axios from "axios";
-
+import router  from "@/router";
 export default {
   name: "RegisterView",
 
@@ -52,7 +52,7 @@ export default {
 
   methods: {
     async handleRegistration() {
-      const response = await axios.post('Auth/Register', {
+      const response = await axios.post('/Auth/Register', {
         email: this.email,
         username: this.username,
         password: this.password,
@@ -60,6 +60,7 @@ export default {
       });
 
       console.log(response)
+      await router.push('/login');
     }
   }
 }
