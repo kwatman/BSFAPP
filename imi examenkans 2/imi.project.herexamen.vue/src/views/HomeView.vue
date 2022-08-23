@@ -10,18 +10,23 @@
 <script>
 import Navbar from "@/components/Navbar";
 import DropdownMenu from "@/components/DropdownMenu";
-import {mapGetters} from "vuex";
+import {useStore} from "vuex";
 
 export default {
   name: 'HomeView',
+
+  setup(){
+    const store = useStore();
+    const user = store.getters.user;
+
+    return{
+      user
+    }
+  },
 
   components: {
     Navbar,
     DropdownMenu
   },
-
-  computed: {
-    ...mapGetters(['user'])
-  }
 }
 </script>

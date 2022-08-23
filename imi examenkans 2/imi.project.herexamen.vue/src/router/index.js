@@ -18,6 +18,16 @@ const routes = [
     component: () => import('../views/RegisterView.vue')
   },
   {
+    path: '/Maps',
+    name: 'Maps',
+    component: () => import('../views/MapsView.vue')
+  },
+  {
+    path: '/CombatRoles',
+    name: 'CombatRoles',
+    component: () => import('../views/CombatRoleView.vue')
+  },
+  {
     path: '/kanyerest',
     name: 'KanyeRest',
     component: () => import('../views/KanyeRestView')

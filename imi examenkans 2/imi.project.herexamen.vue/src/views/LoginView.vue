@@ -52,7 +52,7 @@ export default {
       const user = await axios.get('api/users/' + response.data.message, {headers: {Authorization: 'Bearer ' + response.data.data}})
 
       console.log(user)
-
+      console.log(sessionStorage.getItem('token'))
       await this.$store.dispatch('CurrentUser', user.data.data)
       await router.push('/');
     }

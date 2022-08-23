@@ -15,6 +15,9 @@
       <div class="w-full">
         <p class="text-md text-Black font-bold text-center">- Kanye West</p>
       </div>
+      <div class="items-center pt-4">
+        <button @click="Reload" class="btn">Another one!</button>
+      </div>
     </div>
   </div>
 </template>
@@ -36,8 +39,8 @@ export default {
     }
   },
   methods: {
-    async LoadQuote() {
-
+    Reload() {
+      window.location.reload();
     }
   },
   components : {

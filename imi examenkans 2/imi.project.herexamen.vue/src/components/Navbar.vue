@@ -36,7 +36,7 @@
 import {computed} from "vue"
 import {useStore} from 'vuex'
 import router from "@/router";
-import {mapGetters} from 'vuex'
+
 export default {
   methods: {
     handleLogout() {
@@ -47,20 +47,17 @@ export default {
     }
   },
 
-  computed: {
-    ...mapGetters(['user'])
-  },
-
   setup(){
     const store = useStore()
-
+    const user = store.getters.user;
     const ToggleDropDown = () => {
       store.dispatch('ToggleDropDown')
     }
 
     return{
       menu_is_active: computed(() => store.state.menu_is_active),
-      ToggleDropDown
+      ToggleDropDown,
+      user
     }
   },
   name: "Navbar-vue"
