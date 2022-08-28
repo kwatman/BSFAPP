@@ -1,19 +1,43 @@
 <template>
   <Navbar/>
-  <div class="flex flex-row">
-    <div class="basis-1/3">
-      <ul class="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        <li class="py-2 px-4 w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600"
-            :class="{ active: index == selectedIndex }"
-            v-for="(map, index) in maps"
-            :key="index"
-            @click="setActiveMap(map, index)">{{ map.name }}</li>
-      </ul>
-    </div>
-    <div class="basis-2/3">
-
+  <body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
+  <div class="container max-w-7cl mx-auto mt-8">
+    <h1 class="font-Exo text-3xl decoration-gray-400">Maps</h1>
+    <div class="flex justify-end pb-10 pr-20">
+      <button class="px-4 py-2 rounded-md bg-yellow-500 text-white hover: bg-yellow-400">Add Map</button>
     </div>
   </div>
+  <div v-if="maps" class="flex flex-col pl-10 pr-10">
+    <div class="overflow-x-auto sm:-px-6 lg:-mx-8 lg:px-8">
+      <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+        <table class="min-w-full">
+          <thead>
+          <tr>
+            <th class="px-6 py-3 text-xs text-center font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">Map Name</th>
+            <th class="px-6 py-3 text-sm text-center text-gray-500 border-b border-gray-200 bg-gray-50">Actions</th>
+          </tr>
+          </thead>
+          <tbody class="bg-white">
+          <tr :class="{ active: index == selectedIndex }" v-for="(map, index) in maps"
+          :key="index"
+          @click="setActiveMap(map, index)">
+            <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
+              <div class="flex-items-center text-black">
+                {{ map.name }}
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
+              <div class="flex-items-center text-black">
+                <span class="material-icons text-blue-600">visibility</span> <span class="material-icons text-green-600">edit</span> <span class="material-icons text-red-600">delete</span>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </body>
 </template>
 
 <script>
@@ -26,6 +50,7 @@ export default {
       maps: [],
       selectedMap: null,
       selectedIndex: -1,
+      errorMessage: null,
     }
   },
   methods: {
@@ -33,7 +58,7 @@ export default {
       MapService.getAll().then(response => {
         this.maps = response.data.data;
         console.log(response.data.data)
-      })
+      }).catch(ex => this.errorMessage = ex)
     },
 
     refreshList() {
