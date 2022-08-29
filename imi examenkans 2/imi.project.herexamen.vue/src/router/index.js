@@ -28,6 +28,18 @@ const routes = [
     component: () => import('../views/CombatRoleView.vue')
   },
   {
+    path: '/Operations',
+    name: 'Operations',
+    component: () => import('../views/OperationsView.vue'),
+    props: true
+  },
+  {
+    path: '/Operations/Details/:id',
+    name: 'OperationDetails',
+    component: () => import('../views/OperationsDetailView'),
+    props: true
+  },
+  {
     path: '/kanyerest',
     name: 'KanyeRest',
     component: () => import('../views/KanyeRestView')
