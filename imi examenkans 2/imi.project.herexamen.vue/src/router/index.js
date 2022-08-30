@@ -36,8 +36,13 @@ const routes = [
   {
     path: '/Operations/Details/:id',
     name: 'OperationDetails',
-    component: () => import('../views/OperationsDetailView'),
+    component: () => import('../views/OperationsDetailView.vue'),
     props: true
+  },
+  {
+    path: '/Operations/Create',
+    name: 'OperationsCreate',
+    component: () => import('../views/OperationsCreateView.vue'),
   },
   {
     path: '/kanyerest',

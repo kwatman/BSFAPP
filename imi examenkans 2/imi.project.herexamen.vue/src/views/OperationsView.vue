@@ -10,7 +10,7 @@
   <div v-if="operations.length > 0" class="container max-w-7cl mx-auto mt-8">
     <h1 class="font-Exo text-3xl decoration-gray-400">Operations</h1>
     <div class="flex justify-end pb-10 pr-20">
-      <button class="px-4 py-2 rounded-md bg-yellow-500 text-white hover: bg-yellow-400">Add Operation</button>
+      <router-link :to="{name: 'OperationsCreate'}"><button class="px-4 py-2 rounded-md bg-yellow-500 text-white hover: bg-yellow-400">Add Operation</button></router-link>
     </div>
   </div>
   <div v-if="operations.length > 0" class="flex flex-col pl-10 pr-10">
