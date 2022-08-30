@@ -56,7 +56,7 @@ export default {
         email: this.email,
         username: this.username,
         password: this.password,
-        termsAndConditions: this.termsAndConditions
+        hasAcceptedTermsAndConditions: this.termsAndConditions
       });
 
       console.log(response)
