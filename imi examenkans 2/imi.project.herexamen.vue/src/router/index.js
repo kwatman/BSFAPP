@@ -28,12 +28,6 @@ const routes = [
     component: () => import('../views/MapsCreateView.vue')
   },
   {
-    path: '/Maps/Edit/:id',
-    name: 'MapEdit',
-    component: () => import('../views/MapsEditView.vue'),
-    props: true
-  },
-  {
     path: '/Maps/Delete/:id',
     name: 'MapDelete',
     component: () => import('../views/MapsDeleteView.vue'),
@@ -50,7 +44,7 @@ const routes = [
     component: () => import('../views/CombatRolesDetailView.vue'),
     props: true
   },
-  {
+/*  {
     path: '/CombatRoles/Create',
     name: 'CombatRolesCreate',
     component: () => import('../views/CombatRolesCreateView.vue'),
@@ -66,7 +60,7 @@ const routes = [
     name: 'CombatRoleDelete',
     component: () => import('../views/CombatRolesDeleteView.vue'),
     props: true
-  },
+  },*/
   {
     path: '/Operations',
     name: 'Operations',
@@ -94,35 +88,6 @@ const routes = [
     path: '/Operations/Delete/:id',
     name: 'OperationDelete',
     component: () => import('../views/OperationsDeleteView.vue'),
-    props: true
-  },
-  {
-    path: '/Members',
-    name: 'Members',
-    component: () => import('../views/MembersView.vue'),
-    props: true
-  },
-  {
-    path: '/Members/Details/:id',
-    name: 'MemberDetails',
-    component: () => import('../views/MembersDetailView.vue'),
-    props: true
-  },
-  {
-    path: '/Members/Create',
-    name: 'MembersCreate',
-    component: () => import('../views/MembersCreateView.vue'),
-  },
-  {
-    path: '/Members/Edit/:id',
-    name: 'MemberEdit',
-    component: () => import('../views/MembersEditView.vue'),
-    props: true
-  },
-  {
-    path: '/Members/Delete/:id',
-    name: 'MemberDelete',
-    component: () => import('../views/MembersDeleteView.vue'),
     props: true
   },
   {

@@ -26,7 +26,7 @@
           <tbody class="bg-white">
           <tr :class="{ active: index == selectedIndex }" v-for="(operation, index) in operations"
               :key="index"
-              @click="setActiveMap(operation, index)">
+              @click="setActiveOperation(operation, index)">
             <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
               <div class="flex-items-center text-black">
                 {{ operation.codeName }}
@@ -75,7 +75,7 @@ export default {
       this.selectedIndex = -1;
     },
 
-    setActiveMap(operation, index) {
+    setActiveOperation(operation, index) {
       this.selectedOperation = operation;
       this.selectedIndex = operation ? index : -1
     }

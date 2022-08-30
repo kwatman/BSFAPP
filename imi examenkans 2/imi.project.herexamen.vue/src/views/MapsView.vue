@@ -34,8 +34,7 @@
             </td>
             <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
               <div class="flex-items-center text-black">
-                <span class="material-icons text-green-600">edit</span>
-                <span class="material-icons text-red-600">delete</span>
+                <router-link :to="{name: 'MapDelete', params: {id: map.id}}"><span class="material-icons text-red-600">delete</span></router-link>
               </div>
             </td>
           </tr>

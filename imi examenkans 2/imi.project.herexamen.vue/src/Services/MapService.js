@@ -15,12 +15,8 @@ class MapService{
         return axios.post('/api/maps', data)
     }
 
-    update(id, data) {
-        return axios.put(`/api/maps/${id}`, data)
-    }
-
     delete(id) {
-        return axios.delete(`/maps/${id}`)
+        return axios.delete(`/api/maps/${id}`)
     }
 }
 
