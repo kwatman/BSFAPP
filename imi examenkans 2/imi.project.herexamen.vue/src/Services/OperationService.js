@@ -16,7 +16,7 @@ class OperationService{
     }
 
     update(id, data) {
-        return axios.put(`/api/operations/${id}`, data)
+        return axios.put(`/api/operations`, data)
     }
 
     delete(id) {

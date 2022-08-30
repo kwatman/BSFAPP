@@ -22,7 +22,7 @@
         <div class="mb-6 pt-3 bg-gray-200">
           <label class="block text-gray-700 text-sm font-bold font-Exo mb-2 ml-3" for="map">A.O.</label>
           <select type="text" id="map" v-model="newOperation.map" required class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-yellow-500 transition:duration-500 px-3 pb-3">
-            <option v-for="(map, index) in maps" :key="index">{{ map.name }}</option>
+            <option v-for="map in maps" :key="map.id" :value="map.id">{{ map.name }}</option>
           </select>
         </div>
         <button class="bg-yellow-500 font-Exo h-8 hover:bg-yellow-600 text-gray-600 rounded shadow-lg hover:shadow-xl transition:duration-200" type="submit">Update Operation</button>
@@ -61,10 +61,11 @@ export default {
   methods: {
     UpdateOperation() {
       var data = {
-        codeName: this.operation.codeName,
-        sitrep: this.operation.sitrep,
-        zeroHour: this.operation.zeroHour,
-        map: this.operation.map
+        Id: this.$route.params.id,
+        CodeName: this.newOperation.codeName,
+        Sitrep: this.newOperation.sitrep,
+        ZeroHour: this.newOperation.zeroHour,
+        MapId: this.newOperation.map
       };
       OperationService.update(this.$route.params.id, data).then(response => {
         console.log(response.data);
