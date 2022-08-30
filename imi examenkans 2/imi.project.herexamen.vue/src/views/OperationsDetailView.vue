@@ -36,6 +36,7 @@
       </dl>
     </div>
   </div>
+  <button class="bg-yellow-500 mt-8 w-48 h-8 hover:bg-yellow-600 text-gray-600 rounded shadow-lg hover:shadow-xl transition:duration-200" @click="Participate">Enlist</button>
   </body>
 </template>
 
@@ -43,6 +44,7 @@
 import OperationService from "@/Services/OperationService";
 import Navbar from "@/components/Navbar";
 import {FormatDate} from "@/utilities";
+import axios from 'axios';
 export default {
   name: "OperationsDetailView.vue",
 
@@ -61,6 +63,17 @@ export default {
       this.map = response.data.data.map;
       this.participants = response.data.data.participants
     })
+  },
+
+  methods: {
+    Participate(){
+      var data = {
+        userId: sessionStorage.getItem('currentUserId'),
+        operationId: this.$route.params.id,
+      }
+      axios.post('/api/Participations', data)
+      window.location.reload();
+    }
   },
 
   setup() {
