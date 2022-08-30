@@ -109,6 +109,7 @@ namespace Imi.Project.Herexamen.Api
             services.AddScoped<ICombatRoleService, CombatRoleService>();
             services.AddScoped<IOperationService, OperationService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IParticipationService, ParticipationService>();
 
             services.AddSwaggerGen(c =>
             {

@@ -35,8 +35,7 @@ namespace Imi.Project.Herexamen.Api.Core.Services
 
             try
             {
-                User user = await _userRepository.GetByIdAsync(
-                    Guid.Parse(_httpCtx.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)));
+                User user = await _userRepository.GetByIdAsync(request.UserId);
 
                 if (user == null)
                 {

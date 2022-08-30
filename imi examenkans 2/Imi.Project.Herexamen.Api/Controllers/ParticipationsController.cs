@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Imi.Project.Herexamen.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ParticipationsController : ControllerBase
     {
         private readonly IParticipationService _participationService;
@@ -21,7 +21,14 @@ namespace Imi.Project.Herexamen.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> AddParticipation(ParticipationRequestDTO request)
         {
-            return Ok(await _participationService.AddParticipation(request));
+            var response = await _participationService.AddParticipation(request);
+
+            if (response.Data == null)
+            {
+                return NotFound(response);
+            }
+
+            return Ok(response);
         }
     }
 }
