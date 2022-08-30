@@ -20,7 +20,7 @@ class OperationService{
     }
 
     delete(id) {
-        return axios.delete(`/operations/${id}`)
+        return axios.delete(`/api/operations/${id}`)
     }
 }
 

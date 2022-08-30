@@ -35,8 +35,8 @@
             <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
               <div class="flex-items-center text-black">
                 <router-link :to="{ name: 'OperationDetails', params: { id: operation.id }}"><span class="material-icons text-blue-600">visibility</span></router-link>
-                <span class="material-icons text-green-600">edit</span>
-                <span class="material-icons text-red-600">delete</span>
+                <router-link :to="{ name: 'OperationEdit', params: { id: operation.id }}"><span class="material-icons text-green-600">edit</span></router-link>
+                <router-link :to="{ name: 'OperationDelete', params: { id: operation.id }}"><span class="material-icons text-red-600">delete</span></router-link>
               </div>
             </td>
           </tr>

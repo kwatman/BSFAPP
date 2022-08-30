@@ -45,6 +45,18 @@ const routes = [
     component: () => import('../views/OperationsCreateView.vue'),
   },
   {
+    path: '/Operations/Edit/:id',
+    name: 'OperationEdit',
+    component: () => import('../views/OperationsEditView.vue'),
+    props: true
+  },
+  {
+    path: '/Operations/Delete/:id',
+    name: 'OperationDelete',
+    component: () => import('../views/OperationsDeleteView.vue'),
+    props: true
+  },
+  {
     path: '/kanyerest',
     name: 'KanyeRest',
     component: () => import('../views/KanyeRestView')
