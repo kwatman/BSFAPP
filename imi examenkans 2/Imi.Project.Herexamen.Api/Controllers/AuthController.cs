@@ -26,7 +26,8 @@ namespace Imi.Project.Herexamen.Api.Controllers
                     {
                         Username = request.Username,
                         Email = request.Email,
-                        HasAcceptedTermsAndConditions = request.HasAcceptedTermsAndConditions
+                        HasAcceptedTermsAndConditions = request.HasAcceptedTermsAndConditions,
+                        CombatRoleId = Guid.Parse("00000000-0000-0000-0000-000000000001")
 
                     }, request.Password);
 

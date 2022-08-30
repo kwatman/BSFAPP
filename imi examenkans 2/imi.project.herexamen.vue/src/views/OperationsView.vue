@@ -1,5 +1,6 @@
 <template>
   <Navbar/>
+  <dropdown-menu/>
   <body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
 
   <div v-if="errorMessage" class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
@@ -51,6 +52,7 @@
 <script>
 import OperationService from "@/Services/OperationService";
 import Navbar from "@/components/Navbar";
+import DropdownMenu from "@/components/DropdownMenu";
 
 export default {
   data() {
@@ -81,9 +83,16 @@ export default {
     }
   },
   mounted() {
+    if (localStorage.getItem('reloaded')) {
+      localStorage.removeItem('reloaded');
+    } else {
+      localStorage.setItem('reloaded', '1');
+      location.reload();
+    }
     this.GetOperations()
   },
   components : {
+    DropdownMenu,
     Navbar
   }
 }

@@ -1,5 +1,6 @@
 <template>
   <Navbar/>
+  <dropdown-menu/>
   <body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
   <button @click="$router.back()" class="flex items-center text-lg text-white hover:text-red-600 duration-300 mb-8 ml-36">
     <span class="material-icons text-lg mr-1">keyboard_double_arrow_left</span> Return
@@ -45,6 +46,7 @@ import OperationService from "@/Services/OperationService";
 import Navbar from "@/components/Navbar";
 import {FormatDate} from "@/utilities";
 import axios from 'axios';
+import DropdownMenu from "@/components/DropdownMenu";
 export default {
   name: "OperationsDetailView.vue",
 
@@ -83,6 +85,7 @@ export default {
   },
 
   components: {
+    DropdownMenu,
     Navbar
   }
 }

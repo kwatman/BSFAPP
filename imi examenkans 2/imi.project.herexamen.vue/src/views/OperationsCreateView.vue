@@ -1,5 +1,6 @@
 <template>
   <Navbar/>
+  <dropdown-menu/>
   <body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
   <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
     <section>
@@ -40,6 +41,7 @@ import Navbar from "@/components/Navbar";
 import OperationService from "@/Services/OperationService";
 import MapService from "@/Services/MapService";
 import router from "@/router";
+import DropdownMenu from "@/components/DropdownMenu";
 
 export default {
   name: "OperationsCreate.vue",
@@ -94,6 +96,7 @@ export default {
   },
 
   components: {
+    DropdownMenu,
     Navbar,
   }
 }

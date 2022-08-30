@@ -1,5 +1,6 @@
 <template>
   <Navbar/>
+  <dropdown-menu/>
   <body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
   <div class="relative transform mx-auto overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
@@ -32,6 +33,7 @@
 import OperationService from "@/Services/OperationService";
 import Navbar from "@/components/Navbar";
 import router from "@/router";
+import DropdownMenu from "@/components/DropdownMenu";
 export default {
   name: "OperationsDeleteView.vue",
 
@@ -61,6 +63,7 @@ export default {
   },
 
   components: {
+    DropdownMenu,
     Navbar
   }
 }
