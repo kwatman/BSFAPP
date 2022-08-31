@@ -15,11 +15,11 @@ class CombatRoleService{
     }
 
     update(id, data) {
-        return axios.put(`/api/combatroles/${id}`, data)
+        return axios.put(`/api/combatroles`, data)
     }
 
     delete(id) {
-        return axios.delete(`/combatroles/${id}`)
+        return axios.delete(`api/combatroles/${id}`)
     }
 }
 

@@ -33,7 +33,6 @@ namespace Imi.Project.Herexamen.Api.Controllers
             return Ok(response);
         }
 
-        [Authorize(Policy = "CanRead")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {

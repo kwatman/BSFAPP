@@ -81,7 +81,7 @@ export default {
 
     resetOperation() {
       this.errorMessage = '';
-      this.operation = {};
+      this.newOperation = {};
     },
 
     GetMaps() {

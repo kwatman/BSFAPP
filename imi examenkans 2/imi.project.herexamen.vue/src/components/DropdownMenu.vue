@@ -15,9 +15,6 @@
         <MenuItem to="/combatroles">
           <span class="material-icons mr-2">military_tech</span> Combat Roles
         </MenuItem>
-        <MenuItem to="/members">
-          <span class="material-icons mr-2">group</span> Members
-        </MenuItem>
         <MenuItem to="/kanyerest">
           <span class="material-icons mr-2">format_quote</span> Kanye REST
         </MenuItem>

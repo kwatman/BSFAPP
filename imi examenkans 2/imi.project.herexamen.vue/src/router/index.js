@@ -44,7 +44,7 @@ const routes = [
     component: () => import('../views/CombatRolesDetailView.vue'),
     props: true
   },
-/*{
+  {
     path: '/CombatRoles/Create',
     name: 'CombatRolesCreate',
     component: () => import('../views/CombatRolesCreateView.vue'),
@@ -60,7 +60,7 @@ const routes = [
     name: 'CombatRoleDelete',
     component: () => import('../views/CombatRolesDeleteView.vue'),
     props: true
-  },*/
+  },
   {
     path: '/Operations',
     name: 'Operations',

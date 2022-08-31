@@ -1,5 +1,6 @@
 <template>
   <Navbar/>
+  <dropdown-menu/>
   <body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
   <button @click="$router.back()" class="flex items-center text-lg text-white hover:text-red-600 duration-300 mb-8 ml-36">
     <span class="material-icons text-lg mr-1">keyboard_double_arrow_left</span> Return
@@ -13,7 +14,7 @@
       <dl>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Name</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{combatRole.codeName}}</dd>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{combatRole.name}}</dd>
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Description</dt>
@@ -28,13 +29,13 @@
 <script>
 import Navbar from "@/components/Navbar";
 import CombatRoleService from "@/Services/CombatRoleService";
+import DropdownMenu from "@/components/DropdownMenu";
 export default {
   name: "CombatRolesDetailView.vue",
 
   data() {
     return {
       combatRole: {},
-      members: []
     }
   },
 
@@ -46,6 +47,7 @@ export default {
   },
 
   components: {
+    DropdownMenu,
     Navbar
   }
 }

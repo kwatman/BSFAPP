@@ -20,7 +20,7 @@ class UserService{
     }
 
     delete(id) {
-        return axios.delete(`/users/${id}`)
+        return axios.delete(`api/users/${id}`)
     }
 }
 
