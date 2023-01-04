@@ -1,9 +1,0 @@
-﻿<h1>Match 2!</h1>
-<h5 hidden="@(!numberOfMatches.Equals(8))">Proficiat! Je hebt alle plaatjes geraden!</h5>
-
-<div class="game-grid">
-    @foreach(var tile in game.Tiles)
-    {
-        <div @onclick="() => tileClicked(tile)"><img id="@(tile.Id)" src="/Assets/@(tile.CoverUri)" asp-append-version="true"></div>
-    }
-</div>
