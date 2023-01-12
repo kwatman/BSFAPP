@@ -8,7 +8,6 @@ export const globalStyles = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-
     },
     buttonText: {
         color: 'black'
@@ -22,4 +21,10 @@ export const globalStyles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'white',
     },
+    baseContainer: {
+        paddingTop: 20,
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: '#2A2C2E'
+    }
 });

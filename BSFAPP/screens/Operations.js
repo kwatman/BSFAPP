@@ -1,7 +1,7 @@
 ﻿import {Button, Text, View} from "react-native";
 import {globalStyles} from "../styles/global";
 
-function Home({ navigation })  {
+function Operations({ navigation })  {
     return(
         <View style={globalStyles.baseContainer}>
             
@@ -9,4 +9,4 @@ function Home({ navigation })  {
     )
 }
 
-export default Home
+export default Operations
