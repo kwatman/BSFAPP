@@ -1,19 +1,18 @@
-﻿import {Button, SafeAreaView, ScrollView, Text, View} from "react-native";
+﻿import {Button, Pressable, SafeAreaView, ScrollView, Text, View} from "react-native";
 import {globalStyles} from "../styles/global";
 import OperationCard from "../components/OperationCard";
-import {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import AppSettings from "../AppSettings";
 import AuthContext from "../context/AuthContext";
 
 function Operations({ navigation })  {
 
-    const [operations,setOperations] = useState(null)
+    const [operations,setOperations] = useState({pastOperations: null, upcomingOperations: null})
     const {auth,doLogin} = useContext(AuthContext)
     
     useEffect(() => {
         async function loadOps(){
             try {
-                
                 let response =  await fetch(AppSettings.serverUrl +'api/operations', {
                     method: 'GET',
                     headers: {
@@ -23,32 +22,45 @@ function Operations({ navigation })  {
                     },
                 })
                 let data = await response.json()
-                let newOperations= {}
-                
-                newOperations = []
+                let pastOperations= []
                 data.data.forEach((operation) =>{
                         let zerohour = new Date(operation.zeroHour)
                         operation.zeroHour = zerohour.toLocaleString()
-                        newOperations.push(operation)
-                        
+                        pastOperations.push(operation)
                     }
                 );
-                newOperations = data.data.map((operation) =>
+                pastOperations = data.data.map((operation) =>
                     <OperationCard key={operation.id} title={operation.codeName} date={operation.zeroHour}/>
                 );
-                setOperations(newOperations)
+                
+                let upcomingOperations =[]
+                
+                let operations = {
+                    pastOperations: pastOperations,
+                    upcomingOperations: upcomingOperations
+                }
+                setOperations(operations)
             }catch (error) {
                 console.error(error);
             }
         }
         loadOps()
+        console.log(auth.data.role)
     }, [])
     
     return(
         <SafeAreaView style ={globalStyles.baseContainer}>
             <ScrollView style={{width: '100%'}} contentContainerStyle={{ alignItems: 'center'}}>
+                {auth.data.role === "Admin" ?     
+                    <Pressable style={globalStyles.button} >
+                    <Text style={globalStyles.buttonText}>add new opperation</Text>
+                    </Pressable>
+                    :
+                    null
+                }
+
                 <Text style={{color: 'white'}}> Upcoming Operation</Text>
-                <OperationCard title="Operation rolling wheels" date="2022-04-01T19:30:00"/>
+                {operations.upcomingOperations == null ? operations.upcomingOperations :  <Text style={{color: 'white'}}> There are no upcoming operations</Text>}
                 <View
                     style={{
                         borderBottomColor: 'white',
@@ -57,7 +69,7 @@ function Operations({ navigation })  {
                         width: '80%'
                     }}
                 />
-                {operations}
+                {operations.pastOperations}
             </ScrollView> 
         </SafeAreaView>
     )
