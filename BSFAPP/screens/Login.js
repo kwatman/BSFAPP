@@ -25,7 +25,7 @@ const Login =  () => {
                 }),
             })
             let data = await response.json()
-            console.log(data)
+
             if(!data.success){
                 Alert.alert(
                     "Invalid credentials",
@@ -34,6 +34,7 @@ const Login =  () => {
                         { text: "OK", onPress: () => console.log("OK Pressed") }
                     ]);
             }else{
+                
                 doLogin(data.data)
             }
         }catch (error) {

@@ -433,9 +433,9 @@ namespace BSFAPP.Api.Infrastructure.Data
                         Id = Guid.Parse("00000000-0000-0000-0000-000000000020"),
                         CodeName = "Vulture",
                         Sitrep = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo ante sit amet semper lacinia. Duis sit amet ante non tellus maximus finibus a non libero. Pellentesque ac tempor tortor, id hendrerit arcu. Duis nec sem urna. Sed at viverra odio. Pellentesque molestie mauris feugiat odio tristique vulputate. Cras sit amet neque elementum, faucibus arcu vel, finibus libero. Nullam non lacus eu dui blandit condimentum. Sed in justo eget magna gravida faucibus efficitur laoreet ligula. Etiam vel tincidunt tortor. Aenean quis sem mattis, dignissim purus ut, consequat lacus.",
-                        ZeroHour = new DateTime(2022, 01, 29, 19, 30, 00),
+                        ZeroHour = new DateTime(2024, 01, 29, 19, 30, 00),
                         MapId = Guid.Parse("00000000-0000-0000-0000-000000000002")
-                    }
+                    },
                 });
 
             modelBuilder.Entity<Participation>().HasData(

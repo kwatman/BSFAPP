@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -10,11 +10,13 @@ import Header from "./components/Header";
 import AuthContext from "./context/AuthContext";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Operations from "./screens/Operations";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 function App() {
     const {auth,doLogin} = useContext(AuthContext)
+    
     return auth ? (
         <NavigationContainer>
             <Tab.Navigator screenOptions={({ route }) => ({

@@ -23,6 +23,7 @@ export const globalStyles = StyleSheet.create({
     },
     baseContainer: {
         paddingTop: 20,
+        width: '100%',
         flex: 1,
         alignItems: 'center',
         backgroundColor: '#2A2C2E'
