@@ -11,6 +11,7 @@ import AuthContext from "./context/AuthContext";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Operations from "./screens/Operations";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import OperationsStackScreen from "./screens/OperationsStackScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,7 +41,7 @@ function App() {
                 }
             })}>
                 <Tab.Screen name="Home" component={Home} options={{header: (props) => <Header title="Home" {...props}/>}}/>
-                <Tab.Screen name="Operations" component={Operations} options={{header: (props) => <Header title="Operations" {...props}/>}}/>
+                <Tab.Screen name="Operations" component={OperationsStackScreen} options={{header: (props) => <Header title="Operations" {...props}/>}}/>
             </Tab.Navigator>
         </NavigationContainer>
     ): (

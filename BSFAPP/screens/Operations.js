@@ -10,6 +10,10 @@ function Operations({ navigation })  {
     const [operations,setOperations] = useState({pastOperations: null, upcomingOperations: null})
     const {auth,doLogin} = useContext(AuthContext)
     
+    const operationPressed = (operation) => {
+        console.log(operation.codeName)
+    }
+    
     useEffect(() => {
         async function loadOps(){
             try {
@@ -30,7 +34,9 @@ function Operations({ navigation })  {
                     }
                 );
                 pastOperations = data.data.map((operation) =>
-                    <OperationCard key={operation.id} title={operation.codeName} date={operation.zeroHour}/>
+                    <Pressable style={{width: '80%', alignItems: 'center'}} onPress={() => operationPressed(operation)}>
+                        <OperationCard key={operation.id} title={operation.codeName} date={operation.zeroHour}/>
+                    </Pressable>
                 );
                 
                 let upcomingOperations =[]
@@ -52,8 +58,8 @@ function Operations({ navigation })  {
         <SafeAreaView style ={globalStyles.baseContainer}>
             <ScrollView style={{width: '100%'}} contentContainerStyle={{ alignItems: 'center'}}>
                 {auth.data.role === "Admin" ?     
-                    <Pressable style={globalStyles.button} >
-                    <Text style={globalStyles.buttonText}>add new opperation</Text>
+                    <Pressable style={globalStyles.button} onPress={() => navigation.navigate('AddOperation')}>
+                        <Text style={globalStyles.buttonText}>add new opperation</Text>
                     </Pressable>
                     :
                     null

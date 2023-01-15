@@ -17,7 +17,7 @@ export function AuthProvider({children}){
             token: token,
             data: decoded
         }
-        await AsyncStorage.setItem('token', token)
+        await AsyncStorage.setItem('token', "")
         setAuth(newAuth);
     }
 
@@ -26,7 +26,7 @@ export function AuthProvider({children}){
             try {
                 let token = await AsyncStorage.getItem('token')
                 console.log("AuthProvider: " + token)
-                if(token !== null){
+                if(token !== null && token){
                     await doLogin(token)
                 }
                 setIsReady(true)
