@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BSFAPP.Api.Core.DTO_S.Operation;
@@ -25,6 +26,7 @@ namespace BSFAPP.Api.Core.Services
                 response = new ServiceResponse<IEnumerable<OperationResponseDTO>>();
             var operations = await _operationRepository.ListAllAsync();
             response.Data = _mapper.Map<IEnumerable<OperationResponseDTO>>(operations);
+            response.Data = response.Data.OrderByDescending(x => x.ZeroHour);
 
             return response;
         }
