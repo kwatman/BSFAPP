@@ -5,7 +5,6 @@ namespace BSFAPP.Api.Core.Models
 {
     public abstract class Base
     {
-        [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
     }
 }

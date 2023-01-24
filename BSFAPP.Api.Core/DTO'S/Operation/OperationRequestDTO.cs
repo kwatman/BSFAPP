@@ -8,7 +8,7 @@ namespace BSFAPP.Api.Core.DTO_S.Operation
         public string CodeName { get; set; }
         public string Sitrep { get; set; }
         public DateTime ZeroHour { get; set; }
-        public Guid MapId { get; set; }
+        // public Guid MapId { get; set; }
         // Participants
     }
 }

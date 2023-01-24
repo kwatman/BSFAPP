@@ -80,7 +80,7 @@ namespace BSFAPP.Api.Core.Services
                 operation.CodeName = request.CodeName;
                 operation.Sitrep = request.Sitrep;
                 operation.ZeroHour = request.ZeroHour;
-                operation.MapId = request.MapId;
+                // operation.MapId = request.MapId;
                 // TODO: participations
 
                 var updatedOperation = await _operationRepository.UpdateAsync(operation);

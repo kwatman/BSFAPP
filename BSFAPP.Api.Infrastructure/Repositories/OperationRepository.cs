@@ -41,9 +41,10 @@ namespace BSFAPP.Api.Infrastructure.Repositories
 
         public async Task<IEnumerable<Operation>> GetByMapIdAsync(Guid mapId)
         {
-            var operations = await GetAll().Where(o => o.MapId.Equals(mapId)).ToListAsync();
+            /*var operations = await GetAll().Where(o => o.MapId.Equals(mapId)).ToListAsync();
 
-            return operations;
+            return operations;*/
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<Operation>> SearchAsync(string searchString)

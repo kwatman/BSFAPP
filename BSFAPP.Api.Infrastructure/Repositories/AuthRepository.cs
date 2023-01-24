@@ -47,9 +47,9 @@ namespace BSFAPP.Api.Infrastructure.Repositories
             }
         }
 
-        public async Task<ServiceResponse<Guid>> Register(User user, string password)
+        public async Task<ServiceResponse<int>> Register(User user, string password)
         {
-            ServiceResponse<Guid> response = new ServiceResponse<Guid>();
+            ServiceResponse<int> response = new ServiceResponse<int>();
 
             if (await UserExists(user.Username))
             {

@@ -21,7 +21,7 @@ namespace BSFAPP.Api.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> Register(UserRegisterDTO request)
         {
-            ServiceResponse<Guid> response =
+            ServiceResponse<int> response =
                 await _authRepository.Register(new User
                     {
                         Username = request.Username,
